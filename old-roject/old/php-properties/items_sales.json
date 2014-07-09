@@ -1,0 +1,47 @@
+{
+    "Item0": {
+        "class": "web print color color_green",
+        "href": "100",
+        "image": "img/dummies/featured/01.jpg"
+    },
+    "Item1": {
+        "class": "print color color_red",
+        "href": "",
+        "image": "img/dummies/featured/02.jpg"
+    },
+    "Item2": {
+        "class": "design color color_blue",
+        "href": "",
+        "image": "img/dummies/featured/03.jpg"
+    },
+    "Item3": {
+        "class": "photo print",
+        "href": "",
+        "image": "img/dummies/featured/04.jpg"
+    },
+    "Item4": {
+        "class": "web photo",
+        "href": "",
+        "image": "img/dummies/featured/05.jpg"
+    },
+    "Item5": {
+        "class": "web print",
+        "href": "",
+        "image": "img/dummies/featured/06.jpg"
+    },
+    "Item6": {
+        "class": "photo",
+        "href": "",
+        "image": "img/dummies/featured/04.jpg"
+    },
+    "Item7": {
+        "class": "web photo",
+        "href": "",
+        "image": "img/dummies/featured/05.jpg"
+    },
+    "Item8": {
+        "class": "web print",
+        "href": "",
+        "image": "img/dummies/featured/01.jpg"
+    }
+}

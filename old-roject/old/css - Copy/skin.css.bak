@@ -1,0 +1,224 @@
+/* Vars ----------------------------------------------------*//* Mixins ----------------------------------------------------*//* Colors and backgrounds  ----------------------------------------------------*/
+body {
+  color: #656360;
+  background: #113300 url(../img/noise-all.png);
+
+}
+body a:hover {
+  color: #666600;
+}
+a {
+  color: #666600;
+}
+header,
+footer {
+  background: #003333;
+}
+/* Selection colours (easy to forget) */
+::selection {
+  background: #666600;
+}
+::-moz-selection {
+  background: #666600;
+}
+img::selection {
+  background: #666600;
+}
+img::-moz-selection {
+  background: #666600;
+}
+body {
+  -webkit-tap-highlight-color: #666600;
+}
+#headline,
+.masthead {
+  color: #003300444;
+}
+/* NAVIGATION ------------------------------------------------------------*/
+#nav > li > a {
+  color: #AACC00;
+}
+#nav > li:hover > a {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-top: 3px solid #666600;
+}
+#nav span:hover {
+  -webkit-transform: translate(-10px, -3px);
+  -moz-transform: translate(-10px, -3px);
+  -o-transform: translate(-10px, -3px);
+  transform: translate(-10px, -3px);
+}
+#nav > li.current-menu-item > a,
+#nav > li.current_page_item > a {
+  border-top: 3px solid #666600;
+}
+#nav .sfHover ul {
+  background: #323232;
+}
+#nav .sfHover ul li a {
+  color: #003300444;
+}
+#nav .sfHover ul li a:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #666600;
+}
+/* MAIN ------------------------------------------------------------*/
+.multiplebgs #main {
+  background-image: url(../img/main-bg.png), url(../img/main-bg.png);
+  background-repeat: repeat-x, repeat-x;
+  background-position: bottom left, top left;
+}
+.no-multiplebgs #main {
+  background: #f1f1f1 url(../img/main-bg.png) repeat-x top left;
+}
+/* FILTERED ITEMS ----------------------------------------------------*/
+
+#filter-buttons li a {
+  border-bottom: 2px solid transparent;
+}
+
+#filter-buttons li:not(.submenu) a:hover {
+	border-bottom: 2px solid #003300;
+}
+
+#filter-buttons li:not(.submenu) a.selected {
+	border-bottom: 2px solid #003300;
+}
+
+#filter-buttons li.submenu a:last-child:hover,
+#filter-buttons li.submenu a.selected {
+	border-bottom: 2px solid #003300;
+}
+#filter-buttons li.submenu a.selected:not(:last-child):hover {
+	border-bottom: 2px solid transparent;
+}
+#filter-container figure {
+  background: #323232;
+}
+#filter-container figure .thumb {
+  background: #666600 url(../img/icon-link.png) center center no-repeat;
+}
+#filter-container figure figcaption .heading {
+  color: #003300444;
+}
+#filter-container figure figcaption .heading:hover {
+  color: #666600;
+}
+#filter-container figure .readmore {
+  color: #003300444;
+}
+#filter-container figure .readmore:hover h5 {
+  color: #666600;
+}
+
+/* PORTFOLIO ----------------------------------------------------*/
+
+#portfolio-content #filter-container a:hover { color: #666600; }
+
+#portfolio-content #filter-container a.green { color:#009933; }
+
+#portfolio-content #filter-container a.green:hover { color:#CC0033;}
+
+#portfolio-content #filter-container a.red {  color:#009933;}
+
+#portfolio-content #filter-container a.red :hover{  color:#009933;}
+
+portfolio-content #filter-container a.blue {  color:#009933;}
+
+#portfolio-content #filter-container a.blue:hover {  color:#009933;}
+#portfolio-content .project-pager a {  color: #003300444;}
+#portfolio-content .project-pager a:hover {  color: #666600;}
+#portfolio-content #project-box {  background: #323232;}
+#portfolio-content #project-box .info .launch:hover {  color: #f1f1f1;  background: #666600;}
+
+/* RELATED PROJECTS ---------------------------------------------------*/
+.related-projects figure .heading {
+  color: #003300;
+}
+.related-projects figure .heading:hover {
+  color: #666600;
+}
+.related-projects figure .thumb {
+  background: #666600 url(../img/icon-link.png) no-repeat center center;
+}
+/* CONTACT  ----------------------------------------------------*/#map-holder {
+  background: #323232;
+}
+/* BLOG ------------------------------------------------------------*/
+#posts-list article .box {
+  background: #323232 url(../img/meta-bg.png) repeat-y top right;
+}
+#posts-list article .box .entry-date {
+  color: #003300;
+  background: #003333;
+}
+#posts-list article .box .excerpt .post-heading {
+  color: #003300444;
+}
+#posts-list article .box .excerpt .post-heading:hover {
+  color: #666600;
+}
+#posts-list article .box .excerpt .learnmore {
+  background: #003333;
+  color: #323232;
+}
+#posts-list article .box .excerpt .learnmore:hover {
+  background: #666600;
+}
+#posts-list article .box .meta a {
+  color: #656360;
+}
+#posts-list article .box .meta a:hover {
+  color: #666600;
+}
+#posts-list article.format-standard .feature-image {
+  background: #666600 url(../img/icon-link.png) no-repeat center center;
+}
+#posts-list article.format-image .feature-image {
+  background: #666600 url(../img/icon-popup.png) no-repeat center center;
+}
+body.single #posts-list article {
+  background: #323232;
+}
+body.single #posts-list .box .meta {
+  background: #323232 url(../img/meta-bg-vertical.png) repeat-x top right;
+}
+/* PAGE NAVIGATION ------------------------------------------------------------*/
+#main .page-navigation a {
+  color: #003300444;
+}
+#main .page-navigation a:hover {
+  color: #666600;
+}
+/* SIDEBAR ------------------------------------------------------------*/
+#sidebar .cat-item a .post-counter,
+#sidebar .page_item a .post-counter {
+  color: #656360;
+}
+/* SLIDER ----------------------------------------------------*/.lof-slidecontent .slider-description {
+  color: #e6e6e6;
+}
+.lof-slidecontent .slider-description a {
+  color: #FFF;
+}
+.lof-slidecontent .slider-description a.readmore {
+  color: #fcb019;
+}
+.lof-slidecontent .active {
+  border-top: 3px #666600 solid;
+}
+/* FOOTER ----------------------------------------------------*/footer {
+  color: #003300;
+}
+footer h4 {
+  color: #fff;
+}
+footer a {
+  color: #666600;
+}
+footer a:hover {
+  color: #fff;
+}

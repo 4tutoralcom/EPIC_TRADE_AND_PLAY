@@ -1,0 +1,29 @@
+{
+    "|HOME": {
+        "href": "index.php"
+    },
+    "|BLOG": {
+        "href": "blog.php"
+    },
+
+    "|ABOUT": {
+        "href": "page.php",
+        "|list": {
+            "Elements": {
+                "href": "page-elements.php"
+            },
+            "Icons": {
+                "href": "page-icons.php"
+            },
+            "Typography": {
+                "href": "page-typography.php"
+            }
+        }
+    },
+    "|SHOP": {
+        "href": "shop.php"
+    },
+    "|CONTACT": {
+        "href": "contact.php"
+    }
+}
