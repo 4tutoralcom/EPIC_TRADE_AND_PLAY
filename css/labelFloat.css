@@ -1,0 +1,21 @@
+.bs-float-label {
+    position:relative;
+    /* border:1px solid #ddd; */
+    margin:10px;
+    padding:10px;
+}
+.bs-float-label > .float-input {margin-top:10px;}
+.bs-float-label > .float-input:focus {
+  /*border-color: #f06d06;*/
+}
+.bs-float-label > .float-label {
+    position:absolute; 
+    top: 6px; 
+    left: 10px; 
+    background:rgba(255, 255, 255, .32); 
+    -webkit-transition: top .5s ease-in-out, opacity .5s ease-in-out; /* For Safari 3.1 to 6.0 */
+    transition: top .5s ease-in-out, opacity .5s ease-in-out;
+    /* opacity:0; */
+}
+.bs-float-label > .float-label.show { color:#333; top: -6px; opacity:1; /* z-index: 4; */}
+.bs-float-label > .float-label.on { color:blue; }
