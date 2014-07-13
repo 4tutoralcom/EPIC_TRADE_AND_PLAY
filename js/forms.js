@@ -1,51 +1,18 @@
-temppass="";
-$("#submit").click( function() {
-	temppass="";
-	
-	$( "#password" ).prev().css( "background-color", "" );
-	$( "#userid" ).prev().css( "background-color", "" );
-	$("#errmsg").empty();
-	$("#errmsg").html("<br>");
-	formhash($("#login"),password);
-	$.post( $("#login").attr("action"),
-	$("#login :input").serializeArray(),
-	function(info) {
-		if(info=="Success")
-			location.reload();
-		else if(userid.value=="")
-			$( "#userid" ).prev().css( "background-color", "#d9534f" );
-		else if(temppass=="")
-			$( "#password" ).prev().css( "background-color", "#d9534f" );
-		else{
-			
-			$("#errmsg").html(info);
-		}
-	});
-	
-	$("#login").submit( function() {
-		return false;	
-	});
-	
-	$("#userid").on("focus",function(){
-		$( "#userid" ).prev().css( "background-color", "" );
-    })
-	$("#password").on("focus",function(){
-		$( "#password" ).prev().css( "background-color", "" );
-    })
-});
 function formhash(form, password) {
     // Create a new element input, this will be our hashed password field. 
     var p = document.createElement("input");
  
     // Add the new element to our form. 
-    form.append(p);
+    form.appendChild(p);
     p.name = "p";
     p.type = "hidden";
     p.value = hex_sha512(password.value);
-	temppass=password.value;
+ 
     // Make sure the plaintext password doesn't get sent. 
     password.value = "";
-	
+ 
+    // Finally submit the form. 
+    form.submit();
 }
  
 function regformhash(form, uid, email, password, conf) {
@@ -59,12 +26,12 @@ function regformhash(form, uid, email, password, conf) {
         return false;
     }
  
-    // Check the userid
+    // Check the username
  
     re = /^\w+$/; 
-    if(!re.test(form.userid.value)) { 
-        alert("userid must contain only letters, numbers and underscores. Please try again"); 
-        form.userid.focus();
+    if(!re.test(form.username.value)) { 
+        alert("Username must contain only letters, numbers and underscores. Please try again"); 
+        form.username.focus();
         return false; 
     }
  
@@ -110,25 +77,3 @@ function regformhash(form, uid, email, password, conf) {
     form.submit();
     return true;
 }
-/*
-$("#submit").click( function() {
-alert($("#login :input").serializeArray());
- $.post( $("#login").attr("action"),
-	$("#myForm :input").serializeArray(),
-	function(info) {
-		if(info=="Success")
-			location.reload();
-		else if(info=="!userid!")
-			$( "#userid" ).prev().css( "background-color", "#d9534f" );
-		else
-		{
-			$("#errmsg").empty();
-			$("#errmsg").html(info);
-		}
-	});
-	$("#login").submit( function() {
-	   return false;	
-	});
-
-});
-*/
