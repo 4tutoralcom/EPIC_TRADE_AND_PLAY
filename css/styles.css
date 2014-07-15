@@ -444,18 +444,20 @@ table {
 
 .pullcontainer a#pull {display: none;}
 
-header {background-color: #161616;}
+header {background-color: #FFF; border-bottom:solid 1px #A8AEB1;}
 
 div.logo-dec {
 	font-size: 0.85em;
-	margin: -5px 5px;
+	margin: -9px 0px;
 	color: #860808;
 	width: auto;
- }
+ 
+	font-weight: 800;
+}
 
 h2.logo-text {
 	font-size: 3em;
-	margin: 0px 0px 0px 0px;
+	margin: 4px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	color: #860808;
 	font-family: 'Bolyar Ornate';
@@ -467,9 +469,13 @@ h2.logo-text {
 	text-align: right;
 	height: 68px;
 	background-color: #FFF;
+	border-right: solid 1px #A8AEB1;
 	position: relative;
 	color: #fff;
- }
+ 
+	margin-right: 20px;
+	padding-right: 20px;
+}
 
 .logo-bg {
 	background-color: #860808;
@@ -482,7 +488,7 @@ h2.logo-text {
 
 nav {
 	float: left;
-	background-color: #161616;
+	/* background-color: #161616; */
  }
 
 	nav ul {
@@ -508,39 +514,37 @@ nav {
 				-o-transition: 0.5s ease;
 			 }
 
-				nav ul li a:not(.signin-button) {color: #860808;}
+				nav ul li a{color: #A8AEB1;}
 
 				nav ul li a:hover {
 					text-decoration: none;
-					color: #A8AEB1;
+					color: #860808;
 				 }
 
 				nav ul li a.active {
-					color: #A8AEB1;
+					color: #860808;
 					text-decoration: none;
 				 }
+.signin {
+ position: absolute;
 
-	nav + .signin {
-		float: right;
-		margin: 23px 39px;
-		text-align: center;
-	 }
-
-.signin .button, .signin-button {
-	background-color: #860808;
-	padding: 2px 20px;
-	border-radius: 5px;
-	font-weight: 400;
-	font-size: 15px;
-	color: #fff;
+ right: 0;
  }
 
-.signin .button:hover, .signin-button:hover {
-	background-color: #929da5;
-	text-decoration: none;
- }
+ .inline.signin-button, .inline.button {padding: 10px 20px;}
 
-.inline.signin-button, .inline.button {padding: 10px 20px;}
+.signinContainer {
+  text-align: center;
+}
+ 
+/* The ghost, nudged to maintain perfect centering */
+.signinContainer:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
 
 .hero {
 	background: url(../img/herobg.jpg) no-repeat center center;
@@ -1046,4 +1050,12 @@ footer {
         text-align: right;
 		margin-top:10px;
  	}		
+}
+
+.modal {
+ overflow-y: auto;
+}
+
+.modal-open {
+ overflow: auto;
 }

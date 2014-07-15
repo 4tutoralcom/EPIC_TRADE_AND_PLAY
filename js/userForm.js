@@ -1,4 +1,5 @@
 temppass="";
+
 $("#submit").click( function() {
 	temppass="";
 	
@@ -110,25 +111,3 @@ function regformhash(form, uid, email, password, conf) {
     form.submit();
     return true;
 }
-/*
-$("#submit").click( function() {
-alert($("#login :input").serializeArray());
- $.post( $("#login").attr("action"),
-	$("#myForm :input").serializeArray(),
-	function(info) {
-		if(info=="Success")
-			location.reload();
-		else if(info=="!userid!")
-			$( "#userid" ).prev().css( "background-color", "#d9534f" );
-		else
-		{
-			$("#errmsg").empty();
-			$("#errmsg").html(info);
-		}
-	});
-	$("#login").submit( function() {
-	   return false;	
-	});
-
-});
-*/

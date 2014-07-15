@@ -12,7 +12,6 @@ $(function(){
 						icon: 'glyphicon glyphicon-unchecked'
 					}
 			};
-
 		$button.on('click', function () {
 			$checkbox.prop('checked', !$checkbox.is(':checked'));
 			$checkbox.triggerHandler('change');
