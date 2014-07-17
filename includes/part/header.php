@@ -1,5 +1,5 @@
 		<header class="clearfix">
-			<div class="logo col-sm-1 col-md-2">
+			<div class="logo col-sm-3">
 				<h2 class="logo-text">EPIC</h2>
 				<div class="logo-dec">Game &#8901; Trade &#8901; Repair</div>
 			</div>
