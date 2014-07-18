@@ -444,13 +444,12 @@ table {
 
 .pullcontainer a#pull {display: none;}
 
-header {background-color: #FFF; border-bottom:solid 1px #A8AEB1;}
+header {background-color: #EEE; border-bottom: solid 1px #A8AEB1;}
 
 div.logo-dec {
 	font-size: 0.85em;
-	margin: -9px 0px;
-	color: #860808;
-	width: auto;
+	margin: -9px -4px;
+	width: 101%;
  
 	font-weight: 800;
 }
@@ -459,24 +458,26 @@ h2.logo-text {
 	font-size: 3em;
 	margin: 4px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
-	color: #860808;
 	font-family: 'Bolyar Ornate';
 	font-weight: 800;
  }
 
+a:hover div.logo h2, a:hover div.logo div{
+color: #680000;
+}
 .logo {
 	float: left;
 	text-align: right;
 	height: 68px;
-	background-color: #FFF;
-	border-right: solid 1px #A8AEB1;
 	position: relative;
-	color: #fff;
+	color: #860808;
  
 	margin-right: 20px;
 	padding-right: 20px;
 }
-
+.logo:not(.no-border){
+	border-right: solid 1px #A8AEB1;
+}
 .logo-bg {
 	background-color: #860808;
 	position: absolute;
@@ -514,7 +515,7 @@ nav {
 				-o-transition: 0.5s ease;
 			 }
 
-				nav ul li a{color: #292929;}
+				nav ul li a{color: #1A1A1A;}
 
 				nav ul li a:hover {
 					text-decoration: none;
@@ -911,10 +912,12 @@ figcaption {
  }
 
 footer {
-	background-color: #242a2c;
-	padding: 50px 0 50px 0;
+	background-color: #EEE;
+	padding: 36px 0 36px 0;
 	color: #454e51;
- }
+ 
+	border-top: solid 1px #A8AEB1;
+}
 
 	footer h2 {font-size: 24px;}
 

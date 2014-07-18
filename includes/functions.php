@@ -23,7 +23,7 @@ function sec_session_start() {
     session_start();            // Start the PHP session 
     session_regenerate_id();    // regenerated the session, delete the old one. 
 }
-function login($email, $password, $mysqli) {
+function login($email, $password, $mysqli,$ip_address) {
 	$stmt = $mysqli->prepare("SELECT id, username, password, salt 
         FROM members
 		WHERE email = ?
@@ -35,7 +35,7 @@ function login($email, $password, $mysqli) {
         $stmt->store_result();
  
         // get variables from result.
-        $stmt->bind_result($user_id, $username, $db_password, $salt);
+        $stmt->bind_result($user_id, $username,$db_password, $salt);
         $stmt->fetch();
  
         // hash the password with the unique salt.
@@ -66,7 +66,29 @@ function login($email, $password, $mysqli) {
                     $_SESSION['login_string'] = hash('sha512', 
                               $password . $user_browser);
                     // Login successful.
-                    return true;
+					// Check if the user has allowed the ip address 
+					// to access there account.
+					$stmt = $mysqli->prepare("SELECT `ip_adresses`, `allowed` FROM `allowed_ip_adresses` WHERE id=?");
+					
+					if($stmt){
+						$stmt->bind_param('i', $user_id);  // Bind "$user_id" to parameter.
+						$stmt->execute();    // Execute the prepared query.
+						$stmt->store_result();
+						// get variables from result.
+						$stmt->bind_result($db_ip, $allowed);
+						
+						    while ($stmt->fetch()) {
+								if($allowed==1 &&  $db_ip==$ip_address ){
+									return true;
+								}
+							}
+							$error="You need to allow this ip";
+							return false;
+							
+					}else{
+						//unknown error
+						return false;
+					}
                 } else {
                     // Password is not correct
                     // We record this attempt in the database

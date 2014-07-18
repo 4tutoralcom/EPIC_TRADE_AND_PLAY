@@ -1,20 +1,22 @@
 @media screen and (max-width: 991px) {
 nav{height:auto;width:100%}
-nav ul{width:100%;display:block;height:auto;margin:0;padding:0}
-nav li{width:100%;float:left;background-color:#242a2c;position:relative;text-align:center}
-nav ul li a:not(.signin-button):not(.button){width:100%;float:left;background-color:#242a2c;position:relative;padding:25px 0;text-align:center;border-bottom:1px dotted rgba(255,255,255,0.2)}
-nav ul li a:not(.signin-button):not(.button).last{border-bottom:none}
+nav ul{width:100%;display:block;height:auto;margin:0;padding:0;border-top: 1px solid #A8AEB1;}
+nav li{width:100%;float:left;background-color: #FFFFFF;position:relative;text-align:center}
+nav ul li a{width:100%;float:left;position:relative;padding:25px 0;text-align:center;border-bottom: 1px dotted #A8AEB1;}
+nav ul li:first-child a.signin-button{background-color: #E0E0E0; }
+nav ul li a.last{border-bottom:none}
 .laptop-placeholder img{max-width:80%}
 }
 @media only screen and (max-width : 991px) {
 nav{border-bottom:0}
 nav ul{display:none;height:auto}
 .pullcontainer{width:100%;text-align:right;padding:18px 40px 0 0}
-.pullcontainer a#pull{display:inline;width:100%;color:#242a2c}
+.pullcontainer a#pull{display:inline;width:100%;color: #860808;}
+
+a#pull:hover{
+color: #680000;
 }
-
-
-
+}
 
 /*
     Note: It is best to use a less version of this file ( see http://css2less.cc
