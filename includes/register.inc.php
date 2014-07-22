@@ -1,9 +1,9 @@
 <?php
 include_once 'db_connect.php';
 include_once 'psl-config.php';
- 
+
 $error_msg = "";
- 
+$ShopName="Epic Game Play Trade";
 if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     // Sanitize and validate the data passed in
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -13,7 +13,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         // Not a valid email
         $error_msg .= '<p class="error">The email address you entered is not valid</p>';
     }
- 
+	$uid='';
     $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
     if (strlen($password) != 128) {
         // The hashed pwd should be 128 characters long.
@@ -39,7 +39,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
             // A user with this email address already exists
             $error_msg .= '<p class="error">A user with this email address already exists.</p>';
         }
-                $stmt->close();
+		$stmt->close();
     } else {
         $error_msg .= '<p class="error">Database error Line 39</p>';
                 $stmt->close();
@@ -53,16 +53,16 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $stmt->store_result();
- 
-                if ($stmt->num_rows == 1) {
-                        // A user with this username already exists
-                        $error_msg .= '<p class="error">A user with this username already exists</p>';
-                }
-					$stmt->close();
-        } else {
-                $error_msg .= '<p class="error">Database error line 55</p>';
-                $stmt->close();
-        }
+		
+		if ($stmt->num_rows == 1) {
+				// A user with this username already exists
+				$error_msg .= '<p class="error">A user with this username already exists</p>';
+		}
+		$stmt->close();
+	} else {
+			$error_msg .= '<p class="error">Database error line 55</p>';
+			$stmt->close();
+	}
  
     // TODO: 
     // We'll also have to account for the situation where the user doesn't have
@@ -73,18 +73,53 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         // Create a random salt
         //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
         $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
- 
-        // Create salted password 
+		
         $password = hash('sha512', $password . $random_salt);
- 
+ 			
         // Insert the new user into the database 
         if ($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
             $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
             // Execute the prepared query.
-            if (! $insert_stmt->execute()) {
-                header('Location: ../error.php?err=Registration failure: INSERT');
-            }
+            $insert_stmt->execute(); 
         }
-        header('Location: ./register_success.php');
+		
+		$prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
+		$stmt = $mysqli->prepare($prep_stmt);
+	 
+		if ($stmt) {
+			$ip_address="0.0.0.0";
+			//Create uid for ipaddress
+			$uid = md5(uniqid(rand(), true));
+			$allowed=0;
+			$stmt->bind_param('s', $email);
+			$stmt->execute();
+			$stmt->store_result();
+			$stmt->bind_result($id);
+			$stmt->fetch();
+			$content="Hi ".$username.",\r\n
+			Thank you for registering an ".$ShopName." Account!\r\n
+			Please click the following link to activate your Account.\r\n
+			http://76.253.56.108/confirm.php?email=".$email."&key=".$uid."\r\n
+			The above link is only valid for 72 hours.\r\n
+			If you have received this email in error, please disregard it. No further emails will be sent.\r\n
+			Sincerely,\r\n
+			".$ShopName." Staff";
+			
+			if ($insert_stmt = $mysqli->prepare("INSERT INTO `allowed_ip_adresses` (`id`, `ip_address`, `allowed`, `uid`) VALUES (?,?,?,?)")) {
+				$insert_stmt->bind_param('isis',$id, $ip_address, $allowed, $uid);
+				// Execute the prepared query.
+				if ($insert_stmt->execute()) {
+					mail($email,'Register '.$ShopName.' Account',$content,'from: 4tutoralcom@gmail.com');
+				} else {
+				
+				}
+			}
+			
+			$stmt->close();
+		} else {
+			$error_msg .= '<p class="error">Database error Line 97</p>';
+			$stmt->close();
+		}
+        //header('Location: ./register_success.php');
     }
 }

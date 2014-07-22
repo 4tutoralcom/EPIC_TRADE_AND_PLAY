@@ -2,7 +2,6 @@ temppass="";
 
 $("#submit").click( function() {
 	temppass="";
-	
 	$( "#password" ).prev().css( "background-color", "" );
 	$( "#userid" ).prev().css( "background-color", "" );
 	$("#errmsg").empty();
@@ -22,19 +21,15 @@ $("#submit").click( function() {
 			$("#errmsg").html(info);
 		}
 	});
-	
 	$("#login").submit( function() {
 		return false;	
 	});
-	
-	$("#userid").on("focus",function(){
-		$( "#userid" ).prev().css( "background-color", "" );
-    })
-	$("#password").on("focus",function(){
-		$( "#password" ).prev().css( "background-color", "" );
+	$("#userid, #password").on("focus",function(){
+		$( "#"+this.id).prev().css( "background-color", "" );
     })
 });
 function formhash(form, password) {
+
     // Create a new element input, this will be our hashed password field. 
     var p = document.createElement("input");
  

@@ -6,51 +6,62 @@
 							<ul id="myTab" class="nav nav-tabs">
 								<li class="active"><a  href="#signin" data-toggle="tab">Sign In</a></li>
 								<li class=""><a  href="#signup" data-toggle="tab">Register</a></li>
-								<li class=""><a  href="#why" data-toggle="tab">Why?</a></li>
 							</ul>
 						</div>
 						<div class="modal-body">
-							<div id="myTabContent" class="tab-content">
-								<div class="tab-pane fade in" id="why">
-									<p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+							<div id="myTabContent" class="tab-content">						
+								<div class="tab-pane fade in" id="forgot">
+									<div class="row">
+										<div class="col-xs-12 col-sm-6">
+											<p>
+												<button data-target="#signin" data-toggle="tab" type="button" class="btn btn-default" "tabindex="7">Back</button>
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade in" id="terms">
+									<h2>Terms and Conditions</h2>
 									<p>
-									<br> Please contact <a mailto:href="JoeSixPack@Sixpacksrus.com">JoeSixPack@Sixpacksrus.com</a> for any other inquiries.</p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dolor enim, tempus sed sapien a, feugiat tempor tortor. Proin dapibus ut sem quis rhoncus. Donec dapibus sagittis dictum. Fusce dictum viverra justo. Nullam ornare varius erat a ullamcorper. Fusce ornare diam volutpat mi fermentum, nec venenatis libero faucibus. Nullam blandit sapien at congue fringilla. Phasellus id porta lacus, ut vestibulum felis. Vivamus cursus lorem vel ultrices lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam convallis placerat purus, vitae rutrum nisi eleifend in. Nullam tempus metus tempus augue bibendum varius. Morbi posuere eget lorem in sagittis. Duis tempus lacinia libero nec eleifend.
+									</p>
+									<p>
+										<a class="btn btn-default" href="">Printed Version</a>
+										<button data-target="#signup" data-toggle="tab" type="button" class="btn btn-default" "tabindex="7">Back</button>
+									</p>
 								</div>
 								<div class="tab-pane fade active in" id="signin">
 									<fieldset>
-									<br>
-									 <div class="omb_login">
-										<div class="row omb_socialButtons">
-											<div class="col-xs-4 col-sm-4">
-												<a href="#" class="btn btn-lg btn-block omb_btn-facebook">
-													<i class="fa fa-facebook visible-xs"></i>
-													<span class="hidden-xs">Facebook</span>
-												</a>
+										<br>
+										 <div class="omb_login">
+											<div class="row omb_socialButtons">
+												<div class="col-xs-4 col-sm-4">
+													<a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+														<i class="fa fa-facebook visible-xs"></i>
+														<span class="hidden-xs">Facebook</span>
+													</a>
+												</div>
+												<div class="col-xs-4 col-sm-4">
+													<a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+														<i class="fa fa-twitter visible-xs"></i>
+														<span class="hidden-xs">Twitter</span>
+													</a>
+												</div>	
+												<div class="col-xs-4 col-sm-4">
+													<a href="#" class="btn btn-lg btn-block omb_btn-google">
+														<i class="fa fa-google-plus visible-xs"></i>
+														<span class="hidden-xs">Google+</span>
+													</a>
+												</div>	
 											</div>
-											<div class="col-xs-4 col-sm-4">
-												<a href="#" class="btn btn-lg btn-block omb_btn-twitter">
-													<i class="fa fa-twitter visible-xs"></i>
-													<span class="hidden-xs">Twitter</span>
-												</a>
-											</div>	
-											<div class="col-xs-4 col-sm-4">
-												<a href="#" class="btn btn-lg btn-block omb_btn-google">
-													<i class="fa fa-google-plus visible-xs"></i>
-													<span class="hidden-xs">Google+</span>
-												</a>
-											</div>	
-										</div>
-
-										<div class="row omb_loginOr">
-											<div class="col-xs-12">
-												<hr>
-												<span>or</span>
+											<div class="row omb_loginOr">
+												<div class="col-xs-12">
+													<hr>
+													<span>or</span>
+												</div>
 											</div>
-										</div>
-										<div id="errmsg"><br></div>
-										<div class="row">
-											<div class="col-xs-12">	
-												<form id="login" class="omb_loginForm" action="includes/process_login.php" autocomplete="off" method="POST">
+											<div id="errmsg"><br></div>
+											<form id="login" class="omb_loginForm" action="includes/process_login.php" autocomplete="off" method="POST">
+												<div class="col-xs-12">
 													<div class="form-group bs-float-label">
 														<label for="userid" class="float-label">Username or Email</label>
 														<div class="input-group">
@@ -66,25 +77,99 @@
 														</div>
 													</div>
 													<button  id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-												</form>
+												</div>
+											</form>
+											<div class="row">
+												<div class="col-xs-12 col-sm-6">
+													<p>
+														<span class="button-checkbox">
+															<button type="button" class="btn" data-color="info" tabindex="7">Remember Me</button>
+															<input type="checkbox" class="hidden" value="1">
+														</span>
+													</p>
+												</div>
+												<div class="col-xs-12 col-sm-6">
+													<p class="omb_forgotPwd">
+														<button data-target="#forgot" data-toggle="tab" type="button" class="btn btn-default" "tabindex="7">Forgot Password</button>
+													</p>
+												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-xs-12 col-md-6">
-												<label class="checkbox">
-													<input type="checkbox" value="remember-me">Remember Me
-												</label>
-											</div>
-											<div class="col-xs-12 col-md-6">
-												<p class="omb_forgotPwd">
-													<a href="#">Forgot password?</a>
-												</p>
-											</div>
-										</div>
-									</div>
 									</fieldset>
 								</div>
-								<div class="tab-pane fade" id="signup">
+								<div class="tab-pane fade in" id="signup">
+									<fieldset>
+									<form id="register" class="omb_loginForm" action="includes/register.php" autocomplete="off" method="POST">
+										<div class="row">
+											<div class="col-xs-12 col-sm-6 col-md-6">
+												<div class="form-group bs-float-label">
+													<label for="first_name" class="float-label">First Name</label>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+														<input type="text" class="form-control float-input" name="first_name" id="first_name" placeholder="First Name">
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-6 col-md-6">
+												<div class="form-group bs-float-label">
+													<label for="last_name" class="float-label">Last Name</label>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+														<input type="text" class="form-control float-input" name="last_name" id="last_name" placeholder="Last Name">
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12">
+												<div class="form-group bs-float-label">
+													<label for="username" class="float-label">Username</label>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+														<input type="text" class="form-control float-input" name="username" id="username" placeholder="Username">
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12">
+												<div class="form-group bs-float-label">
+													<label for="email" class="float-label">Email Address</label>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+														<input type="text" class="form-control float-input" name="email" id="email" placeholder="Email Address">
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12">
+												<div class="form-group bs-float-label">
+													<label for="password_r" class="float-label">Password</label>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+														<input type="password" class="form-control float-input" name="password_r" id="password_r" placeholder="Password">
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12">
+												<div class="form-group bs-float-label">
+													<label for="password_confirmation" class="float-label">Confirm Password</label>
+													<div class="input-group">
+														<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+														<input type="password" class="form-control float-input" name="password_confirmation" id="password_confirmation"  placeholder="Confirm Password">
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-3 col-sm-2 col-md-2">
+												<span class="button-checkbox">
+													<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+													<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+												</span>
+											</div>
+											<div class="col-xs-9 col-sm-10 col-md-10">
+													 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-target="#terms" data-toggle="tab">Terms and Conditions</a> set out by this site, including our Cookie Use.<br/><br/>
+												</div>
+											<div class="col-xs-12">
+												<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>	
+											</div>
+										</div>
+									</form>
+									</fieldset>
 								</div>
 							</div>
 						</div>

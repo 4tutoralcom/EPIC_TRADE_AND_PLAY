@@ -1,7 +1,6 @@
 .bs-float-label {
     position:relative;
-    /* border:1px solid #ddd; */
-    margin:10px;
+    /* margin:10px; */
     padding:10px;
 }
 .bs-float-label > .float-input {margin-top:10px;}
