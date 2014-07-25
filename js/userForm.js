@@ -6,9 +6,9 @@ $("#submit").click( function() {
 	$( "#userid" ).prev().css( "background-color", "" );
 	$("#errmsg").empty();
 	$("#errmsg").html("<br>");
-	formhash($("#login"),password);
-	$.post( $("#login").attr("action"),
-	$("#login :input").serializeArray(),
+	formhash($("#signinForm"),password);
+	$.post( $("#signinForm").attr("action"),
+	$("#signinForm :input").serializeArray(),
 	function(info) {
 		if(info=="Success")
 			location.reload();
@@ -21,7 +21,7 @@ $("#submit").click( function() {
 			$("#errmsg").html(info);
 		}
 	});
-	$("#login").submit( function() {
+	$("#signinForm").submit( function() {
 		return false;	
 	});
 	$("#userid, #password").on("focus",function(){

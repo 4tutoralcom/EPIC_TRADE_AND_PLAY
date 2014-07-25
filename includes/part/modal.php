@@ -5,19 +5,34 @@
 						<div class="bs-example bs-example-tabs">
 							<ul id="myTab" class="nav nav-tabs">
 								<li class="active"><a  href="#signin" data-toggle="tab">Sign In</a></li>
-								<li class=""><a  href="#signup" data-toggle="tab">Register</a></li>
+								<li class=""><a  href="#register" data-toggle="tab">Register</a></li>
 							</ul>
 						</div>
 						<div class="modal-body">
 							<div id="myTabContent" class="tab-content">						
 								<div class="tab-pane fade in" id="forgot">
-									<div class="row">
-										<div class="col-xs-12 col-sm-6">
-											<p>
-												<button data-target="#signin" data-toggle="tab" type="button" class="btn btn-default" "tabindex="7">Back</button>
-											</p>
-										</div>
-									</div>
+									<fieldset>
+										<form id="FormForgot" class="omb_loginForm" action="includes/forgotPassword.php" autocomplete="off" method="POST">
+											<div class="row">
+												<div class="col-xs-12">
+													<div class="form-group bs-float-label">
+														<label for="userid_f" class="float-label">Username or Email</label>
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-user"></i></span>
+															<input type="text" class="form-control float-input" name="userid_f" id="userid_f" placeholder="Username or Email" autocomplete="off">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 col-sm-6">
+													<div class="padding-15">
+														<button data-target="#signin" data-toggle="tab" type="button" class="btn btn-default" "tabindex="7">Back</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</fieldset>
 								</div>
 								<div class="tab-pane fade in" id="terms">
 									<h2>Terms and Conditions</h2>
@@ -31,7 +46,6 @@
 								</div>
 								<div class="tab-pane fade active in" id="signin">
 									<fieldset>
-										<br>
 										 <div class="omb_login">
 											<div class="row omb_socialButtons">
 												<div class="col-xs-4 col-sm-4">
@@ -60,7 +74,7 @@
 												</div>
 											</div>
 											<div id="errmsg"><br></div>
-											<form id="login" class="omb_loginForm" action="includes/process_login.php" autocomplete="off" method="POST">
+											<form id="signinForm" class="omb_loginForm" action="includes/process_login.php" autocomplete="off" method="POST">
 												<div class="col-xs-12">
 													<div class="form-group bs-float-label">
 														<label for="userid" class="float-label">Username or Email</label>
@@ -97,9 +111,9 @@
 										</div>
 									</fieldset>
 								</div>
-								<div class="tab-pane fade in" id="signup">
+								<div class="tab-pane fade in" id="register">
 									<fieldset>
-									<form id="register" class="omb_loginForm" action="includes/register.php" autocomplete="off" method="POST">
+									<form id="registerForm" class="omb_loginForm" action="register.php" autocomplete="off" method="POST">
 										<div class="row">
 											<div class="col-xs-12 col-sm-6 col-md-6">
 												<div class="form-group bs-float-label">
@@ -155,15 +169,17 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-xs-3 col-sm-2 col-md-2">
-												<span class="button-checkbox">
-													<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-													<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-												</span>
-											</div>
-											<div class="col-xs-9 col-sm-10 col-md-10">
-													 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-target="#terms" data-toggle="tab">Terms and Conditions</a> set out by this site, including our Cookie Use.<br/><br/>
+											<div class="padding-15">
+												<div class="col-xs-3 col-sm-2 col-md-2">
+													<span class="button-checkbox">
+														<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+														<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+													</span>
 												</div>
+												<div class="col-xs-9 col-sm-10 col-md-10">
+													By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-target="#terms" data-toggle="tab">Terms and Conditions</a> set out by this site, 	including our Cookie Use.<br/><br/>
+												</div>
+											</div>
 											<div class="col-xs-12">
 												<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>	
 											</div>

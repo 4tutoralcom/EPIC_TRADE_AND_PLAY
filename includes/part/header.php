@@ -40,7 +40,7 @@ $loggedOut = !login_check($mysqli);
 			</a>
 			<?php //If The user is logged in include modal.
 			if ($loggedOut)
-				require 'includes\part\modal.html';
+				require 'includes\part\modal.php';
 			?>
 
 			<nav class="clearfix">

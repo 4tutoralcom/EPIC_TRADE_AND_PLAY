@@ -9,7 +9,7 @@
 }
 .bs-float-label > .float-label {
     position:absolute; 
-    top: 6px; 
+    top: 10px; 
     left: 10px; 
     background:rgba(255, 255, 255, .32); 
     -webkit-transition: top .5s ease-in-out, opacity .5s ease-in-out; /* For Safari 3.1 to 6.0 */
