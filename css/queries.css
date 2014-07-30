@@ -23,9 +23,7 @@ color: #680000;
     For the media queries use @screen-sm-min instead of 768px.
     For .omb_spanOr use @body-bg instead of white.
 */
-.omb_login .row{
-	margin: auto;
-}
+
 	
 .omb_login .omb_socialButtons a {
 	color: white; // In yourUse @body-bg 

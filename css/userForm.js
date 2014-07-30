@@ -73,14 +73,23 @@ $( document ).ready( function(){
 					registerForm.t_and_c
 					);
 		$("#registerForm #errmsg").html((regHash.error) ?   regHash.error:"<br>");
-		$.post( $("#registerForm").attr("action"),
-		$("#registerForm :input").serializeArray(),
-		function(info) {
-		if(info=="Success")
-			$("#signinForm #errmsg").html("An Confirmation Email has been sent to "+registerForm.email.value+ "Click on the link in the email to confirm your account. it will be invalid in 72 hours.");
-		else
-			$("#signinForm #errmsg").html(info);
-		});
+		if(!regHash.error){
+			$.post( $("#registerForm").attr("action"),
+			$("#registerForm :input").serializeArray(),
+			function(info) {
+				if(info=="Success")
+					location.reload();
+				else if(userid.value=="")
+					$( "#signinForm #userid" ).prev().css( "background-color", "#d9534f" );
+				else if(temppass=="")
+					$( "#signinForm #password" ).prev().css( "background-color", "#d9534f" );
+				else{
+
+					$("#signinForm #errmsg").html(info);
+				}
+			});
+		}
+
 	});
 
 	$("#signinForm #submit").click( function() {
@@ -90,39 +99,14 @@ $( document ).ready( function(){
 		$("#signinForm #errmsg").empty();
 		$("#signinForm #errmsg").html("<br>");
 		formhash($("#signinForm"),signinForm.password);
-		data=$("#signinForm :input").serializeArray();
 		$.post( $("#signinForm").attr("action"),
-		data,
+		$("#signinForm :input").serializeArray(),
 		function(info) {
 			if(info=="Success")
-				location.reload();
-			else if(info=="IP Address Error!"){
-				data[3]={name:"add",value:"true"}
-				$.post($("#signinForm").attr("action"),data,
-				function(info){
-					$("#ModalSignIn .active").removeClass("active");
-					$("#ModalSignIn #myTabContent").append(info);
-					reFloatLabel();
-					$("#addForm").submit(function() {
-					data=$("#addForm").serializeArray();
-					data[data.length]=$("#signinForm :input").serializeArray()[0];
-					
-					$.post( $("#addForm").attr("action"),
-					data,
-					function(info) {
-					
-					});
-					
-					return false;
-					});
-				});
-			}
-			else if(userid.value=="")
-				$( "#signinForm #userid" ).prev().css( "background-color", "#d9534f" );
-			else if(temppass=="")
-				$( "#signinForm #password" ).prev().css( "background-color", "#d9534f" );
-			else
+				$("#signinForm #errmsg").html("An Confirmation Email has been sent to "+registerForm.email+ "Click on the link in the email to confirm your account. it will be invalid in 72 hours.");
+			else{
 				$("#signinForm #errmsg").html(info);
+			}
 		});
 	});
 
@@ -133,7 +117,6 @@ $( document ).ready( function(){
 	$("form").submit( function() {
 		return false;	
 	});
-	
 
 	$('#registerForm #username').on('input',function(e){
 		if( this.value.length>6 ) {
@@ -178,7 +161,7 @@ function formhash(form, password) {
 	p.value = hex_sha512(password.value);
 	temppass=password.value;
 	// Make sure the plaintext password doesn't get sent. 
-	//password.value = "";
+	password.value = "";
 	
 }
  

@@ -3,5 +3,7 @@
 [Tt]humbs.db
 *.DS_Store
 
+*.ini
+
 #downloads woops 
 *.exe

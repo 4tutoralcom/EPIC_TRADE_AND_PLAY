@@ -1,5 +1,7 @@
 $(document).ready(function(e){
-
+reFloatLabel();
+});
+function reFloatLabel(){
 if($('.bs-float-label input').length){
     var bs_float_on_class = "on";
     var bs_float_show_class = "show";
@@ -26,4 +28,4 @@ if($('.bs-float-label input').length){
     }).trigger("bs-check-value");
     ;
 }
-});
+}

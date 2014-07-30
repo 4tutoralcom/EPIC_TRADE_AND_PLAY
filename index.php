@@ -220,4 +220,17 @@
 		<div class="container shadow"></div>
 		<?php
 		require 'includes\part\footer.php';
-		?>	
+		?>
+		
+		<?php if($RequestType=="c" || $RequestType=="a") : ?>
+		<?php if($RegistrationSuccessful): ?>
+		<meta http-equiv="refresh" content="5;url=/" />
+		<?php endif;?>
+		<script type="text/javascript">//<![CDATA[ 
+		$(window).load(function(){
+		$(document).ready(function(){
+		  $('#ModalSignIn').modal('show')
+		});
+		});//]]>
+		</script>
+		<?php endif;?>

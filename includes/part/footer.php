@@ -3,7 +3,7 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-3">
 						<a href="/">
-							<div class="logo">
+							<div class="logo no-border">
 								<h2 class="logo-text">EPIC</h2>
 								<div class="logo-dec">Game &#8901; Trade &#8901; Repair</div>
 							</div>
@@ -27,14 +27,11 @@
 				</div>
 			</div>
 		</footer>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<!--
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		-->
-		<script src="js/bootstrap.min.js"></script>
+				<script type="text/javascript" src="http://code.jquery.com/jquery-git2.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+
 		<script src="js/scripts.js"></script>
 		<!-- Flexslider JS --> 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="js/jquery.flexslider.js"></script>
 		<!-- Load the flexslider -->
 		<script type="text/javascript">
@@ -51,6 +48,5 @@
 		<script type="text/JavaScript" src="js/labelFloat.js"></script>
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
 		<script type="text/JavaScript" src="js/userForm.js"></script>
-		<script type="text/JavaScript" src="js/signinMenu.js"></script>
 	</body>
 </html>

@@ -1029,7 +1029,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
-    if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    //if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+	if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad)
   }
 
   Modal.prototype.resetScrollbar = function () {

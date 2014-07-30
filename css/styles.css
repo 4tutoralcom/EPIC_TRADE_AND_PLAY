@@ -123,12 +123,11 @@ a:hover {outline: 0;}
  */
 h1 {
 	font-size: 2em;
-	margin: 0.67em 0;
+	margin: 0.67em 0px;
  }
 
 h2 {
 	font-size: 1.5em;
-	margin: 0.83em 0;
 	font-weight: 800;
  }
 
@@ -742,18 +741,18 @@ nav {
 
 	@media (min-width: 768px) {
 		.text-inter {
-			padding: 20px 0 80px;
+			padding: 20px 0 20px;
 		}
 	}
 
 	.bg-white {
 		background-color: #f8f9f9;
-		padding-top: 20px;
-		padding-bottom: 20px;
 	 }
-
-		.bg-white:not('container-articles') {margin-top: 37px!important;}
-
+	.bg-white:not(.no-padding-top) {padding-top: 20px;}
+	.bg-white:not(.no-padding-bottom) {padding-bottom: 20px;}
+	
+	.bg-white:not('container-articles') {margin-top: 37px!important;}
+	
 	.button.solid-color {
 		background-color: #860808;
 		padding: 15px 40px;
@@ -1063,5 +1062,11 @@ footer {
 }
 
 .padding-15 {
-    padding: 0px 10px;
+    padding: 0px 20px;
+}
+.row.top-padding {
+    margin-top: 0.75em;
+}
+h2.floatup {
+    margin: -.75em 1em -0.35em;
 }

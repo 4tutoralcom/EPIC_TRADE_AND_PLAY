@@ -1,6 +1,6 @@
 <?php
 include_once 'psl-config.php';
- 
+
 function sec_session_start() {
     $session_name = 'sec_session_id';   // Set a custom session name
     $secure = SECURE;
@@ -24,6 +24,8 @@ function sec_session_start() {
     session_regenerate_id();    // regenerated the session, delete the old one. 
 }
 function login($email, $password, $mysqli,$ip_address) {
+	$ShopName="Epic Game Play Trade";
+	$error_msg = "";
 	$stmt = $mysqli->prepare("SELECT id, username, password, salt 
         FROM members
 		WHERE email = ?
@@ -47,47 +49,47 @@ function login($email, $password, $mysqli,$ip_address) {
             if (checkbrute($user_id, $mysqli) == true) {
                 // Account is locked 
                 // Send an email to user saying their account is locked
-                return false;
+                $error_msg="The Account is Locked For to many failed attempts! Check your email and try again.";
             } else {
                 // Check if the password in the database matches
                 // the password the user submitted.
                 if ($db_password == $password) {
-                    // Password is correct!
-                    // Get the user-agent string of the user.
-                    $user_browser = $_SERVER['HTTP_USER_AGENT'];
-                    // XSS protection as we might print this value
-                    $user_id = preg_replace("/[^0-9]+/", "", $user_id);
-                    $_SESSION['user_id'] = $user_id;
-                    // XSS protection as we might print this value
-                    $username = preg_replace("/[^a-zA-Z0-9_\-]+/", 
-                                                                "", 
-                                                                $username);
-                    $_SESSION['username'] = $username;
-                    $_SESSION['login_string'] = hash('sha512', 
-                              $password . $user_browser);
                     // Login successful.
 					// Check if the user has allowed the ip address 
 					// to access there account.
-					$stmt = $mysqli->prepare("SELECT `ip_adresses`, `allowed` FROM `allowed_ip_adresses` WHERE id=?");
-					
+					$stmt = $mysqli->prepare("SELECT `ip_address`, `allowed` FROM `allowed_ip_adresses` WHERE id=?");
 					if($stmt){
 						$stmt->bind_param('i', $user_id);  // Bind "$user_id" to parameter.
 						$stmt->execute();    // Execute the prepared query.
 						$stmt->store_result();
 						// get variables from result.
 						$stmt->bind_result($db_ip, $allowed);
-						
+						$Check=true;
 						    while ($stmt->fetch()) {
 								if($allowed==1 &&  $db_ip==$ip_address ){
-									return true;
+									// Password is correct and IP Address is allowed!
+									// Get the user-agent string of the user.
+									$user_browser = $_SERVER['HTTP_USER_AGENT'];
+									// XSS protection as we might print this value
+									$user_id = preg_replace("/[^0-9]+/", "", $user_id);
+									$_SESSION['user_id'] = $user_id;
+									// XSS protection as we might print this value
+									$username = preg_replace("/[^a-zA-Z0-9_\-]+/", 
+																				"", 
+																				$username);
+									$_SESSION['username'] = $username;
+									$_SESSION['login_string'] = hash('sha512', 
+									$password . $user_browser);
+									$Check=false;
+									break;
 								}
+								
 							}
-							$error="You need to allow this ip";
-							return false;
-							
+							if($Check)
+								include_once '\checkNewComputer.php';
 					}else{
 						//unknown error
-						return false;
+						$error_msg="FATAIL ERROR! #000";
 					}
                 } else {
                     // Password is not correct
@@ -95,14 +97,183 @@ function login($email, $password, $mysqli,$ip_address) {
                     $now = time();
                     $mysqli->query("INSERT INTO login_attempts(user_id, time)
                                     VALUES ('$user_id', '$now')");
-                    return false;
+                    $error_msg="Username and/or Password Not Found2";
                 }
             }
         } else {
             // No user exists.
-            return false;
+            $error_msg="Username and/or Password Not Found1";
         }
+    }else{
+		$error_msg="FATAIL ERROR! #001";
+	}
+	return (!$error_msg=="")?$error_msg:false;
+}
+function register($first_name, $last_name, $username,$email,$password,$mysqli){
+	$ShopName="Epic Game Play Trade";
+	$error_msg = "";
+	
+	$email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Not a valid email
+        $error_msg .= '<p class="error">The email address you entered is not valid</p>';
     }
+		$uid='';
+    $password = filter_input(INPUT_POST, 'p', FILTER_SANITIZE_STRING);
+    if (strlen($password) != 128) {
+        // The hashed pwd should be 128 characters long.
+        // If it's not, something really odd has happened
+        $error_msg .= '<p class="error">Invalid password configuration.</p>';
+    }
+	$prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
+    $stmt = $mysqli->prepare($prep_stmt);
+ 
+   // check existing email  
+    if ($stmt) {
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->store_result();
+ 
+        if ($stmt->num_rows == 1) {
+            // A user with this email address already exists
+            $error_msg .= '<p class="error">A user with this email address already exists.</p>';
+        }
+		$stmt->close();
+    } else {
+        $error_msg .= '<p class="error">Database error Line 39</p>';
+                $stmt->close();
+    }
+ 
+    // check existing username
+    $prep_stmt = "SELECT id FROM members WHERE username = ? LIMIT 1";
+    $stmt = $mysqli->prepare($prep_stmt);
+ 
+    if ($stmt) {
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $stmt->store_result();
+		
+		if ($stmt->num_rows == 1) {
+				// A user with this username already exists
+				$error_msg .= '<p class="error">A user with this username already exists</p>';
+		}
+		$stmt->close();
+	} else {
+			$error_msg .= '<p class="error">Database error line 55</p>';
+			$stmt->close();
+	}
+	 if (empty($error_msg)) {
+        // Create a random salt
+        //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
+        $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+		
+        $password = hash('sha512', $password . $random_salt);
+ 			
+        // Insert the new user into the database 
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO members (first_name, last_name, username, email, password, salt) VALUES (?, ?, ?, ?, ?, ?)")) {
+            $insert_stmt->bind_param('ssssss',$first_name, $last_name, $username, $email, $password, $random_salt);
+            // Execute the prepared query.
+            $insert_stmt->execute(); 
+        }
+		
+		$prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
+		$stmt = $mysqli->prepare($prep_stmt);
+	 
+		if ($stmt) {
+			$ip_address="0.0.0.0";
+			//Create uid for ipaddress
+			$uid = md5(uniqid(mt_rand(1, mt_getrandmax()), true));
+			$allowed=0;
+			$stmt->bind_param('s', $email);
+			$stmt->execute();
+			$stmt->store_result();
+			$stmt->bind_result($id);
+			$stmt->fetch();
+			$content="Hi ".$username.",\r\n
+			Thank you for registering an ".$ShopName." Account!\r\n
+			Please click the following link to activate your Account.\r\n
+			http://76.253.56.108/index.php?t=c&email=".$email."&key=".$uid."\r\n
+			The above link is only valid for 72 hours.\r\n
+			If you have received this email in error, please disregard it. No further emails will be sent.\r\n
+			Sincerely,\r\n
+			".$ShopName." Staff";
+			
+			if ($insert_stmt = $mysqli->prepare("INSERT INTO `allowed_ip_adresses` (`id`, `ip_address`, `allowed`, `uid`) VALUES (?,?,?,?)")) {
+				$insert_stmt->bind_param('isis',$id, $ip_address, $allowed, $uid);
+				// Execute the prepared query.
+				if ($insert_stmt->execute()) {
+					mail($email,'Register '.$ShopName.' Account',$content,'from: 4tutoralcom@gmail.com');
+				} else {
+				
+				}
+			}
+			
+			$stmt->close();
+		} else {
+			$error_msg .= '<p class="error">Database error Line 97</p>';
+			$stmt->close();
+		}
+	}else{
+		return $error_msg;
+	}
+	
+	return false;
+}
+function forgot($userid,$mysqli){
+	$ShopName="Epic Game Play Trade";
+	$prep_stmt = "SELECT id,email,username FROM members WHERE email = ? LIMIT 1";
+	$stmt = $mysqli->prepare($prep_stmt);
+	$found=false;
+	if ($stmt) {
+		$stmt->bind_param('s', $userid);
+		if($stmt->execute()){
+			$stmt->store_result();
+			if($stmt->num_rows==1){
+				$found=true;
+				$stmt->bind_result($id,$email);
+				$stmt->fetch();
+			}
+		}
+	}else{
+		//die("Fatal Server Error!");
+	}
+	if($found==false){
+		$prep_stmt = "SELECT id,email,username FROM members WHERE username = ? LIMIT 1";
+		$stmt = $mysqli->prepare($prep_stmt);
+		if ($stmt) {
+			$stmt->bind_param('s', $userid);
+			if($stmt->execute()){
+				$stmt->store_result();
+				if($stmt->num_rows==1){
+					$found=true;
+					$stmt->bind_result($id,$email,$username);
+					$stmt->fetch();
+				}
+			}
+		}else{
+			die("Server Error!");
+		}	
+	}
+	if($found==true){
+		$uid = md5(uniqid(rand(), true));
+		
+		$prep_stmt = "INSERT INTO `password_recovery`(`id`, `uid`) VALUES (?,?)";
+		$stmt = $mysqli->prepare($prep_stmt);
+		$stmt->bind_param('ss', $id,$uid);
+		if($stmt->execute()){
+			$content="Hi ".$username.",\r\n
+			You recently requested a new password for your ".$ShopName." Account!\r\n
+			Please click the following link to reset the password on your Account.\r\n
+			http://76.253.56.108/index.php?t=p&email=".$email."&key=".$uid."\r\n
+			If you have received this email in error, please disregard it. and delete this email.\r\n
+			Sincerely,\r\n
+			".$ShopName." Staff";
+			mail($email,'Password Reset:'.$ShopName.' Account',$content,'from: 4tutoralcom@gmail.com');
+		}else{
+			die("User Already Reseting Passowrd!");
+		}
+	}
+	return $found;
 }
 function checkbrute($user_id, $mysqli) {
     // Get timestamp of current time 

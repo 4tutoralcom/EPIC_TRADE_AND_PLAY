@@ -11,11 +11,10 @@ $loggedOut = !login_check($mysqli);
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Infusion WP Theme</title>
 		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/queries.css">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">		
 		<!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -30,7 +29,7 @@ $loggedOut = !login_check($mysqli);
 		<link rel="stylesheet" href="css/labelFloat.css" type="text/css">
 		<link href="css/userDropDownMenu.css" rel="stylesheet">
 	</head>
-	<body>
+	<body class="modal-open" style="padding-right: 0px;">
 		<header class="clearfix">
 			<a href="/">
 			<div class="logo col-sm-3">
