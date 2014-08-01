@@ -446,9 +446,9 @@ table {
 header {background-color: #EEE; border-bottom: solid 1px #A8AEB1;}
 
 div.logo-dec {
-	font-size: 0.85em;
-	margin: -9px -4px;
-	width: 101%;
+	font-size: 0.75em;
+	margin: -10px;
+	width: 100%;
  
 	font-weight: 800;
 }
@@ -506,8 +506,8 @@ nav {
 				padding: 25px 43px 23px 5px;
 				text-transform: uppercase;
 				font-size: 14px;
-				font-weight: 600;
-				letter-spacing: -0.02em;
+				font-weight: 800;
+				letter-spacing: 0.3em;
 				transition: 0.5s ease;
 				-moz-transition: 0.5s ease;
 				-webkit-transition: 0.5s ease;
@@ -742,7 +742,8 @@ nav {
 	@media (min-width: 768px) {
 		.text-inter {
 			padding: 20px 0 20px;
-		}
+		
+}
 	}
 
 	.bg-white {
@@ -884,7 +885,9 @@ figcaption {
 .quote-container {
 	background-color: #860808;
 	padding: 10px 0px;
- }
+ 
+	margin-top: 1em;
+}
 
 .quote-slideshow {height: auto;}
 
@@ -1069,4 +1072,10 @@ footer {
 }
 h2.floatup {
     margin: -.75em 1em -0.35em;
+}
+.frame {
+	min-height: 44px;
+}
+.frame .group:not(.current) {
+	display: none;
 }

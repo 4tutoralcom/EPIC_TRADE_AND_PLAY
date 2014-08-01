@@ -1,4 +1,8 @@
+
 $(function() {
+	$('.selectpicker').selectpicker({
+		'selectedText': 'cat'
+	});
   var pull = $('#pull');
   var menu = $('nav ul');
         
@@ -61,4 +65,23 @@ counter--;
 showCurrent();
 });
  
+});
+
+$(window).load(function() {
+	$( "select.selectpicker" )
+	.change(function () {
+		if(this.used ) {
+			var toggle = $(this).find("option:selected").attr("data-toggle");
+			var frame = $(this).find("option:selected").attr("frame-target");
+			var group = $(this).find("option:selected").attr("group-target");
+			if(toggle=="fade"){
+				$(".frame"+frame+" "+".current").removeClass("current")
+				if(group != "")
+					$(".frame"+frame+" "+".group"+group).addClass("current")
+			}
+		}
+	this.used=true;
+	})
+	.change();
+	
 });

@@ -3,6 +3,7 @@ include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
 sec_session_start();
 $loggedOut = !login_check($mysqli);
+$RequestType="";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +11,21 @@ $loggedOut = !login_check($mysqli);
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Infusion WP Theme</title>
-		<!-- Bootstrap -->
+				<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/queries.css">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">		
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">	
+		
+		<!-- Flexslider CSS-->
+		<link rel="stylesheet" href="css/flexslider.css" type="text/css">
+		<link rel="stylesheet" href="css/labelFloat.css" type="text/css">
+		<link href="css/userDropDownMenu.css" rel="stylesheet">
+		<link href="css/shop.css" rel="stylesheet">
+		
+	
 		<!-- Fonts -->
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,10 +34,6 @@ $loggedOut = !login_check($mysqli);
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<!-- Flexslider CSS-->
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css">
-		<link rel="stylesheet" href="css/labelFloat.css" type="text/css">
-		<link href="css/userDropDownMenu.css" rel="stylesheet">
 	</head>
 	<body class="modal-open" style="padding-right: 0px;">
 		<header class="clearfix">
@@ -46,9 +52,9 @@ $loggedOut = !login_check($mysqli);
 				<ul>
 					<?php if($loggedOut) : ?><li><a data-toggle="modal" data-target="#ModalSignIn" class="inline hidden-lg hidden-md signin-button">Sign In</a></li><?php else:?><!--To Be Filled In--><?php endif;?>
 					<!--<li><a href="/" class="active">Home</a></li>-->
-					<li><a href="#">Sell Game</a></li>
-					<li><a href="#">Repairs</a></li>
-					<li><a href="#">Schedule</a></li>
+					<li><a href="#">Game</a></li>
+					<li><a href="#">Trade</a></li>
+					<li><a href="/repairs.php">Repair</a></li>
 					<li><a href="#" class="last">Contact Us</a></li>
 				</ul>
 			</nav>

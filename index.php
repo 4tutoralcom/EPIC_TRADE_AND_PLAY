@@ -191,33 +191,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="container quote-container">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="quote-slideshow">
-								<figure class="show">
-									<h2>Nam mi enim, auctor non ultricies a, fringilla eu risus. Praesent vitae lorem et elit tincidunt accumsan suscipit eu libero. </h2>
-									<figcaption>
-										Nam mi enim, auctor non ultricies.
-									</figcaption>
-								</figure>
-								<figure>
-									<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa.</h2>
-									<figcaption>
-										Nam mi enim, auctor.
-									</figcaption>
-								</figure>
-							</div>
-						</div>
-						<span class="quote-prev circle"><i class="fa fa-angle-left fa-2x"></i></span>
-						<span class="quote-next circle"><i class="fa fa-angle-right fa-2x"></i></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container shadow"></div>
 		<?php
 		require 'includes\part\footer.php';
 		?>
