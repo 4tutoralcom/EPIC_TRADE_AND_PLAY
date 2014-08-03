@@ -31,7 +31,6 @@
 				<optgroup label="Attributes" data-subtext="" data-icon="icon-ok">
 				<option data-toggle="fade" frame-target="#Second" group-target="#Name">Name</option>
 				<option data-toggle="fade" frame-target="#Second" group-target="#Date">Date</option>
-				<option data-toggle="fade" frame-target="#Second" group-target="#Generation">Generation</option>
 				</optgroup>
 			</select>
 		</div>
@@ -42,7 +41,7 @@
 				<option selected="selected" data-toggle="fade" frame-target="#Third" group-target="">All</option>
 				<optgroup label="Apple" data-subtext="" data-icon="icon-ok">
 					<option>All Apple iPhones</option>
-					<option>iPhone</option>
+					<option data-toggle="setSearch" data-value="iPhone">iPhone</option>
 					<option>iPhone 3G</option>
 					<option>iPhone 3GS</option>
 					<option>iPhone 4</option>
@@ -62,7 +61,7 @@
 					<option>iPad</option>
 					<option>iPad 2</option>
 					<option>iPad 3</option>
-					<option>iPhone 4</option>
+					<option>iPad 4</option>
 					<option>iPad mini</option>
 				</optgroup>
 			</select>
@@ -103,7 +102,7 @@
 		<div id="products" class="row list-group">
 			<div class="item col-xs-6 col-md-4 col-lg-3">
 				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
+					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Iphone" alt="">
 					<div class="caption">
 						<h4 class="group inner list-group-item-heading">
 							Product title</h4>
@@ -115,6 +114,7 @@
 								<p class="lead">
 									$21.00</p>
 							</div>
+							<tag id="">
 							<div class="col-xs-12 col-md-6">
 								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
 							</div>
@@ -124,7 +124,7 @@
 			</div>
 			<div class="item  col-xs-6 col-md-4 col-lg-3">
 				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
+					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Iphone 3g" alt="">
 					<div class="caption">
 						<h4 class="group inner list-group-item-heading">
 							Product title</h4>
