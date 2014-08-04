@@ -1,274 +1,131 @@
-<!--<html><head>
-                                <meta charset="utf-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1">
-                                <title>Snippet - Bootsnipp.com</title>
-                                <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-                                <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-                                <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-                                <script type="text/javascript">$(document).ready(function() {
-    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-});</script>
-                            </head>
-                            <body>-->
-									<?php
-		require 'includes\part\header.php';
-		?>
-		
+<?php
+require 'includes\part\header.php';
+require_once('includes/template.php');
+
+$file = file_get_contents('includes/temp/shopItem.json');
+$jsonIterator = new RecursiveIteratorIterator(
+	new RecursiveArrayIterator(json_decode($file, TRUE)),
+	RecursiveIteratorIterator::SELF_FIRST);
+$tempShop = new Template('includes/temp/shopItem.tpl');
+$typeTempplate='<option data-toggle="fade" frame-target="#Second" group-target="#[type]">[type]</option>';
+$tempType = new Template($typeTempplate);
+
+$groupTemplate='
+<div class="group" id="[Type]">
+	<select class="selectpicker">
+		<option selected="selected" data-toggle="setSearch" data-target="#products" data-value="[Type]">All</option>
+		[optionGroup]
+	</select>
+</div>';
+$optionGroupTempalte='<optgroup label="[companyName]" data-subtext="" data-icon="icon-ok">[items]</optgroup>';
+$optionTemplate='<option data-toggle="setSearch" data-target="#products" data-value="[name]">[name]</option>';
+
+
+
+?>		
 	<div class="container bg-white">
-	<div class="col-xs-12">
-		<label for="first_sortBY">Search By : </label>
-	</div>
-	<div class="col-md-3 col-xs-6 frame">
-		<div class="group current">
-			<select class="selectpicker">
-				<option selected="selected" data-toggle="fade" frame-target="#Second" group-target="">None</option>
-				<optgroup label="Type" data-subtext="" data-icon="icon-ok">
-					<option data-toggle="fade" frame-target="#Second" group-target="#Phone">Phone</option>
-					<option data-toggle="fade" frame-target="#Second" group-target="#Tablet">Tablet</option>
-					<option data-toggle="fade" frame-target="#Second" group-target="#Console">Console</option>
-				</optgroup>
-				<optgroup label="Attributes" data-subtext="" data-icon="icon-ok">
-				<option data-toggle="fade" frame-target="#Second" group-target="#Name">Name</option>
-				<option data-toggle="fade" frame-target="#Second" group-target="#Date">Date</option>
-				</optgroup>
-			</select>
+		<div class="row">
+		<div class="col-xs-12">
+			<label for="first_sortBY">Search By : </label>
 		</div>
-	</div>
-	<div class="col-md-3 col-xs-6 frame" id="Second">
-		<div class="group" id="Phone">
-			<select class="selectpicker">
-				<option selected="selected" data-toggle="fade" frame-target="#Third" group-target="">All</option>
-				<optgroup label="Apple" data-subtext="" data-icon="icon-ok">
-					<option>All Apple iPhones</option>
-					<option data-toggle="setSearch" data-value="iPhone">iPhone</option>
-					<option>iPhone 3G</option>
-					<option>iPhone 3GS</option>
-					<option>iPhone 4</option>
-					<option>iPhone 4s</option>
-					<option>iPhone 5</option>
-					<option>iPhone 5c</option>
-					<option>iPhone 5s</option>
-				</optgroup>
-				
-			</select>
+			<div class="col-md-6 col-xs-6 frame">
+				<div class="group current">
+					<select class="selectpicker">
+						<option selected="selected" data-toggle="fade setSearch" data-target="#products" data-value="" frame-target="#Second" group-target="">None</option>
+						<optgroup label="Type" data-subtext="" data-icon="icon-ok">
+									<?php
+										$tempSet=false;
+											$values= array();
+											$types = array();
+											$producttitle="123";
+											foreach ($jsonIterator as $key => $val) {
+												if(!is_array($val)) {
+														if($key=="type"){
+															if(!in_array($val,$types)){
+																$values[$val]= array();
+																$tempType->setTag($key,$val);
+																array_push($types,$val);
+																$tempSet=true;
+															}
+															
+															if(!is_array($values[$val][$company])){
+																$values[$val][$company]= array();
+															}
+															//print('$values['.$val.']['.$company.'],'.$producttitle);
+															array_push($values[$val][$company],$producttitle);
+														}elseif($key=="producttitle"){
+															$producttitle=$val;
+															//print("\r\nproducttitle:".$val."|");
+														}elseif($key=="company"){
+															$company=$val;
+															//print("company:".$val."|");
+														}
+												}elseif($tempSet){
+													echo $tempType->output();
+													$tempType = new Template($typeTempplate);
+													$tempSet=false;
+												}
+												
+											}
+											if($tempSet)
+											echo $tempType->output();
+										?>
+						</optgroup>
+						<optgroup label="Attributes" data-subtext="" data-icon="icon-ok">
+							<option data-toggle="fade" frame-target="#Second" group-target="#Text">Text</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6 col-xs-6 frame" id="Second">
+			<?php
+				foreach ($values as $type=>$TypeArray) {
+					$tempGroup = new Template($groupTemplate);
+					$tempGroup->setTag("Type",$type);
+					$optionGroup="";
+					foreach ($TypeArray as $companyName=>$itemsArray) {
+						$tempOptionGroup = new Template($optionGroupTempalte);
+						$tempOptionGroup->setTag("companyName",$companyName);
+						$items="";
+						foreach ($itemsArray as &$name) {
+							$tempOption = new Template($optionTemplate);
+							$tempOption->setTag("name",$name);
+							$items.=$tempOption->output();
+						}
+						$tempOptionGroup->setTag("items",$items);
+						$optionGroup.=$tempOptionGroup->output();
+					}
+					
+					$tempGroup->setTag("optionGroup",$optionGroup);
+					echo $tempGroup->output();
+				}
+			?>
+				<div class="group" id="Text">
+						<div class="bs-float-label">
+							<label for="search" class="float-label">Search Text</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-search"></i></span>
+								<input type="text" class="form-control float-input" name="search" id="search" placeholder="Search Text" autocomplete="off">
+							</div>
+						</div>
+				</div>
+			</div>
 		</div>
-		<div class="group" id="Tablet">
-			<select class="selectpicker">
-				<option selected="selected" data-toggle="fade" frame-target="#Third" group-target="">All</option>
-				<optgroup label="Apple" data-subtext="" data-icon="icon-ok">
-					<option>All Apple iPads</option>
-					<option>iPad</option>
-					<option>iPad 2</option>
-					<option>iPad 3</option>
-					<option>iPad 4</option>
-					<option>iPad mini</option>
-				</optgroup>
-			</select>
-		</div>
-	</div>
-	<div class="col-md-3 col-xs-6 frame">
-		<div class="group">
-			<select class="selectpicker">
-				<optgroup label="test" data-subtext="another test" data-icon="icon-ok">
-					<option>ASD</option>
-					<option>Bla</option>
-					<option>Ble</option>
-				</optgroup>
-				<optgroup label="test" data-subtext="another test" data-icon="icon-ok">
-					<option>ASD</option>
-					<option>Bla</option>
-					<option>Ble</option>
-				</optgroup>
-			</select>
-		</div>	
-	</div>
-	<div class="col-md-3 col-xs-6 frame">
-		<div class="group">
-			<select class="selectpicker">
-				<optgroup label="test" data-subtext="another test" data-icon="icon-ok">
-					<option>ASD</option>
-					<option>Bla</option>
-					<option>Ble</option>
-				</optgroup>
-				<optgroup label="test" data-subtext="another test" data-icon="icon-ok">
-					<option>ASD</option>
-					<option>Bla</option>
-					<option>Ble</option>
-				</optgroup>
-			</select>
-		</div>	
-	</div>
-		<div id="products" class="row list-group">
-			<div class="item col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Iphone" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<tag id="">
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Iphone 3g" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstationf" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item  col-xs-6 col-md-4 col-lg-3">
-				<div class="thumbnail">
-					<img class="group list-group-image" src="http://placehold.it/460x250/0040ff/eeeeee&amp;text=Playstation" alt="">
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">
-							Product title</h4>
-						<p class="group inner list-group-item-text">
-							Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">
-									$21.00</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div id="products" class="row list-group" data-search-box="#search" data-search=".type, .producttitle">
+			<?php
+			$firstTemp=false;
+				foreach ($jsonIterator as $key => $val) {
+					if(!is_array($val)) {
+							//print_r($key." | ".$val."\n");
+							$tempShop->setTag($key,$val);
+					}elseif($firstTemp){
+						echo $tempShop->output();
+						$tempShop = new Template('includes/temp/shopItem.tpl');
+					}
+					$firstTemp=true;
+				}
+				echo $tempShop->output();
+			?>
 		</div>
 	</div>
 		<?php
