@@ -81,43 +81,58 @@ $.fn.initSearch = function() {
 		})
 	}
 }
-$.fn.Search = function(text) {
+$.fn.Search = function(text,strict) {
 	$(this).find(".item").hide();
-	
-	if(this.isSearchAble() && text==null && this.hasSearchBox() ){
-		var rex = new RegExp($($(this).attr("data-search-box")).val(), 'i');
+	if(!strict){
+		if(this.isSearchAble() && text==null && this.hasSearchBox() ){
+			var rex = new RegExp($($(this).attr("data-search-box")).val(), 'i');
+		}
+		else if ( this.isSearchAble()) {
+			var rex = new RegExp(text, 'i');
+		}
+		searchArea=this.attr("data-search");
+		$(this).find(".item").filter(function() {
+			found=false;
+			$(this).find(searchArea).each(function( i ){
+			if(rex.test($(this).html()))
+				found=true;
+			});
+			return found;
+		}).show()
+	}else{
+		searchArea=this.attr("data-search");
+		$(this).find(".item").filter(function() {
+			found=false;
+			$(this).find(searchArea).each(function( i ){
+			if($(this).html()==text)
+				found=true;
+			});
+			return found;
+		}).show()
 	}
-    else if ( this.isSearchAble()) {
-		var rex = new RegExp(text, 'i');
-	}
-	searchArea=this.attr("data-search");
-	$(this).find(".item").filter(function() {
-	found=false;
-	$(this).find(searchArea).each(function( i ){
-	if(rex.test($(this).html()))
-		found=true;
-	});
-	return found;
-	}).show()
 	return this;
 };
 $(window).load(function() {
 	$('#products').initSearch();
+	$(".productpicture").on("click",function(){$(this).parent().find("button").click()})
 	$("button[data-toggle]").on("click",function(){
-			var toggle = $(this).attr("data-toggle");
-
-			if(toggle.indexOf("fade")>=0) {
-				var frame = $(this).find("option:selected").attr("frame-target");
-				var group = $(this).find("option:selected").attr("group-target");
-				$(".frame"+frame+" "+".current").removeClass("current");
-				if(group != ""){
-					$(".frame"+frame+" .group"+group).addClass("current");
-				}
+		var toggle = $(this).attr("data-toggle");
+		if(toggle.indexOf("setSearch")>=0){
+			var target=$(this).attr("data-target");
+			var text=$(this).attr("data-value");
+			var strict=($(target).attr("data-strict")=="true");
+			if( $(target).isSearchAble() ) {
+				$(target).Search(text,strict)
 			}
-			if(toggle.indexOf("bindData")>=0){
-				var uid=$(this).attr("data-value");
-				alert(uid);
+		}
+		if(toggle.indexOf("fade")>=0) {
+			var frame = $(this).attr("frame-target");
+			var group = $(this).attr("group-target");
+			$(".frame"+frame+">"+".current").removeClass("current");
+			if(group != ""){
+				$(".frame"+frame+">.group"+group).addClass("current");
 			}
+		}
 	});
 	$( "select.selectpicker" )
 	.change(function () {
@@ -127,10 +142,10 @@ $(window).load(function() {
 			if(toggle.indexOf("fade")>=0) {
 				var frame = $(this).find("option:selected").attr("frame-target");
 				var group = $(this).find("option:selected").attr("group-target");
-				$(".frame"+frame+" "+".current").removeClass("current");
+				$(".frame"+frame+">"+".current").removeClass("current");
 				if(group != ""){
-					$(".frame"+frame+" .group"+group).addClass("current");
-					$(".frame"+frame+" .group"+group+" .selectpicker").selectpicker("val",$(".frame"+frame+" "+".group"+group + " .selectpicker option").first().val()).selectpicker("refresh");
+					$(".frame"+frame+">.group"+group).addClass("current");
+					$(".frame"+frame+">.group"+group+" .selectpicker").selectpicker("val",$(".frame"+frame+" "+".group"+group + " .selectpicker option").first().val()).selectpicker("refresh");
 				}
 			}
 			if(toggle.indexOf("setSearch")>=0){

@@ -18,6 +18,9 @@ class Template{
 	function setTag($key, $value){
 		$this->values[$key] = $value;		
 	}
+	function getTag($key){
+		return (isset($this->values[$key]))?$this->values[$key]:null;	
+	}
 	function setAttribute($key, $value){
 		$this->values[$key] = $value;		
 	}

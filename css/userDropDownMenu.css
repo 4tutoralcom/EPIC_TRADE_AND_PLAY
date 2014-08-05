@@ -43,3 +43,6 @@ ul.nav.user-nav li a{
     right: 14px;
     z-index: 9;
 }
+.dropdown .glyphicon{
+	top:4px;
+}

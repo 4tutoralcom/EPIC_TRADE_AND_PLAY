@@ -1103,6 +1103,12 @@ h2.floatup {
 	font-weight:bold;
 	font-size:1.4em;
 }
-div#products {
-    min-height: 434px;
+.productpicture{
+	cursor: pointer; 
+	width:100%;
+	height:auto;
+}
+.frame.container.bg-white{
+    min-height: 539px;
+
 }
