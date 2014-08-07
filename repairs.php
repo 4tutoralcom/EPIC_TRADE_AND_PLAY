@@ -142,6 +142,7 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 			</div>
 		</div>
 		<div class="group" id="Repair">
+			<button data-toggle="fade bindData" data-value="" frame-target="#Shop" group-target="#Search" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
 			<div class="row list-group" data-search="#uid" data-strict="true">
 				<?php
 				$firstTemp=false;
@@ -172,7 +173,7 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 					}
 				?>
 			</div>
-		<button data-toggle="fade bindData" data-value="" frame-target="#Shop" group-target="#Search" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+
 		</div>
 	</div>
 		<?php

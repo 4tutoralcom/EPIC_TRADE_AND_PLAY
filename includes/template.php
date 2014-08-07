@@ -15,8 +15,11 @@ class Template{
 			$this->output=$file;
 		}
 	}	
-	function setTag($key, $value){
-		$this->values[$key] = $value;		
+	function setTag($key, $value,$overrideOrigonal=false){			
+		if(!$overrideOrigonal && !isset($this->values[$key]))
+			$this->values[$key] = $value;
+		else if ($overrideOrigonal)
+			$this->values[$key] = $value;
 	}
 	function getTag($key){
 		return (isset($this->values[$key]))?$this->values[$key]:null;	
