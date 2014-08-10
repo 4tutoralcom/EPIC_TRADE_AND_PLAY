@@ -55,7 +55,7 @@ $RequestType="";
 					<li><a href="#">Game</a></li>
 					<li><a href="#">Trade</a></li>
 					<li><a href="/repairs.php">Repair</a></li>
-					<li><a href="#" class="last">Contact Us</a></li>
+					<li><div class="contact_us"><a href="contact.php" class="last">Contact Us</a></div><div>314-640-9071</div></li>
 				</ul>
 			</nav>
 			<div class="hidden-xs hidden-sm signinContainer">

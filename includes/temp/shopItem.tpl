@@ -4,8 +4,14 @@
 	<div class="description">[description]</div>
 	<div id="uid" class="hidden">[uid]</div>
 	<div class="productprice">
-	<div class="pull-right">
-		<button data-toggle="fade bindData" data-value="[uid]" frame-target="#Shop" group-target="#Repair" class="btn btn-danger btn-sm" role="button">Check For Repairs</button></div>
+		<div class="pull-right">
+			<button 
+				data-toggle="fade bindData"
+				data-value='{"#Contact #tittle":"/i/[producttitle] : [name]"}' frame-target="#Shop" group-target="#Contact" 
+				class="btn btn-block btn-danger btn-sm" 
+				role="button">Contact us
+			</button>
+		</div>
 		<div class="pricetext">[productprice]</div>
 	</div>
 </div>

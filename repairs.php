@@ -24,6 +24,7 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 
 ?>	<div class="frame  container bg-white" id="Shop">
 		<div class="group current" id="Search">
+			<h1 id="tittle">Select Device</h1>
 			<div class="row">
 			<div class="col-xs-12">
 				<label for="first_sortBY">Search By : </label>
@@ -142,25 +143,31 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 			</div>
 		</div>
 		<div class="group" id="Repair">
-			<button data-toggle="fade bindData" data-value="" frame-target="#Shop" group-target="#Search" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+			<h1>Select Repair</h1>
+			<button data-toggle="fade" data-value="" frame-target="#Shop" group-target="#Search" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
 			<div class="row list-group" data-search="#uid" data-strict="true">
 				<?php
 				$firstTemp=false;
 				$skip=0;
 				$skipStart=0;
 				$uid=-1;
+				$productTittle="";
 				$tempShop = new Template('includes/temp/ShopItem.tpl');
 					foreach ($jsonIterator as $key => $val) {
 						if(!is_array($val)) {
 								//print_r($key." | ".$val."\n");
 								$tempShop->setTag($key,$val);
+								if($key=="producttitle"){
+									$productTittle=$val;
+								}
 						}elseif($firstTemp && $key!=="repair" && $skip===0){
 						}elseif($firstTemp && $key!=="repair" && $skip!=0){
 							$tempShop->setTag("uid",$uid);
 							if($skipStart!=$skip){
-							if($tempShop->getTag("image")==null)
-								$tempShop->setTag("image","http://placehold.it/460x250/0040ff/eeeeee&text=");
-							echo $tempShop->output();
+								$tempShop->setTag("producttitle",$productTittle);
+								if($tempShop->getTag("image")==null)
+									$tempShop->setTag("image","http://placehold.it/460x250/0040ff/eeeeee&text=");
+								echo $tempShop->output();
 							}
 							$tempShop = new Template('includes/temp/ShopItem.tpl');
 							$skip= ($skip > 0 ? $skip-1 : 0);
@@ -173,7 +180,108 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 					}
 				?>
 			</div>
-
+		</div>
+		<div class="group" id="Contact">
+			<h1 id="tittle">Tittle</h1>
+			<button data-toggle="fade" frame-target="#Shop" group-target="#Repair" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+			<p>
+			
+				<div class="panel-group" id="contact_us">
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#contact_us" href="#collapseOne">
+						  Contact Us By Phone
+						</a>
+					  </h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in">
+					  <div class="panel-body">
+						<div class="col-sm-8">
+							Contact us by phone.
+						</div>
+						<div class="col-sm-4">
+							<h2><a href="tel:555-555-5555">#555-555-5555</a></h2>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#contact_us" href="#collapseTwo">
+						  Contact us by Email
+						</a>
+					  </h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse">
+					  <div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="well well-sm">
+									<form>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">
+													Name</label>
+												<input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="email">
+													Email Address</label>
+												<div class="input-group">
+													<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+													</span>
+													<input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+											</div>
+											<div class="form-group">
+												<label for="subject">
+													Subject</label>
+												<select id="subject" name="subject" class="form-control" required="required">
+													<option value="na" selected="">Choose One:</option>
+													<option value="service">General Customer Service</option>
+													<option value="suggestions">Suggestions</option>
+													<option value="product">Product Support</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">
+													Message</label>
+												<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+													placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+												Send Message</button>
+										</div>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#contact_us" href="#collapseThree">
+						  Collapsible Group Item #3
+						</a>
+					  </h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse">
+					  <div class="panel-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</p>
 		</div>
 	</div>
 		<?php

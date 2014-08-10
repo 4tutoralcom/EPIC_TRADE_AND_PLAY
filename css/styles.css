@@ -513,7 +513,13 @@ nav {
 				-webkit-transition: 0.5s ease;
 				-o-transition: 0.5s ease;
 			 }
-
+			 nav ul li div:last-child{
+				margin: -25px auto 0px auto;
+				color: #860808;
+				width: 132px;
+				font-weight:700;
+			
+}
 				nav ul li a{color: #1A1A1A;}
 
 				nav ul li a:hover {
