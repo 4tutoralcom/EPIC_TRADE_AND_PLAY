@@ -173,11 +173,9 @@ $(window)
 					for (var k in obj) {
 						if (obj.hasOwnProperty(k)) {
 							if (obj[k].indexOf("/v/") == 0)
-								$(k)
-								.val(obj[k].slice(3, obj[k].length));
+								$(k).val(obj[k].slice(3, obj[k].length));
 							else if (obj[k].indexOf("/i/") == 0)
-								$(k)
-								.html(obj[k].slice(3, obj[k].length));
+								$(k).html(obj[k].slice(3, obj[k].length));
 						}
 					}
 				}

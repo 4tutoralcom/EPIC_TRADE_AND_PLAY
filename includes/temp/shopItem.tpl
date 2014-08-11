@@ -7,7 +7,7 @@
 		<div class="pull-right">
 			<button 
 				data-toggle="fade bindData"
-				data-value='{"#Contact #tittle":"/i/[producttitle] : [name]"}' frame-target="#Shop" group-target="#Contact" 
+				data-value='{"#Contact #tittle":"/i/[producttitle] : [name]", "#ContactUs #email":"/v/[email]", "#ContactUs #name":"/v/[FirstName] [LastName]"}' frame-target="#Shop" group-target="#Contact" 
 				class="btn btn-block btn-danger btn-sm" 
 				role="button">Contact us
 			</button>

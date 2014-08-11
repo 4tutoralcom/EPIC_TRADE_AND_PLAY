@@ -75,9 +75,9 @@ $RequestType="";
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-stats pull-right"></span>User stats</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="badge pull-right"> 42 </span>Messages</a></li>
+								<li><a href="#"><span class="badge pull-right"> 0 </span>Messages</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-heart pull-right"></span>Favourites Snippets</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-heart pull-right"></span>Purchase History</a></li>
 								<li class="divider"></li>
 								<li><a href="includes/logout.php"><span class="glyphicon glyphicon-log-out pull-right"></span>Sign Out</a></li>
 							  </ul>

@@ -26,7 +26,7 @@ function sec_session_start() {
 function login($email, $password, $mysqli,$ip_address) {
 	$ShopName="Epic Game Play Trade";
 	$error_msg = "";
-	$stmt = $mysqli->prepare("SELECT id, username, password, salt 
+	$stmt = $mysqli->prepare("SELECT id, username, password, salt, first_name, last_name 
         FROM members
 		WHERE email = ?
         LIMIT 1");
@@ -37,7 +37,7 @@ function login($email, $password, $mysqli,$ip_address) {
         $stmt->store_result();
  
         // get variables from result.
-        $stmt->bind_result($user_id, $username,$db_password, $salt);
+        $stmt->bind_result($user_id, $username,$db_password, $salt, $first_name, $last_name);
         $stmt->fetch();
  
         // hash the password with the unique salt.
@@ -80,6 +80,9 @@ function login($email, $password, $mysqli,$ip_address) {
 									$_SESSION['username'] = $username;
 									$_SESSION['login_string'] = hash('sha512', 
 									$password . $user_browser);
+									$_SESSION['email']= $email;
+									$_SESSION['FirstName']= $first_name;
+									$_SESSION['LastName']= $last_name;
 									$Check=false;
 									break;
 								}

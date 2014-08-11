@@ -152,6 +152,10 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 				$skipStart=0;
 				$uid=-1;
 				$productTittle="";
+				$email=(!$loggedOut) ? $_SESSION['email'] : "";
+				$FirstName=(!$loggedOut) ? $_SESSION['FirstName'] : "";
+				$LastName=(!$loggedOut) ? $_SESSION['LastName'] : "";
+				
 				$tempShop = new Template('includes/temp/ShopItem.tpl');
 					foreach ($jsonIterator as $key => $val) {
 						if(!is_array($val)) {
@@ -165,6 +169,9 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 							$tempShop->setTag("uid",$uid);
 							if($skipStart!=$skip){
 								$tempShop->setTag("producttitle",$productTittle);
+								$tempShop->setTag("FirstName",$FirstName);
+								$tempShop->setTag("LastName",$LastName);
+								$tempShop->setTag("email",$email);
 								if($tempShop->getTag("image")==null)
 									$tempShop->setTag("image","http://placehold.it/460x250/0040ff/eeeeee&text=");
 								echo $tempShop->output();
@@ -185,7 +192,6 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 			<h1 id="tittle">Tittle</h1>
 			<button data-toggle="fade" frame-target="#Shop" group-target="#Repair" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
 			<p>
-			
 				<div class="panel-group" id="contact_us">
 				  <div class="panel panel-default">
 					<div class="panel-heading">
@@ -219,37 +225,32 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 						<div class="row">
 							<div class="col-md-12">
 								<div class="well well-sm">
-									<form>
+									<form id="ContactUs">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="name">
-													Name</label>
+												<label for="name">Name</label>
 												<input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
 											</div>
 											<div class="form-group">
-												<label for="email">
-													Email Address</label>
+												<label for="email">Email Address</label>
 												<div class="input-group">
 													<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
 													</span>
 													<input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
 											</div>
 											<div class="form-group">
-												<label for="subject">
-													Subject</label>
+												<label for="subject">Subject</label>
 												<select id="subject" name="subject" class="form-control" required="required">
-													<option value="na" selected="">Choose One:</option>
-													<option value="service">General Customer Service</option>
-													<option value="suggestions">Suggestions</option>
-													<option value="product">Product Support</option>
+													<option value="na" selected>Choose One:</option>
+													<option value="Question">Questions</option>
+													<option value="set">Set Up</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="name">
-													Message</label>
+												<label for="name">Message</label>
 												<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
 													placeholder="Message"></textarea>
 											</div>
@@ -266,21 +267,26 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 					  </div>
 					</div>
 				  </div>
+				  <?php if(!$loggedOut) : ?>
 				  <div class="panel panel-default">
 					<div class="panel-heading">
 					  <h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#contact_us" href="#collapseThree">
-						  Collapsible Group Item #3
+							Contact Us By Instant Messaging
 						</a>
 					  </h4>
 					</div>
 					<div id="collapseThree" class="panel-collapse collapse">
 					  <div class="panel-body">
-						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						<p>
+							For a quick response, contact us by messaging a employee at our store over our websites Instant Message System.<br>
+							If no employee responds this will also also email us your Question or Purchase. So we can get back with you as quickly as possible.
+						</p>
 					  </div>
 					</div>
 				  </div>
 				</div>
+				<?php endif; ?>
 			</p>
 		</div>
 	</div>
