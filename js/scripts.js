@@ -92,50 +92,68 @@ $.fn.initSearch = function() {
 			})
 	}
 }
-$.fn.Search = function(text, strict) {
-	$(this)
-		.find(".item")
-		.hide();
+$.fn.getInvisible = function(){
+	 return this.filter( ":hidden" );
+}
+$.fn.getVisible = function(){
+	return this.filter( ":visible" );
+}
+$.fn.isNotAnimated = function(){
+	return this.filter(function(){
+		var found=true;
+		if($(this).parent().hasClass("ui-effects-wrapper")) 
+			found=false;
+		return found;
+	});
+}
+$.fn.isAnimated = function(){
+	return this.filter(function(){
+		var found=false;
+		if($(this).parent().hasClass("ui-effects-wrapper")) 
+			found=true;
+		return found;
+	});
+}
+$.fn.Search = function(text, strict,drop) {
+	drop=(drop!==undefined)? drop:true;
+	var items=$();
 	if (!strict) {
 		if (this.isSearchAble() && text == null && this.hasSearchBox()) {
-			var rex = new RegExp($($(this)
-					.attr("data-search-box"))
-				.val(), 'i');
+			var rex = new RegExp($($(this).attr("data-search-box")).val(), 'i');
 		} else if (this.isSearchAble()) {
 			var rex = new RegExp(text, 'i');
 		}
-		searchArea = this.attr("data-search");
-		$(this)
-			.find(".item")
-			.filter(function() {
-				found = false;
-				$(this)
-					.find(searchArea)
-					.each(function(i) {
-						if (rex.test($(this)
-							.html()))
-							found = true;
-					});
-				return found;
-			})
-			.show()
-	} else {
-		searchArea = this.attr("data-search");
-		$(this)
-			.find(".item")
-			.filter(function() {
-				found = false;
-				$(this)
-					.find(searchArea)
-					.each(function(i) {
-						if ($(this)
-							.html() == text)
-							found = true;
-					});
-				return found;
-			})
-			.show()
+		filterFunction = function(i) {found = found || (rex.test($(this).html()));};
+	}else{
+		filterFunction = function(i) {found = found || ($(this).html() == text);};
 	}
+	
+	searchArea = this.attr("data-search");
+	items = $(this)
+		.find(".item")
+		.filter(function() {
+			found = false;
+			$(this)
+				.find(searchArea)
+				.each(filterFunction);
+			return found;
+		});
+	if(drop){
+		items.isNotAnimated().getInvisible().show("slide", { direction: "down" }, 400);
+		items.isAnimated().show();
+	}else
+		items.getInvisible().show();
+	hiddingItems=$(this)
+	.find(".item")
+	.filter(function() {
+		return !items.is($(this))
+	})
+	if(drop){
+		hiddingItems.isNotAnimated().getVisible().hide("slide", { direction: "up" }, 400);
+		hiddingItems.isAnimated().show();
+	}else
+		hiddingItems.getVisible().hide();
+	
 	return this;
 };
 $(window)
@@ -151,24 +169,26 @@ $(window)
 			})
 		$("button[data-toggle]")
 			.on("click", function() {
-				var toggle = $(this)
-					.attr("data-toggle");
-				if (toggle.indexOf("setSearch") >= 0) {
-					var target = $(this)
-						.attr("data-target");
-					var text = $(this)
-						.attr("data-value");
-					var strict = ($(target)
-						.attr("data-strict") == "true");
-					if ($(target)
-						.isSearchAble()) {
-						$(target)
-							.Search(text, strict)
+				var toggle = $(this).attr("data-toggle");
+				if (toggle.indexOf("fade") >= 0) {
+					var frame = $(this).attr("frame-target");
+					var group = $(this).attr("group-target");
+					$(".frame" + frame + ">" + ".current").removeClass("current");
+					if (group != "") {
+						$(".frame" + frame + ">.group" + group).addClass("current");
+					}
+				}
+				if (toggle.indexOf("setSearch") >= 0 || toggle.indexOf("setSearch-noDrop") >= 0) {
+					drop=!(toggle.indexOf("setSearch-noDrop") >= 0)
+					var target = $(this).attr("data-target");
+					var text = $(this).attr("data-value");
+					var strict = ($(target).attr("data-strict") == "true");
+					if ($(target).isSearchAble()) {
+						$(target).Search(text, strict, drop)
 					}
 				}
 				if (toggle.indexOf("bindData") >= 0) {
-					var text = $(this)
-						.attr("data-value");
+					var text = $(this).attr("bind-data-value");
 					obj = JSON.parse(text);
 					for (var k in obj) {
 						if (obj.hasOwnProperty(k)) {
@@ -179,24 +199,10 @@ $(window)
 						}
 					}
 				}
-				if (toggle.indexOf("fade") >= 0) {
-					var frame = $(this)
-						.attr("frame-target");
-					var group = $(this)
-						.attr("group-target");
-					$(".frame" + frame + ">" + ".current")
-						.removeClass("current");
-					if (group != "") {
-						$(".frame" + frame + ">.group" + group)
-							.addClass("current");
-					}
-				}
 			});
 		$("select.selectpicker")
 			.change(function() {
-				var toggle = $(this)
-					.find("option:selected")
-					.attr("data-toggle");
+				var toggle = $(this).find("option:selected").attr("data-toggle");
 
 				if (toggle.indexOf("fade") >= 0) {
 					var frame = $(this)

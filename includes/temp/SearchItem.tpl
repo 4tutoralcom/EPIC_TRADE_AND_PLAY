@@ -4,6 +4,6 @@
 	<div class="type">[type]</div>
 	<div class="productprice">
 	<div>
-		<button data-toggle="fade setSearch" data-target="#Repair .row.list-group" data-value="[uid]" frame-target="#Shop" group-target="#Repair" class="btn btn-block btn-danger btn-sm" role="button">Check For Repairs</button></div>
+		<button data-toggle="fade bindData setSearch-noDrop" bind-data-value='{"#Repair h1":"/i/Select Repair for [producttitle]"}'data-target="#Repair .row.list-group" data-value="[uid]" frame-target="#Shop" group-target="#Repair" class="btn btn-block btn-danger btn-sm" role="button">Check For Repairs</button></div>
 	</div>
 </div>

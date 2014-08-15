@@ -8,7 +8,11 @@ $RequestType="";
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
+	
+	<meta name="description" content="Full view calendar component for twitter bootstrap with year, month, week, day views.">
+	<meta name="keywords" content="jQuery,Bootstrap,Calendar,HTML,CSS,JavaScript,responsive,month,week,year,day">
+	<meta name="author" content="Serhioromano">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Infusion WP Theme</title>
 				<!-- Bootstrap -->
@@ -28,6 +32,7 @@ $RequestType="";
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/calendar.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -52,8 +57,8 @@ $RequestType="";
 				<ul>
 					<?php if($loggedOut) : ?><li><a data-toggle="modal" data-target="#ModalSignIn" class="inline hidden-lg hidden-md signin-button">Sign In</a></li><?php else:?><!--To Be Filled In--><?php endif;?>
 					<!--<li><a href="/" class="active">Home</a></li>-->
-					<li><a href="#">Game</a></li>
-					<li><a href="#">Trade</a></li>
+					<li><a href="/game.php">Game</a></li>
+					<li><a href="/trade.php">Trade</a></li>
 					<li><a href="/repairs.php">Repair</a></li>
 					<li><div class="contact_us"><a href="contact.php" class="last">Contact Us</a></div><div>314-640-9071</div></li>
 				</ul>

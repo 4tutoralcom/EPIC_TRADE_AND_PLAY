@@ -225,38 +225,45 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 						<div class="row">
 							<div class="col-md-12">
 								<div class="well well-sm">
-									<form id="ContactUs">
+									<form id="ContactUs" action="includes/ContactUs.php" autocomplete="off" method="POST">
 									<div class="row">
+										<div class="col-sm-12">
+											<div class="alert">
+											   <span class="glyphicon "></span> <strong></strong>
+												<hr class="message-inner-separator">
+												<p></p>
+											</div>
+										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="name">Name</label>
-												<input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+												<input type="text" class="form-control" name="name" id="name" placeholder="Enter name"/>
 											</div>
 											<div class="form-group">
 												<label for="email">Email Address</label>
 												<div class="input-group">
 													<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
 													</span>
-													<input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+													<input type="email" class="form-control" name="email" id="email" placeholder="Enter email"/></div>
 											</div>
-											<div class="form-group">
-												<label for="subject">Subject</label>
-												<select id="subject" name="subject" class="form-control" required="required">
+											<div class="form-group popover-dismiss" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+												<label  for="subject">Subject</label>
+												<select id="subject" name="subject" class="form-control" >
 													<option value="na" selected>Choose One:</option>
 													<option value="Question">Questions</option>
-													<option value="set">Set Up</option>
+													<option value="Repair">Set Up</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="name">Message</label>
-												<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+												<textarea name="message" id="message" class="form-control" rows="9" cols="25" 
 													placeholder="Message"></textarea>
 											</div>
 										</div>
 										<div class="col-md-12">
-											<button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+											<button type="submit" id="submit" name="submit" class="btn btn-primary pull-right" id="btnContactUs">
 												Send Message</button>
 										</div>
 									</div>

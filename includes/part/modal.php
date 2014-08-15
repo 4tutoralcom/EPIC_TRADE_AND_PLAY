@@ -22,10 +22,10 @@
 
 												<div class="col-xs-12">
 													<div class="form-group bs-float-label">
-														<label for="userid_f" class="float-label">Username or Email</label>
+														<label for="user" class="float-label">Username or Email</label>
 														<div class="input-group">
 															<span class="input-group-addon"><i class="fa fa-user"></i></span>
-															<input type="text" class="form-control float-input" name="userid_f" id="userid_f" placeholder="Username or Email" autocomplete="off">
+															<input type="text" class="form-control float-input" name="user" id="user" placeholder="Username or Email" autocomplete="off">
 														</div>
 													</div>
 												</div>

@@ -5,7 +5,7 @@
 	var options = {
 		events_source: 'events.json.php',
 		view: 'month',
-		tmpl_path: 'tmpls/',
+		tmpl_path: '/includes/temp/calander/',
 		tmpl_cache: false,
 		day: '2013-03-12',
 		onAfterEventsLoad: function(events) {

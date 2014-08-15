@@ -1,7 +1,7 @@
 <?php
 // get JSON file with "console-name","id", and "product-name";
 $upc = isset($_GET['upc']) ? (string)$_GET['upc'] : -1;
-$file = file_get_contents("http://localhost/game.php?upc=".$upc);
+$file = file_get_contents("http://localhost/includes/game.php?upc=".$upc);
 $jsonIterator = new RecursiveIteratorIterator(
 	new RecursiveArrayIterator(json_decode($file, TRUE)),
 	RecursiveIteratorIterator::SELF_FIRST);

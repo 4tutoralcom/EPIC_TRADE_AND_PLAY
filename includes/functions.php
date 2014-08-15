@@ -278,6 +278,22 @@ function forgot($userid,$mysqli){
 	}
 	return $found;
 }
+function contactUs($name,$email,$subject,$message,$mysqli){
+	$error_msg=true;
+	$email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Not a valid email
+        $error_msg .= 'Email Error|The Email is not Valid';
+    }else{
+		$ShopName="Epic Game Play Trade";
+		$content="$name message,
+		$message
+		Sincerely,\r\n".$ShopName." Automated System
+		from: $email";
+		mail("4tutoralcom@gmail.com",$subject,$content,'from: 4tutoralcom@gmail.com');
+	}
+	return $error_msg;
+}
 function checkbrute($user_id, $mysqli) {
     // Get timestamp of current time 
     $now = time();

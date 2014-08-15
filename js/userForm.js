@@ -1,5 +1,4 @@
 temppass="";
-
 $( document ).ready( function(){
 
 	$('.button-checkbox').each(function(){
@@ -58,7 +57,7 @@ $( document ).ready( function(){
 		init();
 	});
 	$("#FormForgot #submit").click( function() {
-	
+		clearContactUsForm();
 	});
 	$("#registerForm #submit").click( function() {
 		$( "#registerForm #password" ).prev().css( "background-color", "" );
@@ -83,6 +82,45 @@ $( document ).ready( function(){
 		});
 	});
 
+	$(".item").click(function(){
+		clearContactUsForm();
+	});
+	$("#ContactUs #submit").click(function(){
+		clearContactUsForm();
+		var error=true;
+		if($("#ContactUs #subject").val()=="na"){
+			icon.addClass("glyphicon-hand-right");
+			messageBox.addClass("alert-danger");
+			paragraph.html("You need to Select A Subject");
+			title.html("No Subject!")
+		}else if($("#ContactUs #email").val()==""){
+			icon.addClass("glyphicon-hand-right");
+			messageBox.addClass("alert-danger");
+			paragraph.html("You need to enter in your Email.");
+			title.html("No Email!")
+		}else if($("#ContactUs #name").val()==""){
+			icon.addClass("glyphicon-hand-right");
+			messageBox.addClass("alert-danger");
+			paragraph.html("You need to enter in your Name.");
+			title.html("No Name!")
+		}else if($("#ContactUs #message").val()==""){
+			icon.addClass("glyphicon-hand-right");
+			messageBox.addClass("alert-danger");
+			paragraph.html("You need to enter in your message.");
+			title.html("No Message!")
+		}else{
+			error=false;
+		}
+		if(!error){
+			data=$("#ContactUs :input").serializeArray();
+			$.post( $("#ContactUs").attr("action"),
+			data,
+			function(info) {
+				if(info=="Success")
+					location.reload();
+			});
+		}
+	});
 	$("#signinForm #submit").click( function() {
 		temppass="";
 		$( "#signinForm #password" ).prev().css( "background-color", "" );
@@ -165,6 +203,18 @@ $( document ).ready( function(){
 		}
     });	
 });
+
+function clearContactUsForm(){
+	thisForm = $("#ContactUs");
+	messageBox = thisForm.find(".alert");
+	icon = messageBox.find(".glyphicon");
+	paragraph = messageBox.find("p");
+	title = messageBox.find("strong");
+	icon.removeClass("glyphicon-ok glyphicon-info-sign glyphicon-record glyphicon-hand-right");
+	messageBox.removeClass("alert-success alert-info alert-warning alert-danger");
+	paragraph.html("");
+	title.html("");
+}
 
 function formhash(form, password) {
 

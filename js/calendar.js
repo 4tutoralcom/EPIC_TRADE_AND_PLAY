@@ -58,11 +58,8 @@ if(!String.prototype.formatNum) {
 		//   returns an array of events (as described in events property description)
 		// - An array containing the events
 		events_source:      '',
-		// Path to templates should end with slash /. It can be as relative
-		// /component/bootstrap-calendar/tmpls/
-		// or absolute
-		// http://localhost/component/bootstrap-calendar/tmpls/
-		tmpl_path:          'tmpls/',
+		// http://localhost/includes/temp/calander/
+		tmpl_path:          'includes/temp/calander/',
 		tmpl_cache:         true,
 		classes:            {
 			months: {

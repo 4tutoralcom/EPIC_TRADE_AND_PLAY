@@ -55,7 +55,9 @@
 			</div>
 		</footer>
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
-		<script type="text/javascript" src="http://code.jquery.com/jquery-git2.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/bootstrap-select.js"></script>
 		<script src="js/scripts.js"></script>
@@ -79,5 +81,11 @@
             // $('.selectpicker').selectpicker('hide');
         });
 		</script>
+		<!--game javascript-->
+		<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/calendar.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		
 	</body>
 </html>
