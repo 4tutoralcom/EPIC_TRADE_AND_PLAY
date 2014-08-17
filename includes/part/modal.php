@@ -203,13 +203,13 @@
 												</div>
 											</div>
 											<div class="padding-15">
-												<div class="col-xs-3 col-sm-2 col-md-2">
+												<div class="col-xs-3">
 													<span class="button-checkbox">
 														<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
 														<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="0">
 													</span>
 												</div>
-												<div class="col-xs-9 col-sm-10 col-md-10">
+												<div class="col-xs-9">
 													By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-target="#terms" data-toggle="tab">Terms and Conditions</a> set out by this site, 	including our Cookie Use.<br><br>
 												</div>
 											</div>

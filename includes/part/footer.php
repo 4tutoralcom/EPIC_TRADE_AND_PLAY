@@ -81,11 +81,54 @@
             // $('.selectpicker').selectpicker('hide');
         });
 		</script>
-		<!--game javascript-->
-		<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
-		<script type="text/javascript" src="../js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/calendar.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
+		<!--calander-->
+		<script src='js/moment.min.js'></script>
+		<script src='js/fullcalendar.js'></script>
+		<script src='js/gcal.js'></script>
+		<script>
+
+	$(document).ready(function() {
+	
+		$('#calendar').fullCalendar({
+			events: 'https://www.google.com/calendar/feeds/0mnpe92s8c1igvu0b1eis9fac0%40group.calendar.google.com/public/basic',
+			
+			eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=700,height=600');
+				return false;
+			},
+			
+			loading: function(bool) {
+				//$('#loading').toggle(bool);
+			}
+			
+		});
+		
+	});
+
+</script>
+<style>
+
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+		
+	#loading {
+		display: none;
+		position: absolute;
+		top:0;
+		right:0;
+		height:100%;
+		width:100%;
+		z-index:3;
+	}
+
+
+</style>
+		<!--calander-->
 		
 	</body>
 </html>

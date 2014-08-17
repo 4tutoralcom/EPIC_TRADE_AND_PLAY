@@ -1,8 +1,16 @@
 @media screen and (max-width: 991px) {
+.navbar-nav{
+	margin:0px;
+}
 nav{height:auto;width:100%}
 nav ul{width:100%;display:block;height:auto;margin:0;padding:0;border-top: 1px solid #A8AEB1;}
-nav li{width:100%;float:left;background-color: #FFFFFF;position:relative;text-align:center}
+nav ul li{width:100%;float:left;position:relative;text-align:center}
+nav ul li:first-child{background-color:#FFF;}
 nav ul li a{width:100%;float:left;position:relative;padding:25px 0;text-align:center;border-bottom: 1px dotted #A8AEB1;}
+nav ul li .nav .dropdown {width:100%;border: none;  border-radius: 0px;}
+.dropdown-menu a{
+	border:none;
+}
 nav ul li div.contact_us a{padding: 25px 0px 0px;}
 nav ul li div:last-child{margin: 0px auto 0px auto;};
 nav ul li:first-child a.signin-button{background-color: #E0E0E0; }
@@ -11,7 +19,7 @@ nav ul li a.last{border-bottom:none}
 }
 @media only screen and (max-width : 991px) {
 nav{border-bottom:0}
-nav ul{display:none;height:auto}
+nav ul:not(.dropdown-menu):not(.nav){display:none;height:auto}
 .pullcontainer{width:100%;text-align:right;padding:18px 40px 0 0}
 .pullcontainer a#pull{display:inline;width:100%;color: #860808;}
 

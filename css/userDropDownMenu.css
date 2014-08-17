@@ -1,9 +1,10 @@
 .nav>li>a:hover, .nav>li>a:focus, .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
     background:#FFF;
-	color:#860808;
+	
+    color:#860808;
 }
-ul.nav.user-nav li a{
-	padding:2px 40px;
+ul.nav.user-nav  li a{
+	padding: 2px 40px;
 	color:#860808;
 }
 .dropdown {
@@ -16,32 +17,38 @@ ul.nav.user-nav li a{
 .dropdown-menu>li>a {
     color:#428bca;
 }
+
 .dropdown ul.dropdown-menu {
     border-radius:4px;
     box-shadow:none;
     margin-top:20px;
-    width:300px;
-	
+    width:100%;
 }
-.dropdown ul.dropdown-menu:before {
-    content: "";
-    border-bottom: 10px solid #FFF;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    position: absolute;
-    top: -10px;
-    right: 16px;
-    z-index: 10;
-}
-.dropdown ul.dropdown-menu:after {
-    content: "";
-    border-bottom: 12px solid #ccc;
-    border-right: 12px solid transparent;
-    border-left: 12px solid transparent;
-    position: absolute;
-    top: -12px;
-    right: 14px;
-    z-index: 9;
+	ul.nav.user-nav  li a{
+		padding: 2px 16px 2px 34px;
+			}
+@media screen and (min-width: 768px) {
+
+	.dropdown ul.dropdown-menu:before {
+		content: "";
+		border-bottom: 10px solid #FFF;
+		border-right: 10px solid transparent;
+		border-left: 10px solid transparent;
+		position: absolute;
+		top: -10px;
+		right: 16px;
+		z-index: 10;
+	}
+	.dropdown ul.dropdown-menu:after {
+		content: "";
+		border-bottom: 12px solid #ccc;
+		border-right: 12px solid transparent;
+		border-left: 12px solid transparent;
+		position: absolute;
+		top: -12px;
+		right: 14px;
+		z-index: 9;
+	}
 }
 .dropdown .glyphicon{
 	top:4px;

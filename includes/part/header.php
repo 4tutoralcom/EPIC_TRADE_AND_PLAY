@@ -8,7 +8,6 @@ $RequestType="";
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	
 	<meta name="description" content="Full view calendar component for twitter bootstrap with year, month, week, day views.">
 	<meta name="keywords" content="jQuery,Bootstrap,Calendar,HTML,CSS,JavaScript,responsive,month,week,year,day">
 	<meta name="author" content="Serhioromano">
@@ -32,7 +31,10 @@ $RequestType="";
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="css/calendar.css">
+		<!--Calander-->
+		<link href='css/fullcalendar.css' rel='stylesheet' />
+		<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+		<!--Calander-->
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -55,8 +57,28 @@ $RequestType="";
 
 			<nav class="clearfix">
 				<ul>
-					<?php if($loggedOut) : ?><li><a data-toggle="modal" data-target="#ModalSignIn" class="inline hidden-lg hidden-md signin-button">Sign In</a></li><?php else:?><!--To Be Filled In--><?php endif;?>
-					<!--<li><a href="/" class="active">Home</a></li>-->
+					<?php if($loggedOut) : ?>
+						<li><a data-toggle="modal" data-target="#ModalSignIn" class="inline hidden-lg hidden-md signin-button">Sign In</a></li>
+					<?php else:?>
+						<li>
+							<ul class="nav navbar-nav user-nav">
+								<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo htmlentities($_SESSION['username']); ?><span class="glyphicon glyphicon-user pull-right"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#"><span class="glyphicon glyphicon-cog pull-right"></span>Account Settings </a></li>
+									<li class="divider"></li>
+									<li><a href="#"><span class="glyphicon glyphicon-stats pull-right"></span>User stats</a></li>
+									<li class="divider"></li>
+									<li><a href="#"><span class="badge pull-right"> 0 </span>Messages</a></li>
+									<li class="divider"></li>
+									<li><a href="#"><span class="glyphicon glyphicon-heart pull-right"></span>Purchase History</a></li>
+									<li class="divider"></li>
+									<li><a href="includes/logout.php"><span class="glyphicon glyphicon-log-out pull-right"></span>Sign Out</a></li>
+								</ul>
+								</li>
+							</ul>
+						</li>
+					<?php endif;?>
 					<li><a href="/game.php">Game</a></li>
 					<li><a href="/trade.php">Trade</a></li>
 					<li><a href="/repairs.php">Repair</a></li>

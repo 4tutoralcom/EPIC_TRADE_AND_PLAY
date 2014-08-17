@@ -507,11 +507,50 @@ nav {
 				text-transform: uppercase;
 				font-size: 14px;
 				font-weight: 800;
-				letter-spacing: 0.3em;
+				letter-spacing: -0.1em;
 				transition: 0.5s ease;
 				-moz-transition: 0.5s ease;
 				-webkit-transition: 0.5s ease;
 				-o-transition: 0.5s ease;
+			 }
+			nav ul li .nav {
+				-moz-transition: 0.5s ease;
+				-webkit-transition: 0.5s ease;
+				-o-transition: 0.5s ease;
+				display: block;
+			 }			
+			@media (min-width: 992px){
+			nav ul li .nav {
+				-moz-transition: 0.5s ease;
+				-webkit-transition: 0.5s ease;
+				-o-transition: 0.5s ease;
+				display: none;
+			 }
+			}
+			@media (min-width: 1000px){
+			nav ul li a {
+				letter-spacing: -0.08em;
+			 }
+			}
+			 @media (min-width: 1030px) {
+				 nav ul li a {
+				 letter-spacing: 0.01em;
+				 }
+			 }
+			 @media (min-width: 1070px) {
+				 nav ul li a {
+				 letter-spacing: 0.1em;
+				 }
+			 }
+			 @media (min-width: 1170px) {
+				 nav ul li a {
+				 letter-spacing: 0.2em;
+				 }
+			 }
+			 @media (min-width: 1270px) {
+				 nav ul li a {
+				 letter-spacing: 0.4em;
+				 }
 			 }
 			 nav ul li div:last-child{
 				margin: -25px auto 0px auto;
@@ -519,7 +558,7 @@ nav {
 				width: 132px;
 				font-weight:700;
 			
-}
+			}
 				nav ul li a{color: #1A1A1A;}
 
 				nav ul li a:hover {
@@ -754,6 +793,7 @@ nav {
 
 	.bg-white {
 		background-color: #f8f9f9;
+		position:relative;
 	 }
 	.bg-white:not(.no-padding-top) {padding-top: 20px;}
 	.bg-white:not(.no-padding-bottom) {padding-bottom: 20px;}
@@ -1088,8 +1128,10 @@ h2.floatup {
 
 .item {
     background-color:#ffffff;
-	padding:10px;
-	margin-bottom:10px;
+	
+    padding: 10px;
+	
+    margin-bottom: 10px;
 	-webkit-box-shadow: 0 8px 6px -6px  #999;
 	   -moz-box-shadow: 0 8px 6px -6px  #999;
 	        box-shadow: 0 8px 6px -6px #999;
@@ -1117,23 +1159,4 @@ h2.floatup {
 .frame.container.bg-white{
     min-height: 539px;
 
-}
-
-/*fix for jquery and bootstrap elements*/
-.ui-effects-wrapper .item {
-    width:auto;
-    height:auto;
-}
-
-hr.message-inner-separator
-{
-    clear: both;
-    margin-top: 10px;
-    margin-bottom: 13px;
-    border: 0;
-    height: 1px;
-    background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
-    background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-    background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-    background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 }

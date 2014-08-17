@@ -1,24 +1,24 @@
 $(function() {
 	$('.selectpicker').selectpicker({'selectedText': ''});
 	var pull = $('#pull');
-	var menu = $('nav ul');
+	var menu = $($('nav ul')[0]);
 
 	$(pull)
 		.on('click', function(e) {
 			e.preventDefault();
 			menu.slideToggle();
 		});
-});
+});/*
 $(window)
 	.resize(function() {
-		var menu = $('nav ul');
+		var menu = $($('nav ul')[0]);
 		var w = $(window)
 			.width();
 		if (w > 320 && menu.is(':hidden')) {
 			menu.removeAttr('style');
 		}
 	});
-/*
+
 $(document)
 	.ready(function() {
 
