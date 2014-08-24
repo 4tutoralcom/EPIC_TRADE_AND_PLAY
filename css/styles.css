@@ -887,7 +887,7 @@ nav {
 	.next, .prev, .quote-next, .quote-prev {
 		color: #fff;
 		position: absolute;
-		top: 50%;
+		top: 32%;
 		z-index: 1;
 		margin-top: -.75em;
 		user-select: none;
@@ -930,9 +930,11 @@ figcaption {
 
 .quote-container {
 	background-color: #860808;
-	padding: 10px 0px;
  
 	margin-top: 1em;
+	position: relative;
+	top: -15px;
+	margin-bottom: -15px;
 }
 
 .quote-slideshow {height: auto;}
@@ -961,7 +963,7 @@ figcaption {
 
 footer {
 	background-color: #EEE;
-	padding: 36px 0 36px 0;
+	padding: 0px 0 36px 0;
 	color: #454e51;
  
 	border-top: solid 1px #A8AEB1;
@@ -1159,4 +1161,46 @@ h2.floatup {
 .frame.container.bg-white{
     min-height: 539px;
 
+}
+.dropdown-menu .divider:last-child {
+    margin: 9px 0px 0px 0px;
+}
+.nentendo{
+	border: #D20014 5px solid;
+	width: 100%;
+	border-radius: 22px;
+	background-color:#FFF;
+	color:#D20014;
+}
+.coverArtContainer div:last-child.nentendo{
+	border-bottom: #D20014 5px solid;
+	
+}
+.coverArtContainer img{
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom: 0px;
+	
+}
+.coverArtContainer div{
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom: 0px;
+}
+.coverArtContainer div:last-child {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top: 0px;
+    border-bottom-left-radius: 22px;  
+    border-bottom-right-radius: 22px;  
+    
+	padding: 10px;
+}
+#title{
+	font-size:1.3em;
+	font-weight:900;
+	
 }

@@ -87,3 +87,40 @@ color: #680000;
         text-align: right;
  	}		
 }
+
+table#feedback {
+    width: 90%;
+	margin:20px auto 0px;
+}
+
+table#feedback tr {
+	background: none!important;
+	color:#FFF;
+	height:46px;
+}
+
+table#feedback td.third {
+    width: 100px;
+	margin:auto;
+}
+
+table#feedback tr:nth-child(even) td{
+	vertical-align: top!important;
+}
+table#feedback tr a{
+	color: #3a87ad;
+	font-style: oblique;
+}
+
+table#feedback tr td.third{
+	color: #BBB;
+}
+
+table#feedback tr td.first img{
+	display:none;
+}
+
+
+table#feedback tr:first-child {
+display:none;
+}

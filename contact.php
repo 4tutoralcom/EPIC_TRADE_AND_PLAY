@@ -2,10 +2,9 @@
 require 'includes\part\header.php';
 require_once('includes/template.php');
 ?>	
-<div class="container bg-white" id="Shop">
+<div class="container bg-white main-content" id="Shop">
 		<div class="group" id="Contact">
 			<h1 id="tittle">Contact Us</h1>
-			<button data-toggle="fade" frame-target="#Shop" group-target="#Repair" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
 			<p>
 				<div class="panel-group" id="contact_us">
 				  <div class="panel panel-default">
@@ -22,7 +21,7 @@ require_once('includes/template.php');
 							Contact us by phone.
 						</div>
 						<div class="col-sm-4">
-							<h2><a href="tel:555-555-5555">#555-555-5555</a></h2>
+							<h2><a href="tel:<?php print($phone) ?>">#<?php print($phone) ?></a></h2>
 						</div>
 					  </div>
 					</div>

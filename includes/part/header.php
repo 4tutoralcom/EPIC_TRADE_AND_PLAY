@@ -2,6 +2,7 @@
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
 sec_session_start();
+$phone="314-293-2727";
 $loggedOut = !login_check($mysqli);
 $RequestType="";
 ?>
@@ -13,7 +14,7 @@ $RequestType="";
 	<meta name="author" content="Serhioromano">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>Infusion WP Theme</title>
+		<title></title>
 				<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 		<link rel="stylesheet" href="css/styles.css">
@@ -50,14 +51,16 @@ $RequestType="";
 				<div class="logo-dec">Game &#8901; Trade &#8901; Repair</div>
 			</div>
 			</a>
-			<?php //If The user is logged in include modal.
+			<?php if(false) :?> 
+			<?php//If The user is logged in include modal.
 			if ($loggedOut)
-				require 'includes\part\modal.php';
-			?>
-
+				require 'includes\part\modal.php';?>
+			<?php endif;?>
+			
 			<nav class="clearfix">
 				<ul>
-					<?php if($loggedOut) : ?>
+			<?php if(false) :?>
+					<?php if($loggedOut) :?>
 						<li><a data-toggle="modal" data-target="#ModalSignIn" class="inline hidden-lg hidden-md signin-button">Sign In</a></li>
 					<?php else:?>
 						<li>
@@ -74,19 +77,23 @@ $RequestType="";
 									<li><a href="#"><span class="glyphicon glyphicon-heart pull-right"></span>Purchase History</a></li>
 									<li class="divider"></li>
 									<li><a href="includes/logout.php"><span class="glyphicon glyphicon-log-out pull-right"></span>Sign Out</a></li>
+									<li class="divider"></li>
 								</ul>
 								</li>
 							</ul>
 						</li>
 					<?php endif;?>
+			<?php endif;?>
 					<li><a href="/game.php">Game</a></li>
 					<li><a href="/trade.php">Trade</a></li>
 					<li><a href="/repairs.php">Repair</a></li>
-					<li><div class="contact_us"><a href="contact.php" class="last">Contact Us</a></div><div>314-640-9071</div></li>
+					<li><div class="contact_us"><a href="contact.php" class="last">Contact Us</a></div><div><?php print($phone) ?></div></li>
 				</ul>
 			</nav>
+			<?php if(false) :?>
 			<div class="hidden-xs hidden-sm signinContainer">
 				<div class="signin">
+				
 					<?php if($loggedOut) : ?>
 						<ul class="nav navbar-nav user-nav">
 							<li class="dropdown">
@@ -113,7 +120,9 @@ $RequestType="";
 					<?php endif; ?>
 				</div>
 			</div>
+			<?php endif;?>
 			<div class="pullcontainer">
 				<a href="#" id="pull"><i class="fa fa-bars fa-2x"></i></a>
 			</div>
+			
 		</header>

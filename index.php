@@ -106,6 +106,7 @@
 				</div>
 			</div>
 		</div>
+		<!--
 		<div class="container h2-wrap ">
 			<div class="container">
 				<div class="row ">
@@ -190,7 +191,7 @@
 					</a>
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<?php
 		require 'includes\part\footer.php';
 		?>

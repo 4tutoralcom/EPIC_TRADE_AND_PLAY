@@ -18,11 +18,10 @@ elseif($key=="error")
 ?>
 <?php
 echo "404";
-//include '';
 die();
 	}
 }
 ?>
-<h1><?php echo $GameTitle ?><h1>
-<h2><?php echo $Platform ?><h2>
-<img src="<?php echo $image["boxart"]["front"]?>"></img>
+<h1><?php echo $GameTitle ?></h1>
+<h2><?php echo $Platform ?></h2>
+<img src="<?php echo 'http://localhost/test.php?src='.urlencode($image["boxart"]["front"]).'&type='.urlencode($Platform)?>"></img>

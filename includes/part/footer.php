@@ -1,31 +1,22 @@
-		<div class="quote-container">
+	
+<footer>
+	<div class="quote-container">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-10 col-md-offset-1">
-							<div class="quote-slideshow">
-								<figure class="show">
-									<h2>Nam mi enim, auctor non ultricies a, fringilla eu risus. Praesent vitae lorem et elit tincidunt accumsan suscipit eu libero. </h2>
-									<figcaption>
-										Nam mi enim, auctor non ultricies.
-									</figcaption>
-								</figure>
-								<figure>
-									<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa.</h2>
-									<figcaption>
-										Nam mi enim, auctor.
-									</figcaption>
-								</figure>
-							</div>
+						<div class="quote-slideshow">							
+							<div id="auction-nudge-feedback" class="auction-nudge"><a href="http://www.auctionnudge.com/your-ebay-feedback">Auction Nudge eBay Feedback Loading ...</a></div>
 						</div>
 						<span class="quote-prev circle"><i class="fa fa-angle-left fa-2x"></i></span>
 						<span class="quote-next circle"><i class="fa fa-angle-right fa-2x"></i></span>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="shadow"></div>
-		<footer>
+		
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-3">
@@ -54,12 +45,14 @@
 				</div>
 			</div>
 		</footer>
+		
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
 		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="/includes/auctionudge.php"></script>
 		<script src="js/scripts.js"></script>
 		
 		<script type="text/JavaScript" src="js/labelFloat.js"></script>
@@ -107,15 +100,7 @@
 	});
 
 </script>
-<style>
-
-	body {
-		margin: 0;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-		
+<style>		
 	#loading {
 		display: none;
 		position: absolute;
