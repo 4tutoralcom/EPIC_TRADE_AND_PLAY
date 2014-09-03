@@ -7,7 +7,6 @@
 		}
 	}else
 		$src="notfound.jpg";
-
 	$new_src=md5($src);
 	$source_image = imagecreatefromjpeg($src);
 	$source_imagex = imagesx($source_image);
@@ -18,8 +17,8 @@
 		$w=600;
 		$h=440;
 	}elseif($type=="Sony Playstation 2"){
-		$w=600;
-		$h=440;
+		$w=357;
+		$h=484;
 	}
 	
 	$dest_imagex = $w;
@@ -28,7 +27,7 @@
 
 	imagecopyresampled($dest_image, $source_image, 0, 0, 0, 0, $dest_imagex, 
 				$dest_imagey, $source_imagex, $source_imagey);
-
+	
 	header("Content-Type: image/jpeg");
 	imagejpeg($dest_image,NULL,80);
 	imagedestroy($dest_image);

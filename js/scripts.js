@@ -9,7 +9,7 @@ $(function() {
 			menu.slideToggle();
 		});
 });
-/*
+
 $(window)
 	.resize(function() {
 		var menu = $($('nav ul')[0]);
@@ -19,7 +19,7 @@ $(window)
 			menu.removeAttr('style');
 		}
 	});
-*/	
+
 $(document)
 	.ready(function() {
 		
@@ -223,6 +223,38 @@ $(window)
 						$(target)
 							.Search(text)
 					}
+				}
+				if(toggle.indexOf("loadGamesFromJson") >= 0){
+					$("#products .column").remove()
+					var frame = $(this)
+						.find("option:selected")
+						.attr("frame-target");
+					var group = $(this)
+						.find("option:selected")
+						.attr("group-target");
+					var file="\\includes\\temp\\consoles\\";
+					file+=group+".json";
+					$.getJSON( file, function( data ) {
+					  var items = {};
+					  $.each( data, function( k, v ) {
+						$.each( v, function( key, val ) {
+							items[key] = val;
+						});
+
+						var game='<div class="item col-xs-12 col-sm-6 col-md-4 col-lg-3 column">';
+						game+='<img src="'+items["image"]+'" class="img-responsive productpicture">';
+						game+='<div class="producttitle">'+items["product-name"]+'</div>';
+						game+='<div class="productprice">';
+						game+='<div>';
+						game+='<button data-toggle="fade" data-target="#Repair .row.list-group" data-value="'+items["uid"]+'" frame-target="#Shop" group-target="#Repair" class="btn btn-block btn-danger btn-sm" role="button">Check For Repairs</button></div>';
+						game+='</div>';
+						game+='</div>';
+						$( game).appendTo( "#products" );
+						items = [];
+					  });
+					 
+					  
+					});
 				}
 			});
 		//}).change();

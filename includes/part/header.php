@@ -84,7 +84,6 @@ $RequestType="";
 						</li>
 					<?php endif;?>
 			<?php endif;?>
-					<li><a href="/game.php">Game</a></li>
 					<li><a href="/trade.php">Trade</a></li>
 					<li><a href="/repairs.php">Repair</a></li>
 					<li><div class="contact_us"><a href="contact.php" class="last">Contact Us</a></div><div><?php print($phone) ?></div></li>

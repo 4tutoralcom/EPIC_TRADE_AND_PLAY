@@ -22,7 +22,8 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 
 
 
-?>	<div class="frame  container bg-white" id="Shop">
+?>
+	<div class="frame container bg-white" id="Shop">
 		<div class="group current" id="Search">
 			<h1 id="tittle">Select Device</h1>
 			<div class="row">
@@ -292,8 +293,9 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 					  </div>
 					</div>
 				  </div>
-				</div>
+				
 				<?php endif; ?>
+				</div>
 			</p>
 		</div>
 	</div>

@@ -31,7 +31,7 @@
 		<div class="container text-inter">
 			<div class=" bg-white">
 				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-xs-12">
 						<div class="ca-hover">
 							<div class="carousel-img">
 								<img src="img/c01.jpg" alt="Carousel Img">
@@ -39,13 +39,13 @@
 							<div class="carousel-avatar av1">
 							</div>
 							<div class="carousel-content">
-								<h3>Lorem ipsum dolor sit amet consectetur</h3>
+								<h3></h3>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa.</p>
 							</div>
 							<div class="overlay"></div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-xs-12">
 						<div class="ca-hover">
 							<div class="carousel-img">
 								<img src="img/c02.jpg" alt="Carousel Img">
@@ -59,26 +59,12 @@
 							<div class="overlay"></div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-xs-12">
 						<div class="ca-hover">
 							<div class="carousel-img">
 								<img src="img/c03.jpg" alt="Carousel Img">
 							</div>
 							<div class="carousel-avatar av3">
-							</div>
-							<div class="carousel-content">
-								<h3>Lorem ipsum dolor sit amet consectetur</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa.</p>
-							</div>
-							<div class="overlay"></div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="ca-hover">
-							<div class="carousel-img">
-								<img src="img/c04.jpg" alt="Carousel Img">
-							</div>
-							<div class="carousel-avatar av4">
 							</div>
 							<div class="carousel-content">
 								<h3>Lorem ipsum dolor sit amet consectetur</h3>

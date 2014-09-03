@@ -1,56 +1,44 @@
 [  
-   {  
-      "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone",
-      "producttitle":"iPhone",
-	  "company":"Apple",
-      "type":"Phone",
-	  "repair":[
-		  {
-			  "name":"Glass and LCD Replacement",
-			  "productprice":"$?",
-			  "image":"http://placehold.it/460x250/0040ff/eeeeee&text=text",
-			  "description":"Simple procedure to Replace the Glass. It will take at most 2 hours."
-		  },
-		  {
-			  "name":"Charger Replacement",
-			  "productprice":"$12",
-			  "description":"?<br>?<br>"
-		  }
-	  ]
-   },{  
-      "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone 3G",
-      "producttitle":"iPhone 3G",
-	  "company":"Apple",
-      "type":"Phone",
-      "productprice":"0",
-	  "repair":[
-		  {"name":"Glass Screen Replacement","productprice":"0","description":""},
-		  {"name":"Charger Replacement","productprice":"0","description":""}
-	  ]
-   },{   
+{   
       "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone 4",
       "producttitle":"iPhone 4",
 	  "company":"Apple",
       "type":"Phone",
-      "productprice":"0"
+      "productprice":"0",
+	  "repair":[
+		  {"name":"Glass Screen Replacement","productprice":"59.99","description":""},
+		  {"name":"Charger Replacement","productprice":"$39.99","description":""}
+	  ]
    },{  
       "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone 4S",
       "producttitle":"iPhone 4S",
 	  "company":"Apple",
       "type":"Phone",
-      "productprice":"0"
+      "productprice":"0",
+	  "repair":[
+		  {"name":"Glass Screen Replacement","productprice":"59.99","description":""},
+		  {"name":"Charger Replacement","productprice":"$39.99","description":""}
+	  ]
    },{  
       "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone 5",
       "producttitle":"iPhone 5",
 	  "company":"Apple",
       "type":"Phone",
-      "productprice":"0"
+      "productprice":"0",
+	  "repair":[
+		  {"name":"Glass Screen Replacement","productprice":"59.99","description":""},
+		  {"name":"Charger Replacement","productprice":"0","description":""}
+	  ]
    },{  
       "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone 5C",
       "producttitle":"iPhone 5C",
 	  "company":"Apple",
       "type":"Phone",
-      "productprice":"0"
+      "productprice":"0",
+	  "repair":[
+		  {"name":"Glass Screen Replacement","productprice":"59.99","description":""},
+		  {"name":"Charger Replacement","productprice":"0","description":""}
+	  ]
    },{   
       "image":"http://placehold.it/460x250/0040ff/eeeeee&text=iPhone 5S",
       "producttitle":"iPhone 5S",

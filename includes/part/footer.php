@@ -35,7 +35,7 @@
 					</div>
 					<div class="col-sm-4 col-md-2">
 						<ul class="footer-links">
-							<li><a href="#">List One</a></li>
+							<li><a href="/scheduled.php">Scheduled</a></li>
 							<li><a href="#">Page Two</a></li>
 							<li><a href="#">Design</a></li>
 							<li><a href="#">Work</a></li>

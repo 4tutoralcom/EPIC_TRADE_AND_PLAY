@@ -1,4 +1,17 @@
 <?php
+function detectEquivelentName($name, $GameTitle, $GameFound){
+	if(!$GameFound){
+	$correctEdition=((strpos("edition",$name)===-1 ) ? strpos("Edition",$GameTitle) : true);
+		
+		if(strpos($name,strtoLower($GameTitle))===0){
+		$nameHasE=strpos($name,'edition');
+		$gameHasE=strpos($GameTitle,'edition');
+		if($gameHasE===$nameHasE)
+			return true;
+		}
+	}
+	return false;
+}
 function toPrice($value){
 	$pos=-2;
 	$valuedolar = substr($value, 0,-2);
@@ -8,15 +21,15 @@ function toPrice($value){
 }
 //HEADER JSON
 //--Search Variables
-//url To convert upc to a game name
-$upcToNameURL="https://ae.pricecharting.com/api/product?t=%1&upc=%2";//used to convert The name to an gameDB.net id;
+//url To convert id to a game name
+$idToNameURL="https://ae.pricecharting.com/api/product?t=%1&id=%2";//used to convert The name to an gameDB.net id;
 $NameToIdURL="http://thegamesdb.net/api/GetGamesList.php?name=%1&platform=%2";
 //used to convert gameDB.net id to Picture URL Information.
 $IdToImage="http://thegamesdb.net/api/GetArt.php?id=%1";
 // Your Unique Identifier for pricecharting.com
 $uid="bc61a3b01cee207a8a1c85a42c57e7b9bcc71dfe";
-//upc Obtained by GET error is thrown if this is -1
-$upc = isset($_GET['upc']) ? (string)$_GET['upc'] : -1;
+//id Obtained by GET error is thrown if this is -1
+$id = isset($_GET['id']) ? (string)$_GET['id'] : -1;
 //GameTitle
 $GameTitle="";
 //ID of the game based on GameDB.net information;
@@ -27,16 +40,16 @@ $pictureURL= array();
 $GameFound=False;
 //The Output Array
 $JSON_Array = array();
-//replace%1 with the Unique Identifier  and %2 with upc of the game
-$upcToNameURL=str_replace("%1",$uid,$upcToNameURL);
-$upcToNameURL=str_replace("%2",$upc,$upcToNameURL);
+//replace%1 with the Unique Identifier  and %2 with id of the game
+$idToNameURL=str_replace("%1",$uid,$idToNameURL);
+$idToNameURL=str_replace("%2",$id,$idToNameURL);
 // get JSON file with "console-name","id", and "product-name";
-if($file = @file_get_contents($upcToNameURL)){
+if($file = @file_get_contents($idToNameURL)){
 $jsonIterator = new RecursiveIteratorIterator(
 	new RecursiveArrayIterator(json_decode($file, TRUE)),
 	RecursiveIteratorIterator::SELF_FIRST);
 }else{
-	$JSON_Array["error"]="UPC";
+	$JSON_Array["error"]="id";
 	echo json_encode($JSON_Array);
 	die();
 }
@@ -79,21 +92,27 @@ foreach ($jsonIterator as $key => $value) {
 //replace %1 with the [Game's Tittle] encoded to be safe for a URL and replace %2 with the [Platform Name]
 $NameToIdURL=str_replace("%2",$Platform,$NameToIdURL);
 $NameToIdURL=str_replace("%1",rawurlencode($GameTitle),$NameToIdURL);
-
-//print($NameToIdURL);
-
 //load XML form GameDB.net to the id of the game;
 $xml = new DOMDocument();
 $xml->load($NameToIdURL); // path of your XML file ,make sure path is correct
 $Games = $xml->getElementsByTagName( "Game" );
+$foundGame=[];
+$GameFound=false;
+$flag_found=false;
 foreach( $Games as $game){
-
 	$name=strtoLower($game->getElementsByTagName( "GameTitle" )->item(0)->nodeValue);
-	
 	if($name===strtoLower($GameTitle)){
-		$GameDataBaseId= (string)$game->getElementsByTagName( "id" )->item(0)->nodeValue;
-		$GameTitle = (string)$game->getElementsByTagName( "GameTitle" )->item(0)->nodeValue;
-		$GameFound=True;			
+		$GameFound=True;
+		$foundGame=$game;
+	}elseif (detectEquivelentName($name,strtoLower($GameTitle),$GameFound)){
+		$GameFound=True;
+		$foundGame=$game;
+	}
+}
+
+if($GameFound){
+		$GameDataBaseId= (string)$foundGame->getElementsByTagName( "id" )->item(0)->nodeValue;
+		$GameTitle = (string)$foundGame->getElementsByTagName( "GameTitle" )->item(0)->nodeValue;			
 		$JSON_Array['GameTitle'] = (string)$GameTitle;
 
 		$IdToImage=str_replace("%1",$GameDataBaseId,$IdToImage);
@@ -116,13 +135,8 @@ foreach( $Games as $game){
 				}
 			}
 		}
-	}
-}
-
-if($GameFound==False){
-
 }
 $JSON_Array["images"]=$pictureURL;
 header("Content-Type: application/json");
 echo json_encode($JSON_Array);
-?> 
+?>

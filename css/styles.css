@@ -1137,6 +1137,11 @@ h2.floatup {
 	-webkit-box-shadow: 0 8px 6px -6px  #999;
 	   -moz-box-shadow: 0 8px 6px -6px  #999;
 	        box-shadow: 0 8px 6px -6px #999;
+    min-height: 379px;
+}
+
+.ui-effects-wrapper .item{
+	width:100%!important;
 }
 
 .producttitle {
