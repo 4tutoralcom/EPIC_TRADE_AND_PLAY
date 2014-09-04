@@ -842,6 +842,12 @@ nav {
 		font-weight: 400 !important;
 	 }
 
+	.bg-white .standard-block {
+
+		color: #99D;
+	 }
+
+
 	.articles {overflow: hidden;}
 
 	.container-fluid {
@@ -1208,4 +1214,83 @@ h2.floatup {
 	font-size:1.3em;
 	font-weight:900;
 	
+}
+
+.post
+{
+    background-color: #FFF;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px 1px #F6F1F1;
+}
+.post img.blur
+{
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+}
+.post .content
+{
+    padding: 15px;
+	margin-top:-40px;
+}
+@media (min-width: 690px) {
+.post .content
+{
+	margin-top:0px;
+}
+}
+.post .price
+{
+    font-size: 12px;
+    color: #737373;
+    text-align: center;
+}
+.post .price h3{
+	margin: -5px;
+	margin-bottom:0px;
+	font-size: 1.38em;
+	color: #ec971f;
+}
+.post .price b{
+	margin-bottom:10px;
+	font-size: 1.2em;
+	color: #F0AD4E;
+}
+.post .post-img-content
+{
+    height: 196px;
+    position: relative;
+}
+.post .post-img-content img
+{
+    position: absolute;
+}
+.post .post-title
+{
+    display: table-cell;
+    vertical-align: bottom;
+    z-index: 2;
+    position: relative;
+}
+.post .post-title b
+{
+    background-color: rgba(193, 193, 193, 0.2);
+    display: inline-block;
+    color: #FFF;
+    padding: 4px 8px;
+    margin: 5px;
+    box-shadow: 1px 1px rgba(193, 193, 193, 0.2);
+    font-size: 1.34em;
+}
+.btn-price {
+    padding: 4px;
+    font-size: 1.5em;
+    background-color: #f0ad4e;
+	color: #fff;
+}
+.btn-price:hover{
+    background-color: #ec971f;
+	color: #fff;
 }

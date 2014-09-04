@@ -232,8 +232,8 @@ $(window)
 					var group = $(this)
 						.find("option:selected")
 						.attr("group-target");
-					var file="\\includes\\temp\\consoles\\";
-					file+=group+".json";
+					var file="\\includes\\temp\\consoles.php?console-name=";
+					file+=group;
 					$.getJSON( file, function( data ) {
 					  var items = {};
 					  $.each( data, function( k, v ) {
