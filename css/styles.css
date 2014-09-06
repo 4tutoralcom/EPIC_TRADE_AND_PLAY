@@ -1166,8 +1166,8 @@ h2.floatup {
 }
 .productpicture{
 	cursor: pointer; 
-	width:100%;
-	height:auto;
+	/* width: auto; */
+	height: 300px;
 }
 .frame.container.bg-white{
     min-height: 539px;
@@ -1246,6 +1246,7 @@ h2.floatup {
     font-size: 12px;
     color: #737373;
     text-align: center;
+    margin-bottom: 0.25em;
 }
 .post .price h3{
 	margin: -5px;
@@ -1262,6 +1263,7 @@ h2.floatup {
 {
     height: 196px;
     position: relative;
+    background: #680808;
 }
 .post .post-img-content img
 {
@@ -1276,21 +1278,21 @@ h2.floatup {
 }
 .post .post-title b
 {
-    background-color: rgba(193, 193, 193, 0.2);
+    background-color: rgba(104, 8, 8, 0.15);
     display: inline-block;
-    color: #FFF;
+    color: #ec971f;
     padding: 4px 8px;
     margin: 5px;
-    box-shadow: 1px 1px rgba(193, 193, 193, 0.2);
+    /* box-shadow: 1px 1px rgba(193, 193, 193, 0.2); */
     font-size: 1.34em;
 }
 .btn-price {
     padding: 4px;
     font-size: 1.5em;
-    background-color: #f0ad4e;
+    background-color: #BB1111;
 	color: #fff;
 }
 .btn-price:hover{
-    background-color: #ec971f;
+    background-color: #860808;
 	color: #fff;
 }

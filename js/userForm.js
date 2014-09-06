@@ -103,11 +103,16 @@ $( document ).ready( function(){
 			messageBox.addClass("alert-danger");
 			paragraph.html("You need to enter in your Name.");
 			title.html("No Name!")
-		}else if($("#ContactUs #message").val()==""){
+		}else if($("#ContactUs #message").val()=="" && $("#ContactUs #type").val()==undefined){
 			icon.addClass("glyphicon-hand-right");
 			messageBox.addClass("alert-danger");
 			paragraph.html("You need to enter in your message.");
 			title.html("No Message!")
+		}else if($("#ContactUs #phone").val()==""){
+			icon.addClass("glyphicon-hand-right");
+			messageBox.addClass("alert-danger");
+			paragraph.html("You need to enter in your phone number For us to contact you.");
+			title.html("No Phone!")
 		}else{
 			error=false;
 		}
@@ -117,7 +122,7 @@ $( document ).ready( function(){
 			data,
 			function(info) {
 				if(info=="Success")
-					location.reload();
+					 location.replace("/contact.php");
 			});
 		}
 	});

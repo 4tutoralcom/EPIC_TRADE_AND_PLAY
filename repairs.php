@@ -12,20 +12,38 @@ require 'includes\part\header.php';
 	</div>
 <div class="container bg-white">
     <div class="row">
-        <div class="col-xs-6 col-md-4">
+        <div class="repair col-xs-6 col-md-4">
             <div class="post">
                 <div class="post-img-content">
-                    <img src="http://placehold.it/460x250/e67e22/ffffff&text=Iphone 4" class="img-responsive" />
+                    <img src="img\repair\iphone4.png" class="img-responsive" />
                     <span class="post-title"><b>Apple Iphone 4</b></span>
                 </div>
                 <div class="content">
                     <div class="price col-md-7">
 						<h3>Screen Screen Repair</h3>
-						<a href="" class="btn btn-block btn-price btn-default btn-sm">$54.99</a>
+						<a href="/contact.php?sub=Repair&umsg=I4_Screen" class="btn btn-block btn-price btn-default btn-sm">$54.99</a>
                     </div>
 					<div class="price col-md-5">
 						<h3>Charger Repair</h3>
-						<a href="" class="btn btn-block btn-price btn-default btn-sm">$39.99</a>
+						<a href="/contact.php?sub=Repair&umsg=I4_Charger" class="btn btn-block btn-price btn-default btn-sm">$39.99</a>
+					</div>
+                </div>
+            </div>
+        </div>
+		<div class="repair col-xs-6 col-md-4">
+            <div class="post">
+                <div class="post-img-content">
+                    <img src="http://placehold.it/460x250/860808/ffffff&text=Iphone 4s" class="img-responsive" />
+                    <span class="post-title"><b>Apple Iphone 4s</b></span>
+                </div>
+                <div class="content">
+                    <div class="price col-md-7">
+						<h3>Screen Screen Repair</h3>
+						<a href="/contact.php?sub=Repair&umsg=I4s_Screen" class="btn btn-block btn-price btn-default btn-sm">$59.99</a>
+                    </div>
+					<div class="price col-md-5">
+						<h3>Charger Repair</h3>
+						<a href="/contact.php?sub=Repair&umsg=I4s_Charger" class="btn btn-block btn-price btn-default btn-sm">$39.99</a>
 					</div>
                     <div>
                         
@@ -33,20 +51,20 @@ require 'includes\part\header.php';
                 </div>
             </div>
         </div>
-		        <div class="col-xs-6 col-md-4">
+		<div class="repair col-xs-6 col-md-4">
             <div class="post">
                 <div class="post-img-content">
-                    <img src="http://placehold.it/460x250/e67e22/ffffff&text=Iphone 4" class="img-responsive" />
-                    <span class="post-title"><b>Apple Iphone 4</b></span>
+                    <img src="http://placehold.it/460x250/860808/ffffff&text=Iphone 5" class="img-responsive" />
+                    <span class="post-title"><b>Apple Iphone 5</b></span>
                 </div>
                 <div class="content">
                     <div class="price col-md-7">
 						<h3>Screen Screen Repair</h3>
-						<a href="" class="btn btn-block btn-price btn-default btn-sm">$54.99</a>
+						<a href="/contact.php?sub=Repair&umsg=I5_Screen" class="btn btn-block btn-price btn-default btn-sm">$99.99</a>
                     </div>
 					<div class="price col-md-5">
 						<h3>Charger Repair</h3>
-						<a href="" class="btn btn-block btn-price btn-default btn-sm">$39.99</a>
+						<a href="/contact.php?sub=Repair&umsg=I5_Charger" class="btn btn-block btn-price btn-default btn-sm">$59.99</a>
 					</div>
                     <div>
                         
@@ -54,21 +72,59 @@ require 'includes\part\header.php';
                 </div>
             </div>
         </div>
-		        <div class="col-xs-6 col-md-4">
+		<div class="repair col-xs-6 col-md-4">
             <div class="post">
                 <div class="post-img-content">
-                    <img src="http://placehold.it/460x250/e67e22/ffffff&text=Iphone 4" class="img-responsive" />
-                    <span class="post-title"><b>Apple Iphone 4</b></span>
+                    <img src="http://placehold.it/460x250/860808/ffffff&text=Iphone 5c" class="img-responsive" />
+                    <span class="post-title"><b>Apple Iphone 5c</b></span>
                 </div>
                 <div class="content">
                     <div class="price col-md-7">
 						<h3>Screen Screen Repair</h3>
-						<a href="" class="btn btn-block btn-price btn-default btn-sm">$54.99</a>
+						<a href="/contact.php?sub=Repair&umsg=I5c_Screen" class="btn btn-block btn-price btn-default btn-sm">$109.99</a>
                     </div>
 					<div class="price col-md-5">
 						<h3>Charger Repair</h3>
-						<a href="" class="btn btn-block btn-price btn-default btn-sm">$39.99</a>
+						<a href="/contact.php?sub=Repair&umsg=I5c_Charger" class="btn btn-block btn-price btn-default btn-sm">$59.99</a>
 					</div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="repair col-xs-6 col-md-4">
+            <div class="post">
+                <div class="post-img-content">
+                    <img src="http://placehold.it/460x250/860808/ffffff&text=Iphone 5s" class="img-responsive" />
+                    <span class="post-title"><b>Apple Iphone 5s</b></span>
+                </div>
+                <div class="content">
+                    <div class="price col-md-7">
+						<h3>Screen Screen Repair</h3>
+						<a href="/contact.php?sub=Repair&umsg=I5s_Screen" class="btn btn-block btn-price btn-default btn-sm">$109.99</a>
+                    </div>
+					<div class="price col-md-5">
+						<h3>Charger Repair</h3>
+						<a href="/contact.php?sub=Repair&umsg=I5s_Charger" class="btn btn-block btn-price btn-default btn-sm">$59.99</a>
+					</div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="repair col-xs-6 col-md-4">
+            <div class="post">
+                <div class="post-img-content">
+                    <img src="http://placehold.it/460x250/860808/ffffff&text=Other" class="img-responsive" />
+                    <span class="post-title"><b>Other</b></span>
+                </div>
+                <div class="content">
+                    <div class="price col-md-12">
+						<h3>Repair Other</h3>
+						<a href="/contact.php?sub=Repair&umsg=Other_Other" class="btn btn-block btn-price btn-default btn-sm">Contact Us</a>
+                    </div>
                     <div>
                         
                     </div>
@@ -77,27 +133,6 @@ require 'includes\part\header.php';
         </div>
     </div>
 </div>
-
-	<div class="container  bg-white" id="Iphone">
-		<div class="col-md-12">
-			<h3 class="standard-block">Apple</h3>
-		</div>
-		<div class="col-md-12">
-		Prices For Screen Repair
-Iphone 4 : $54.99
-Iphone 4s : $59.99
-Iphone 5 : $99.99
-Iphone 5c : $109.99
-Iphone 5s : $109.99
-Prices For Charger Repair
-Iphone 4 : $39.99
-Iphone 4s : $39.99
-Iphone 5 : $59.99
-Iphone 5c : $59.99
-Iphone 5s : $59.99
-		</div>
-		
-	</div>
 		<?php
 		require 'includes\part\footer.php';
 		?>

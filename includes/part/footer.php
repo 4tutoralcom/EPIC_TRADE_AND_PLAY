@@ -39,7 +39,7 @@
 							<li><a href="#">Page Two</a></li>
 							<li><a href="#">Design</a></li>
 							<li><a href="#">Work</a></li>
-							<li><a href="#">Contact Me</a></li>
+							<li><a href="contact.php">Contact Us</a></li>
 						</ul>
 					</div>
 				</div>

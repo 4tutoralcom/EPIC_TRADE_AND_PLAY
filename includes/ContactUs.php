@@ -9,6 +9,9 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 	$subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
 	$message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+	$type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_STRING);
+	$phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
+	$message.="$type #$phone";
 	if (contactUs($name,$email,$subject,$message,$mysqli) == true) {
         // Login success
         echo "Success";
