@@ -1,3 +1,4 @@
+var page=0;
 $(function() {
 	$('.selectpicker').selectpicker({'selectedText': ''});
 	var pull = $('#pull');
@@ -225,6 +226,8 @@ $(window)
 					}
 				}
 				if(toggle.indexOf("loadGamesFromJson") >= 0){
+					page=location.hash.split("|");
+					page=(page.length==2)?parseInt(page[1]):1;
 					$("#products .column").remove()
 					var frame = $(this)
 						.find("option:selected")
@@ -232,8 +235,10 @@ $(window)
 					var group = $(this)
 						.find("option:selected")
 						.attr("group-target");
+					location.hash = "#" + group+"|"+page;
 					var file="\\includes\\temp\\consoles.php?console-name=";
 					file+=group;
+					file+="&p="+page;
 					$.getJSON( file, function( data ) {
 					  var items = {};
 					  $.each( data, function( k, v ) {
@@ -246,16 +251,31 @@ $(window)
 						game+='<div class="producttitle">'+items["product-name"]+'</div>';
 						game+='<div class="productprice">';
 						game+='<div>';
-						game+='<button data-toggle="fade" data-target="#Repair .row.list-group" data-value="'+items["uid"]+'" frame-target="#Shop" group-target="#Repair" class="btn btn-block btn-danger btn-sm" role="button">Check For Repairs</button></div>';
+						game+='<a href="http://localhost/trade.php?id='+items["id"]+'"class="btn btn-block btn-danger btn-sm">Sell This Game</a></div>';
 						game+='</div>';
 						game+='</div>';
 						$( game).appendTo( "#products" );
 						items = [];
 					  });
-					 
-					  
 					});
 				}
-			});
-		//}).change();
+				
+			//});
+		}).change();
 	});
+	
+	function locationHashChanged() {
+		var splitHash=location.hash.split("|");
+		cpage=(splitHash.length==2)?parseInt(splitHash[1]):1;
+		console_name=(splitHash.length==2)?splitHash[0].replace("#",""):"None";
+		
+		if(!($("select.selectpicker").val()==console_name)){
+			$("select.selectpicker").val(console_name).change();
+		}
+		if(page!=cpage){
+			$("select.selectpicker").val(console_name).change();
+		}
+}
+
+window.onhashchange = locationHashChanged;
+locationHashChanged();

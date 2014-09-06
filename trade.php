@@ -3,6 +3,7 @@ require 'includes\part\header.php';
 require_once('includes/template.php');
 
 $id = isset($_GET['id']) ? (string)$_GET['id'] : -1;
+
 $GameTitle="";
 $Platform="";
 $front_image="";
@@ -45,7 +46,7 @@ $tempType = new Template($typeTempplate);
 $groupTemplate='
 <div class="group" id="[Type]">
 	<select class="selectpicker">
-		<option selected="selected" data-toggle="setSearch" data-target="#products" data-value="[Type]">All</option>
+		<option data-toggle="setSearch" data-target="#products" data-value="[Type]">All</option>
 		[optionGroup]
 	</select>
 </div>';
@@ -76,7 +77,7 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 					<div class="col-md-6 col-xs-6 frame">
 						<div class="group current">
 							<select class="selectpicker">
-								<option selected="selected" data-toggle="fade setSearch" data-target="#products" data-value="" frame-target="#Second" group-target="">None</option>
+								<option selected data-toggle="fade setSearch" data-target="#products" data-value="" frame-target="#Second" group-target="">None</option>
 								<optgroup label="Type" data-subtext="" data-icon="icon-ok">
 									<?php
 										$tempSet=false;
@@ -91,7 +92,6 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 														$tempSet=true;
 													}
 												}elseif($tempSet){
-												echo("hi");
 													echo $tempType->output();
 													$tempType = new Template($typeTempplate);
 													$tempSet=false;
@@ -121,6 +121,7 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 									foreach ($itemsArray as &$name) {
 										$tempOption = new Template($optionTemplate);
 										$tempOption->setTag("name",$name);
+										
 										$items.=$tempOption->output();
 									}
 									$tempOptionGroup->setTag("items",$items);

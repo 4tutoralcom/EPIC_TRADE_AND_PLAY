@@ -1153,6 +1153,7 @@ h2.floatup {
 .producttitle {
     font-weight:bold;
 	padding:5px 0 5px 0;
+    height: 50px;
 }
 
 .productprice {
@@ -1166,8 +1167,9 @@ h2.floatup {
 }
 .productpicture{
 	cursor: pointer; 
-	/* width: auto; */
+	width: auto;
 	height: 300px;
+	margin: auto;
 }
 .frame.container.bg-white{
     min-height: 539px;
