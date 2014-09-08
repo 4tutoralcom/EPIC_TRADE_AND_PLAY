@@ -16,12 +16,16 @@ function getArt($id,$console, $GameTitle,&$Console_pic,&$curentConsoleName, &$gr
 	//echo(($curentConsoleName==$console)?count($Console_pic).",":"n");
 	if (($handle = fopen("pic/".$console."_pic.csv", "r")) !== FALSE && $curentConsoleName==$console && count($Console_pic)==0) {		
 		while (($data = fgetcsv($handle, 1000, ",")) !== False) {
-			array_push($Console_pic, array($data[0]=>$data[1]));
+			if(isset($data[1]))
+				array_push($Console_pic, array($data[0]=>$data[1]));
+			else
+				echo($data[0]);
 		}
 		fclose($handle);	
 	}
+	
 	if(isset($Console_pic[$id])){
-	echo("y");
+	//echo("y");
 		$imgUrl=$Console_pic[$id];
 		$found=($imgUrl!=="");
 	}else{
@@ -49,6 +53,7 @@ function getArt($id,$console, $GameTitle,&$Console_pic,&$curentConsoleName, &$gr
 		$title=str_replace("!","",$title);
 		$title=str_replace(",","",$title);
 		$title=str_replace(":","",$title);
+		$title=str_replace("#","%23",$title);
 		$url = "http://videogames.pricecharting.com/game/$cons/$title";
 		//echo($id."|".$url."\n");
 		//$html = file_get_html("http://nimishprabhu.com");
@@ -85,7 +90,7 @@ if (($handle = fopen("price-guide.csv", "r")) !== FALSE) {
 	$page-=1;
 	$page*=24;
 	$itemcounter=0;
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE && $itemcounter < ($page+25)) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 	//while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
 		
@@ -99,14 +104,19 @@ if (($handle = fopen("price-guide.csv", "r")) !== FALSE) {
 			}
 			
 			if($console_name==="" || $item["console-name"]==$console_name){
-				if($product_name==="" || strpos(strtolower($item["product-name"]),$product_name)){
-					if($itemcounter>$page){
+				if($product_name!==""){
+					$nin=strpos(strtolower($item["product-name"]),strtolower($product_name));
+					$nin=(false===$nin)?0:$nin+1;
+				}
+				if($product_name==="" || $nin>0){
+				if($itemcounter>=$page && $itemcounter < ($page+24)){
 						if(!isset($item["image"])){
 							$curentConsoleName=$item["console-name"];
 							$item["image"]=getArt($item["id"],$item["console-name"],$item["product-name"],$Console_pic,$curentConsoleName,$r);
 						}
-				
+						
 						array_push($JSON_Array,$item);
+						
 						//echo($item["id"].",".$item["product-name"].",".$item["console-name"].",".$itemcounter.">=".$page."\n");
 						
 					}
@@ -119,6 +129,6 @@ if (($handle = fopen("price-guide.csv", "r")) !== FALSE) {
 	
     fclose($handle);
 }
-
+array_unshift($JSON_Array,["pages"=>(($itemcounter-$itemcounter%24)/24)+(($itemcounter%24==0)?0:1)]);
 echo json_encode($JSON_Array);
 ?>

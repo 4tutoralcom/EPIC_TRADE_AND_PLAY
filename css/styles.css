@@ -769,11 +769,11 @@ nav {
  }
 
 .pagination {
-	border: 3px solid #c3c9ce;
-	border-radius: 10px;
-	display: inline-block;
+	/* border: 3px solid #c3c9ce; */
+	/* border-radius: 10px; */
+	/* display: inline-block; */
 	height: 15px;
-	width: 15px;
+	width: 100%;
 	margin-right: 4px;
 	cursor: pointer;
 	transition: 0.5s ease;
@@ -1297,4 +1297,11 @@ h2.floatup {
 .btn-price:hover{
     background-color: #860808;
 	color: #fff;
+}
+ul.pagination li a {
+    text-align: center;
+    width: 8.33333333%;
+}
+.gamesList{
+height: 2496px;
 }

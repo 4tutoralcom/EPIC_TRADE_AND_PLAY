@@ -132,20 +132,26 @@ $optionTemplate='<option data-toggle="setSearch" data-target="#products" data-va
 								echo $tempGroup->output();
 							}
 						?>
-						<div class="group" id="Text">
+						<div id="Text">
 								<div class="bs-float-label">
-									<label for="search" class="float-label">Search Text</label>
+									<label for="search" class="float-label">Search Name</label>
 									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-search"></i></span>
-										<input type="text" class="form-control float-input" name="search" id="search" placeholder="Search Text" autocomplete="off">
+										<span class="input-group-addon"><i class="fa fa-search" id="search button"></i></span>
+										<input type="text" class="form-control float-input" name="SearchName" id="SearchName" placeholder="Search Name" autocomplete="off">
 									</div>
 								</div>
 						</div>
 					</div>
 				</div>
-				<div id="products" class="row list-group" data-search-box="#search" data-search=".type, .producttitle">
+				<ul class="pagination">
+
+				</ul>
+				<div class="gamesList" id="products" class="row list-group">
 
 				</div>
+				<ul class="pagination">
+
+				</ul>
 			</div>
 		</div>
 		<?php endif?>

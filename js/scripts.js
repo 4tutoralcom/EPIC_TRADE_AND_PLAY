@@ -1,4 +1,5 @@
 var page=0;
+var console_name="";
 $(function() {
 	$('.selectpicker').selectpicker({'selectedText': ''});
 	var pull = $('#pull');
@@ -190,6 +191,10 @@ $(window)
 			});
 		$("select.selectpicker")
 			.change(function() {
+				
+					var splitHash=location.hash.split("|");
+					page=(splitHash.length==2)?parseInt(splitHash[1]):1;
+					console_name=(splitHash.length==2)?splitHash[0].replace("#",""):"None";
 				var toggle = $(this).find("option:selected").attr("data-toggle");
 
 				if (toggle.indexOf("fade") >= 0) {
@@ -228,7 +233,7 @@ $(window)
 				if(toggle.indexOf("loadGamesFromJson") >= 0){
 					page=location.hash.split("|");
 					page=(page.length==2)?parseInt(page[1]):1;
-					$("#products .column").remove()
+					
 					var frame = $(this)
 						.find("option:selected")
 						.attr("frame-target");
@@ -240,23 +245,63 @@ $(window)
 					file+=group;
 					file+="&p="+page;
 					$.getJSON( file, function( data ) {
-					  var items = {};
-					  $.each( data, function( k, v ) {
-						$.each( v, function( key, val ) {
-							items[key] = val;
+						$("#products .column").remove()
+						$(".pagination").children().remove();
+						var items = {};
+						var pages=0;
+						$.each( data, function( k, v ) {
+							$.each( v, function( key, val ) {
+								items[key] = val;
+							});
+							if(items["id"]){
+								var game='<div class="item col-xs-12 col-sm-6 col-md-4 col-lg-3 column">';
+								game+='<img src="'+items["image"]+'" class="img-responsive productpicture">';
+								game+='<div class="producttitle">'+items["product-name"]+'</div>';
+								game+='<div class="productprice">';
+								game+='<div>';
+								game+='<a href="http://localhost/trade.php?id='+items["id"]+'"class="btn btn-block btn-danger btn-sm">Sell This Game</a></div>';
+								game+='</div>';
+								game+='</div>';
+								$( game).appendTo( "#products" );
+								items = [];
+							}else{
+							
+								pages=parseInt(items["pages"]);
+								cpage=page;
+								if(pages>1){
+									previous=0;
+									pagesAfter=6;
+									if(cpage>3){
+										$(".pagination").append("<li><a href='trade.php#"+group+"|"+(cpage-1)+"'>&laquo;</a></li>");
+										$(".pagination").append("<li><a href='trade.php#"+group+"|1'>1</a></li>");
+										$(".pagination").append("<li><a href='trade.php#"+group+"|"+pages+"'>...</a></li>");
+									}else{
+										cpage=1;
+										pagesAfter+=3;
+									}
+									if(page<=pages && page >= pages-3)
+										pagesAfter++
+									if(page >= pages-3){
+										cpage=pages-3;
+									}
+									cpage=(cpage>=pages-5)?cpage-5:cpage;
+									for (i = cpage; i < (cpage+pagesAfter); i++) {
+										$(".pagination").append("<li><a href='trade.php#"+group+"|"+i+"'>"+i+"</a></li>")
+									}
+									if(page>=pages-3){
+										$(".pagination").append("<li><a href='trade.php#"+group+"|"+(pages-1)+"'>"+(pages-1)+"</a></li>");
+									}else
+										$(".pagination").append("<li><a href='trade.php#"+group+"|"+pages+"'>...</a></li>");
+									$(".pagination").append("<li><a href='trade.php#"+group+"|"+pages+"'>"+pages+"</a></li>");
+									
+									if(page < pages-3)
+										$(".pagination").append("<li><a href='trade.php#"+group+"|"+(page+1)+"'>&raquo;</a></li>");
+								}
+							}
 						});
-
-						var game='<div class="item col-xs-12 col-sm-6 col-md-4 col-lg-3 column">';
-						game+='<img src="'+items["image"]+'" class="img-responsive productpicture">';
-						game+='<div class="producttitle">'+items["product-name"]+'</div>';
-						game+='<div class="productprice">';
-						game+='<div>';
-						game+='<a href="http://localhost/trade.php?id='+items["id"]+'"class="btn btn-block btn-danger btn-sm">Sell This Game</a></div>';
-						game+='</div>';
-						game+='</div>';
-						$( game).appendTo( "#products" );
-						items = [];
-					  });
+						/*if(page<pages){
+							location.hash="#"+console_name+"|"+(page+1);
+						}*/
 					});
 				}
 				
@@ -265,15 +310,19 @@ $(window)
 	});
 	
 	function locationHashChanged() {
+		var curConsole_name=console_name;
 		var splitHash=location.hash.split("|");
-		cpage=(splitHash.length==2)?parseInt(splitHash[1]):1;
+		var cpage=(splitHash.length==2)?parseInt(splitHash[1]):1;
 		console_name=(splitHash.length==2)?splitHash[0].replace("#",""):"None";
 		
 		if(!($("select.selectpicker").val()==console_name)){
 			$("select.selectpicker").val(console_name).change();
+			
 		}
 		if(page!=cpage){
 			$("select.selectpicker").val(console_name).change();
+		}else{
+			location.hash = "#" + console_name+"|"+1;
 		}
 }
 
