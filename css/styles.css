@@ -1181,7 +1181,7 @@ h2.floatup {
 .nentendo{
 	border: #D20014 5px solid;
 	width: 100%;
-	border-radius: 22px;
+	/* border-radius: 22px; */
 	background-color:#FFF;
 	color:#D20014;
 }
@@ -1196,26 +1196,29 @@ h2.floatup {
 	
 }
 .coverArtContainer div{
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
+	/* border-top-left-radius: 0px; */
+	/* border-top-right-radius: 0px; */
 	border-top: 0px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
+	/* border-bottom-left-radius: 0px; */
+	/* border-bottom-right-radius: 0px; */
 	border-bottom: 0px;
 }
 .coverArtContainer div:last-child {
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	border-top: 0px;
-    border-bottom-left-radius: 22px;  
-    border-bottom-right-radius: 22px;  
+	/* border-top-left-radius: 0px; */
+	/* border-top-right-radius: 0px; */
+	/* border-top: 0px; */
     
-	padding: 10px;
+	/* border-bottom-left-radius: 22px; */  
+    
+	/* border-bottom-right-radius: 22px; */  
+    
+	padding: .6em;
 }
 #title{
 	font-size:1.3em;
 	font-weight:900;
 	
+	padding-left: .2em;
 }
 
 .post
