@@ -23,10 +23,10 @@
 8549,http://commondatastorage.googleapis.com/jjgames-static/images/12113.JPG
 9251,http://commondatastorage.googleapis.com/jjgames-static/images/12187.JPG
 8563,http://commondatastorage.googleapis.com/jjgames-static/images/12114.JPG
-20298,http://static.jjgames.com/images/noimage.jpg
-20299,http://static.jjgames.com/images/noimage.jpg
+20298,/images/notfound.jpg
+20299,/images/notfound.jpg
 8572,http://commondatastorage.googleapis.com/jjgames-static/images/12115.JPG
-20300,http://static.jjgames.com/images/noimage.jpg
+20300,/images/notfound.jpg
 8576,http://commondatastorage.googleapis.com/jjgames-static/images/12116.JPG
 9016,http://commondatastorage.googleapis.com/jjgames-static/images/12602.JPG
 8577,http://commondatastorage.googleapis.com/jjgames-static/images/12117.JPG
@@ -60,7 +60,7 @@
 8835,http://commondatastorage.googleapis.com/jjgames-static/images/12151.JPG
 8666,http://commondatastorage.googleapis.com/jjgames-static/images/12130.JPG
 13122,http://commondatastorage.googleapis.com/jjgames-static/images/12594.JPG
-31310,http://static.jjgames.com/images/noimage.jpg
+31310,/images/notfound.jpg
 8669,http://commondatastorage.googleapis.com/jjgames-static/images/12131.JPG
 8806,http://commondatastorage.googleapis.com/jjgames-static/images/12146.JPG
 9300,http://commondatastorage.googleapis.com/jjgames-static/images/12194.JPG
@@ -68,7 +68,7 @@
 8807,http://commondatastorage.googleapis.com/jjgames-static/images/12147.JPG
 18601,http://commondatastorage.googleapis.com/jjgames-static/images/27206.JPG
 13115,http://commondatastorage.googleapis.com/jjgames-static/images/12587.JPG
-34819,http://static.jjgames.com/images/noimage.jpg
+34819,/images/notfound.jpg
 9311,http://commondatastorage.googleapis.com/jjgames-static/images/12195.JPG
 8708,http://commondatastorage.googleapis.com/jjgames-static/images/12133.JPG
 8819,http://commondatastorage.googleapis.com/jjgames-static/images/12148.JPG
@@ -78,7 +78,7 @@
 9321,http://commondatastorage.googleapis.com/jjgames-static/images/12197.JPG
 8739,http://commondatastorage.googleapis.com/jjgames-static/images/12134.JPG
 14439,http://commondatastorage.googleapis.com/jjgames-static/images/12626.JPG
-31311,http://static.jjgames.com/images/noimage.jpg
+31311,/images/notfound.jpg
 13117,http://commondatastorage.googleapis.com/jjgames-static/images/12589.JPG
 8831,http://commondatastorage.googleapis.com/jjgames-static/images/12150.JPG
 9357,http://commondatastorage.googleapis.com/jjgames-static/images/12198.JPG
@@ -117,7 +117,7 @@
 9437,http://commondatastorage.googleapis.com/jjgames-static/images/12208.JPG
 9474,http://commondatastorage.googleapis.com/jjgames-static/images/12213.JPG
 15701,http://commondatastorage.googleapis.com/jjgames-static/images/12627.JPG
-19535,http://static.jjgames.com/images/noimage.jpg
+19535,/images/notfound.jpg
 9737,http://commondatastorage.googleapis.com/jjgames-static/images/12252.JPG
 9455,http://commondatastorage.googleapis.com/jjgames-static/images/12210.JPG
 9476,http://commondatastorage.googleapis.com/jjgames-static/images/12214.JPG
@@ -127,7 +127,7 @@
 10436,http://commondatastorage.googleapis.com/jjgames-static/images/12211.JPG
 9478,http://commondatastorage.googleapis.com/jjgames-static/images/12215.JPG
 9631,http://commondatastorage.googleapis.com/jjgames-static/images/12234.JPG
-18595,http://static.jjgames.com/images/noimage.jpg
+18595,/images/notfound.jpg
 9750,http://commondatastorage.googleapis.com/jjgames-static/images/12254.JPG
 10437,http://commondatastorage.googleapis.com/jjgames-static/images/12212.JPG
 9479,http://commondatastorage.googleapis.com/jjgames-static/images/12216.JPG
@@ -144,7 +144,7 @@
 8966,http://commondatastorage.googleapis.com/jjgames-static/images/12162.JPG
 13138,http://commondatastorage.googleapis.com/jjgames-static/images/12610.JPG
 10026,http://commondatastorage.googleapis.com/jjgames-static/images/12282.JPG
-18516,http://static.jjgames.com/images/noimage.jpg
+18516,/images/notfound.jpg
 9662,http://commondatastorage.googleapis.com/jjgames-static/images/12237.JPG
 8968,http://commondatastorage.googleapis.com/jjgames-static/images/12163.JPG
 9772,http://commondatastorage.googleapis.com/jjgames-static/images/12257.JPG
@@ -189,19 +189,19 @@
 13135,http://commondatastorage.googleapis.com/jjgames-static/images/12607.JPG
 13126,http://commondatastorage.googleapis.com/jjgames-static/images/12598.JPG
 13139,http://commondatastorage.googleapis.com/jjgames-static/images/12611.JPG
-31307,http://static.jjgames.com/images/noimage.jpg
+31307,/images/notfound.jpg
 13141,http://commondatastorage.googleapis.com/jjgames-static/images/12613.JPG
 9704,http://commondatastorage.googleapis.com/jjgames-static/images/12245.JPG
 9524,http://commondatastorage.googleapis.com/jjgames-static/images/12222.JPG
 13127,http://commondatastorage.googleapis.com/jjgames-static/images/12599.JPG
 9841,http://commondatastorage.googleapis.com/jjgames-static/images/12264.JPG
-31308,http://static.jjgames.com/images/noimage.jpg
+31308,/images/notfound.jpg
 10128,http://commondatastorage.googleapis.com/jjgames-static/images/12296.JPG
 9712,http://commondatastorage.googleapis.com/jjgames-static/images/12246.JPG
 9525,http://commondatastorage.googleapis.com/jjgames-static/images/12223.JPG
 9073,http://commondatastorage.googleapis.com/jjgames-static/images/12170.JPG
 9861,http://commondatastorage.googleapis.com/jjgames-static/images/12265.JPG
-31309,http://static.jjgames.com/images/noimage.jpg
+31309,/images/notfound.jpg
 13803,http://commondatastorage.googleapis.com/jjgames-static/images/12616.JPG
 13171,http://commondatastorage.googleapis.com/jjgames-static/images/12625.JPG
 9526,http://commondatastorage.googleapis.com/jjgames-static/images/12224.JPG
@@ -220,7 +220,7 @@
 9101,http://commondatastorage.googleapis.com/jjgames-static/images/12173.JPG
 16202,http://commondatastorage.googleapis.com/jjgames-static/images/12629.JPG
 10009,http://commondatastorage.googleapis.com/jjgames-static/images/12280.JPG
-19536,http://static.jjgames.com/images/noimage.jpg
+19536,/images/notfound.jpg
 9585,http://commondatastorage.googleapis.com/jjgames-static/images/12228.JPG
 9727,http://commondatastorage.googleapis.com/jjgames-static/images/12247.JPG
 9102,http://commondatastorage.googleapis.com/jjgames-static/images/12174.JPG
@@ -233,7 +233,7 @@
 16125,http://commondatastorage.googleapis.com/jjgames-static/images/12628.JPG
 10039,http://commondatastorage.googleapis.com/jjgames-static/images/12283.JPG
 10156,http://commondatastorage.googleapis.com/jjgames-static/images/12299.JPG
-19415,http://static.jjgames.com/images/noimage.jpg
+19415,/images/notfound.jpg
 9733,http://commondatastorage.googleapis.com/jjgames-static/images/12249.JPG
 9106,http://commondatastorage.googleapis.com/jjgames-static/images/12177.JPG
 9876,http://commondatastorage.googleapis.com/jjgames-static/images/12269.JPG
@@ -248,7 +248,7 @@
 9614,http://commondatastorage.googleapis.com/jjgames-static/images/12232.JPG
 9736,http://commondatastorage.googleapis.com/jjgames-static/images/12251.JPG
 9895,http://commondatastorage.googleapis.com/jjgames-static/images/12270.JPG
-31498,http://static.jjgames.com/images/noimage.jpg
+31498,/images/notfound.jpg
 10088,http://commondatastorage.googleapis.com/jjgames-static/images/12286.JPG
 13804,http://commondatastorage.googleapis.com/jjgames-static/images/12617.JPG
 10201,http://commondatastorage.googleapis.com/jjgames-static/images/12309.JPG
@@ -257,7 +257,7 @@
 10225,http://commondatastorage.googleapis.com/jjgames-static/images/12312.JPG
 13140,http://commondatastorage.googleapis.com/jjgames-static/images/12612.JPG
 10178,http://commondatastorage.googleapis.com/jjgames-static/images/12303.JPG
-31306,http://static.jjgames.com/images/noimage.jpg
+31306,/images/notfound.jpg
 10111,http://commondatastorage.googleapis.com/jjgames-static/images/12287.JPG
 10183,http://commondatastorage.googleapis.com/jjgames-static/images/12304.JPG
 10112,http://commondatastorage.googleapis.com/jjgames-static/images/12288.JPG
