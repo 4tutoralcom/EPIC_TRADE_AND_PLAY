@@ -268,34 +268,50 @@ $(window)
 							
 								pages=parseInt(items["pages"]);
 								cpage=page;
-								if(pages>1){
-									previous=0;
+								previous=0;
+								pagesAfter=pages;
+								var ext=1;
+								if(pages>12){
 									pagesAfter=6;
 									if(cpage>3){
-										$(".pagination").append("<li><a href='trade.php#"+group+"|"+(cpage-1)+"'>&laquo;</a></li>");
-										$(".pagination").append("<li><a href='trade.php#"+group+"|1'>1</a></li>");
-										$(".pagination").append("<li><a href='trade.php#"+group+"|"+pages+"'>...</a></li>");
+										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+(cpage-1)+"'>&laquo;</a></li>");
+										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|1'>1</a></li>");
+										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+pages+"'>...</a></li>");
 									}else{
 										cpage=1;
 										pagesAfter+=3;
 									}
+								
 									if(page<=pages && page >= pages-3)
 										pagesAfter++
+									
 									if(page >= pages-3){
 										cpage=pages-3;
 									}
 									cpage=(cpage>=pages-5)?cpage-5:cpage;
-									for (i = cpage; i < (cpage+pagesAfter); i++) {
-										$(".pagination").append("<li><a href='trade.php#"+group+"|"+i+"'>"+i+"</a></li>")
-									}
+								}
+								if(pages<12 && pages>6){
+									ext=((pages-(pages%12))/12);
+									var space= pages/6;
+									ext=(ext==0)?1:ext;
+									$(".pagination").append("<li class='col-xs-"+(12-pages)/2+"'></li>");
+								}
+								if(pages<=6){
+									ext=(ext==1)?((pages<=6)?Math.floor(12/pages):1):ext;
+								}
+								for (i = cpage; i < (cpage+pagesAfter); i++) {
+									$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+i+"'>"+i+"</a></li>")
+								}
+								
+								if(pages>12){
 									if(page>=pages-3){
-										$(".pagination").append("<li><a href='trade.php#"+group+"|"+(pages-1)+"'>"+(pages-1)+"</a></li>");
+										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+(pages-1)+"'>"+(pages-1)+"</a></li>");
 									}else
-										$(".pagination").append("<li><a href='trade.php#"+group+"|"+pages+"'>...</a></li>");
-									$(".pagination").append("<li><a href='trade.php#"+group+"|"+pages+"'>"+pages+"</a></li>");
+										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+pages+"'>...</a></li>");
+									$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+pages+"'>"+pages+"</a></li>");
 									
 									if(page < pages-3)
-										$(".pagination").append("<li><a href='trade.php#"+group+"|"+(page+1)+"'>&raquo;</a></li>");
+										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+(page+1)+"'>&raquo;</a></li>");
 								}
 							}
 						});

@@ -1300,7 +1300,7 @@ h2.floatup {
 }
 ul.pagination li a {
     text-align: center;
-    width: 8.33333333%;
+    /* width: 8.33333333%; */
 }
 .gamesList{
 height: 2496px;
