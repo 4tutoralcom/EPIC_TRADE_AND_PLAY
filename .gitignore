@@ -1,6 +1,6 @@
 *.bak
 #OS junk files
-[Tt]humbs.db
+*[Tt]humbs.db
 *.DS_Store
 
 *.ini
