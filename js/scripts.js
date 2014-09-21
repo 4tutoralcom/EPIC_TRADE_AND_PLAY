@@ -1,3 +1,4 @@
+var counter=0;
 var page=0;
 var console_name="";
 $(function() {
@@ -25,7 +26,7 @@ $(window)
 $(document)
 	.ready(function() {
 		
-		var counter = 0;
+		counter = 0;
 		load_auction_nudge_feedback();
 		
 		var showCurrent = function() {
@@ -255,11 +256,11 @@ $(window)
 							});
 							if(items["id"]){
 								var game='<div class="item col-xs-12 col-sm-6 col-md-4 col-lg-3 column">';
-								game+='<img src="'+items["image"]+'" class="img-responsive productpicture">';
+								game+='<a href="/trade.php?id='+items["id"]+'"><img src="'+items["image"]+'" class="img-responsive productpicture"></a>';
 								game+='<div class="producttitle">'+items["product-name"]+'</div>';
 								game+='<div class="productprice">';
 								game+='<div>';
-								game+='<a href="http://localhost/trade.php?id='+items["id"]+'"class="btn btn-block btn-danger btn-sm">Sell This Game</a></div>';
+								game+='<a href="trade.php?id='+items["id"]+'"class="btn btn-block btn-danger btn-sm">Sell This Game</a></div>';
 								game+='</div>';
 								game+='</div>';
 								$( game).appendTo( "#products" );
@@ -271,7 +272,7 @@ $(window)
 								previous=0;
 								pagesAfter=pages;
 								var ext=1;
-								if(pages>12){
+								if(pages>=12){
 									pagesAfter=6;
 									if(cpage>3){
 										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+(cpage-1)+"'>&laquo;</a></li>");
@@ -303,7 +304,7 @@ $(window)
 									$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+i+"'>"+i+"</a></li>")
 								}
 								
-								if(pages>12){
+								if(pages>=12){
 									if(page>=pages-3){
 										$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+(pages-1)+"'>"+(pages-1)+"</a></li>");
 									}else

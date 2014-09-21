@@ -15,7 +15,7 @@ require 'includes\part\header.php';
         <div class="repair col-xs-6 col-md-4">
             <div class="post">
                 <div class="post-img-content">
-                    <img src="img\repair\iphone4.png" class="img-responsive" />
+                    <img src="http://placehold.it/460x250/860808/ffffff&text=Iphone 4" class="img-responsive" />
                     <span class="post-title"><b>Apple Iphone 4</b></span>
                 </div>
                 <div class="content">

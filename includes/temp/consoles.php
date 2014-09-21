@@ -9,9 +9,11 @@ $CellOrder         = array();
 $JSON_Array        = array();
 $Console_pic       = array();
 $curentConsoleName = "";
-
+$current_date = gmDate("Y_m_d"); 
+	
 function getArt($id, $console, $GameTitle, &$Console_pic, &$curentConsoleName, &$grabFormWeb = 1)
 {
+	$imageList = "pic/" . $console . "_pic.csv";
     $found     = false;
     $idUrlPair = array();
     $imgUrl    = "";
@@ -35,7 +37,7 @@ function getArt($id, $console, $GameTitle, &$Console_pic, &$curentConsoleName, &
         $found  = ($imgUrl !== "");
     } else {
         $curentConsoleName = $console;
-        if (($handle = fopen("pic/" . $console . "_pic.csv", "r")) !== FALSE) {
+        if (($handle = fopen($imageList, "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== False) {
                 $item = array();
                 $num  = count($data);
@@ -70,7 +72,7 @@ function getArt($id, $console, $GameTitle, &$Console_pic, &$curentConsoleName, &
                 
                 $imgUrl = $img[0]->getAttribute("src");
                 
-                $fp = fopen("pic/" . $console . "_pic.csv", 'a');
+                $fp = fopen( $imageList, 'a');
                 fputcsv($fp, array(
                     $id,
                     $imgUrl
@@ -81,11 +83,47 @@ function getArt($id, $console, $GameTitle, &$Console_pic, &$curentConsoleName, &
             die($url);
         }
     }
+	/*
+	if($imgUrl!=="http://static.jjgames.com/images/noimage.jpg"){
+		$handle = curl_init($imgUrl);
+		curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+
+		$response = curl_exec($handle);
+
+		$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+		if($httpCode == 404) {
+			$str=file_get_contents($imageList);
+
+			$str=str_replace("$imgUrl", "images/notfound.jpg",$str);
+
+			file_put_contents($imageList, $str);
+			$imgUrl="images/notfound.jpg";
+		}
+		curl_close($handle);
+	}else{
+		$str=file_get_contents($imageList);
+
+		$str=str_replace("$imgUrl", "images/notfound.jpg",$str);
+		file_put_contents($imageList, $str);
+		$imgUrl="images/notfound.jpg";
+	}
+	*/
     return $imgUrl;
+	
 }
 set_time_limit(600);
 header("Content-Type: application/json");
-if (($handle = fopen("price-guide.csv", "r")) !== FALSE) {
+if (!file_exists("price-guide_$current_date.csv")) {
+	$text = file_get_contents("https://ae.pricecharting.com/price-guide/download-custom?t=bc61a3b01cee207a8a1c85a42c57e7b9bcc71dfe");
+	if ($text!="Unknown access token" && $text!="Access to this price guide has expired"){
+		//die();
+		array_map('unlink', glob( __DIR__."/price-guide_*.csv"));
+		file_put_contents("price-guide_$current_date.csv",$text);
+		
+	}
+}
+
+if (($handle = fopen("price-guide_$current_date.csv", "r")) !== FALSE) {
     if (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         //echo "<p> $num fields in line $row: <br /></p>\n";
@@ -111,36 +149,35 @@ if (($handle = fopen("price-guide.csv", "r")) !== FALSE) {
             $item[$CellOrder[$c]] = $data[$c];
             //echo $CellOrder[$c].":".$data[$c] . "<br />\n";
         }
-        
-        if ($console_name === "" || $item["console-name"] == $console_name) {
-            if ($product_name !== "" && $gameID==-1) {
-                $nin = strpos(strtolower($item["product-name"]), strtolower($product_name));
-                $nin = (false === $nin) ? 0 : $nin + 1;
-            }else if($product_name === "" && $gameID==$item["id"]){
-                    if (!isset($item["image"])) {
-                        $curentConsoleName = $item["console-name"];
-                        $item["image"]     = getArt($item["id"], $item["console-name"], $item["product-name"], $Console_pic, $curentConsoleName, $r);
-                    }
-					array_push($JSON_Array, $item);
+        if($item["genre"]!=="Controllers" && $item["genre"]!=="Systems" && $item["genre"]!=="Accessories"){
+			if ($console_name === "" || $item["console-name"] == $console_name) {
+				if ($product_name !== "" && $gameID==-1) {
+					$nin = strpos(strtolower($item["product-name"]), strtolower($product_name));
+					$nin = (false === $nin) ? 0 : $nin + 1;
+				}else if($product_name === "" && $gameID==$item["id"]){
+						if (!isset($item["image"])) {
+							$curentConsoleName = $item["console-name"];
+							$item["image"]     = getArt($item["id"], $item["console-name"], $item["product-name"], $Console_pic, $curentConsoleName, $r);
+						}
+						array_push($JSON_Array, $item);
+				}
+				if ($product_name === "" || $nin > 0) {
+					if ($itemcounter >= $page && $itemcounter < ($page + 24)) {
+						if (!isset($item["image"])) {
+							$curentConsoleName = $item["console-name"];
+							$item["image"]     = getArt($item["id"], $item["console-name"], $item["product-name"], $Console_pic, $curentConsoleName, $r);
+						}
+						
+						array_push($JSON_Array, $item);
+						
+						//echo($item["id"].",".$item["product-name"].",".$item["console-name"].",".$itemcounter.">=".$page."\n");
+						
+					}
+					$itemcounter++;
+				}
 			}
-			if ($product_name === "" || $nin > 0) {
-                if ($itemcounter >= $page && $itemcounter < ($page + 24)) {
-                    if (!isset($item["image"])) {
-                        $curentConsoleName = $item["console-name"];
-                        $item["image"]     = getArt($item["id"], $item["console-name"], $item["product-name"], $Console_pic, $curentConsoleName, $r);
-                    }
-                    
-                    array_push($JSON_Array, $item);
-                    
-                    //echo($item["id"].",".$item["product-name"].",".$item["console-name"].",".$itemcounter.">=".$page."\n");
-                    
-                }
-                $itemcounter++;
-            }
-        }
-        
-        
-    }
+		}
+	}
     
     fclose($handle);
 }

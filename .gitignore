@@ -7,3 +7,6 @@
 
 #downloads woops 
 *.exe
+#temp removed files
+*_rem_*
+*.rem*

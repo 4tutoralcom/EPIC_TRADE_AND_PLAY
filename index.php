@@ -67,8 +67,9 @@
 							<div class="carousel-avatar av3">
 							</div>
 							<div class="carousel-content">
-								<h3>Lorem ipsum dolor sit amet consectetur</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa.</p>
+								<h3>About Us</h3>
+								<p>Here at Epic Trading and Repair we specialize in iPhones and Samsung Galaxy repair. Anything from Screen to charge port on any phone. We also do console repairs on almost all consoles and almost any problem with the consoles. We accept video games and video game consoles from Atari on up for cash or in store credit. 
+								For pricing and any questions give us a call at <a href="tel:<?php print($phone) ?>">#<?php print($phone) ?></a>.</p>
 							</div>
 							<div class="overlay"></div>
 						</div>
@@ -79,15 +80,14 @@
 		<div class="container text-inter ">
 			<div class="container bg-white">
 				<div class="row">
-					<div class="col-md-6">
-						<h3>Lorem ipsum dolor sit amet consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed.</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa. Nullam condimentum mauris et rhoncus sagittis. Sed eu metus in diam tincidunt egestas non at odio. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+					<div class="col-md-4">
+						<h3>About Us</h3>
+						<p>Here at Epic Trading and Repair we specialize in iPhones and Samsung Galaxy repair. Anything from Screen to charge port on any phone. We also do console repairs on almost all consoles and almost any problem with the consoles. We accept video games and video game consoles from Atari on up for cash or in store credit. 
+						For pricing and any questions give us a call at <a href="tel:<?php print($phone) ?>">#<?php print($phone) ?></a>.</p>
 						<div class="divider"></div>
 					</div>
-					<div class="col-md-6">
-						<h3>Lorem ipsum dolor sit amet consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed.</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa. Nullam condimentum mauris et rhoncus sagittis. Sed eu metus in diam tincidunt egestas non at odio.</p>
-						<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean vitae lectus erat. Duis consequat laoreet velit. Mauris convallis, sapien sit amet scelerisque accumsan, felis urna aliquet nunc, viverra mollis odio tellus a nisl. Nulla lobortis lectus non rutrum viverra. Sed et molestie libero. Sed ut ultrices dui.</p>
+					<div class="col-md-8">
+					
 					</div>
 				</div>
 			</div>

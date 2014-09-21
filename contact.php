@@ -97,7 +97,7 @@ if($sub="Repair"){
 											<select id="subject" name="subject" class="form-control" >
 												<option value="na"<?php echo(($sub=="na")?"selected":"")?>>Choose One:</option>
 												<option value="Question"<?php echo(($sub=="Question")?"selected":"")?>>Questions</option>
-												<option value="Repair"<?php echo(($sub=="Repair")?"selected":"")?>>System Repair</option>
+												<option value="Repair"<?php echo(($sub=="Repair")?"selected":"")?>>Repair</option>
 											</select>
 										</div>
 									</div>

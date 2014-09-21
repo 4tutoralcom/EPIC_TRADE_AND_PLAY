@@ -6,7 +6,9 @@
 					<div class="col-md-12">
 						<div class="col-md-10 col-md-offset-1">
 						<div class="quote-slideshow">							
-							<div id="auction-nudge-feedback" class="auction-nudge"><a href="http://www.auctionnudge.com/your-ebay-feedback">Auction Nudge eBay Feedback Loading ...</a></div>
+							<div id="auction-nudge-feedback" class="auction-nudge">
+								<a href="http://www.auctionnudge.com/your-ebay-feedback">Auction Nudge eBay Feedback Loading ...</a>
+							</div>
 						</div>
 						<span class="quote-prev circle"><i class="fa fa-angle-left fa-2x"></i></span>
 						<span class="quote-next circle"><i class="fa fa-angle-right fa-2x"></i></span>
@@ -110,8 +112,6 @@
 		width:100%;
 		z-index:3;
 	}
-
-
 </style>
 		<!--calander-->
 		
