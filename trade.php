@@ -7,7 +7,7 @@
 	$GameTitle = "";
 	$Platform  = "";
 	$image     = "";
-	
+	$UPC	   = "";
 	$uid = 0;
 	
 	if ($id !== -1) {
@@ -16,6 +16,8 @@
 	    foreach ($jsonIterator as $key => $value) {
 	        if ($key == "product-name")
 	            $GameTitle = $value;
+	        elseif ($key == "upc")
+	            $UPC = $value;
 	        elseif ($key == "console-name")
 	            $Platform = $value;
 	        elseif ($key == "image") {
@@ -56,13 +58,29 @@
 		<div id="errmsg"><br></div>
 			<div class="row">
 				<div class="col-xs-4">
-					<label for="first_name" class="float-label">First Name:</label>
+					<label for="first_name">First Name:</label>
 				</div>
 				<div class="col-xs-8">
-					<label for="first_name" class="float-label">First Name</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+						<input type="text" class="form-control float-input" name="first_name" id="first_name" placeholder="First Name">
+					</div>
 				</div>
+			</div>
+			<div class="row">
+				<?php if($UPC!="none"):?>
+				<div class="col-xs-4">
+					<label>UPC:</label>
+				</div>
+				
+				<div class="col-xs-8">
+					<div class="label-text"><?php echo $UPC;?></div>
+				</div>
+				<?php endif;?>
+			</div>
+			<div class="row">
 				<div class="col-xs-12">
-					<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>	
+					<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Add To Cart</button>	
 				</div>
 			</div>
 		</form>

@@ -51,15 +51,15 @@ $RequestType="";
 				<div class="logo-dec">Game &#8901; Trade &#8901; Repair</div>
 			</div>
 			</a>
-			<?php if(false) :?> 
-			<?php//If The user is logged in include modal.
+			<?php
+			//If The user is logged in include modal.
 			if ($loggedOut)
-				require 'includes\part\modal.php';?>
-			<?php endif;?>
+				require 'includes\part\modal.php';
+			?>
+			
 			
 			<nav class="clearfix">
 				<ul>
-			<?php if(false) :?>
 					<?php if($loggedOut) :?>
 						<li><a data-toggle="modal" data-target="#ModalSignIn" class="inline hidden-lg hidden-md signin-button">Sign In</a></li>
 					<?php else:?>
@@ -68,14 +68,14 @@ $RequestType="";
 								<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo htmlentities($_SESSION['username']); ?><span class="glyphicon glyphicon-user pull-right"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#"><span class="glyphicon glyphicon-cog pull-right"></span>Account Settings </a></li>
+									<li><a href="#"><span class="glyphicon glyphicon-cog pull-right"></span>Account Settings</a></li>
 									<li class="divider"></li>
-									<li><a href="#"><span class="glyphicon glyphicon-stats pull-right"></span>User stats</a></li>
+									<li><a href="#"><span class="glyphicon glyphicon-stats pull-right"></span>Product Status</a></li>
 									<li class="divider"></li>
-									<li><a href="#"><span class="badge pull-right"> 0 </span>Messages</a></li>
+									<?php /*<li><a href="#"><span class="badge pull-right"> 0 </span>Messages</a></li>
 									<li class="divider"></li>
 									<li><a href="#"><span class="glyphicon glyphicon-heart pull-right"></span>Purchase History</a></li>
-									<li class="divider"></li>
+									<li class="divider"></li>*/?>
 									<li><a href="includes/logout.php"><span class="glyphicon glyphicon-log-out pull-right"></span>Sign Out</a></li>
 									<li class="divider"></li>
 								</ul>
@@ -83,13 +83,13 @@ $RequestType="";
 							</ul>
 						</li>
 					<?php endif;?>
-			<?php endif;?>
+
 					<li><a href="/trade.php">Trade</a></li>
 					<li><a href="/repairs.php">Repair</a></li>
 					<li><div class="contact_us"><a href="contact.php" class="last">Contact Us</a></div><div><?php print($phone) ?></div></li>
 				</ul>
 			</nav>
-			<?php if(false) :?>
+
 			<div class="hidden-xs hidden-sm signinContainer">
 				<div class="signin">
 				
@@ -119,7 +119,7 @@ $RequestType="";
 					<?php endif; ?>
 				</div>
 			</div>
-			<?php endif;?>
+
 			<div class="pullcontainer">
 				<a href="#" id="pull"><i class="fa fa-bars fa-2x"></i></a>
 			</div>
