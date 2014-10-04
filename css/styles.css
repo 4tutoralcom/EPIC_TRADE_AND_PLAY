@@ -978,6 +978,9 @@ footer {
 	footer h2 {font-size: 24px;}
 
 .footer-links li {list-style: none;}
+.footer-links li ul li {margin-left: -30px; 
+
+font-style: italic;}
 
 	.footer-links li a {
 		color: #454e51;
@@ -1178,7 +1181,7 @@ h2.floatup {
 .dropdown-menu .divider:last-child {
     margin: 9px 0px 0px 0px;
 }
-.nentendo{
+.gameContainer{
 	border: #860808 2px solid;
 	width: 100%;
 	color: #FFF;
@@ -1307,3 +1310,14 @@ height: 2496px;
 }
 .label-text{
 	margin: 4px 0px;}
+.button-row {
+    margin-bottom: 5px;
+}
+
+.lower .col-xs-12{
+	margin-top: 3px;	
+}	
+
+.row.lower{
+	margin-top: 8px;
+}

@@ -1,6 +1,5 @@
 <?php
-	require 'includes\part\header.php';
-	require_once('includes/template.php');
+	
 	
 	$id = isset($_GET['id']) ? (string) $_GET['id'] : -1;
 	
@@ -9,6 +8,7 @@
 	$image     = "";
 	$UPC	   = "";
 	$uid = 0;
+	$title="Trade in : Menu";
 	
 	if ($id !== -1) {
 	    $file         = file_get_contents("http://localhost/includes/temp/consoles.php?id=" . $id);
@@ -27,7 +27,18 @@
 	                echo ("error");
 	            }
 	    }
-	} else {
+		if($GameTitle==""){
+			$id =-1;
+			
+		}else{
+		$title="Trade in : $Platform-$GameTitle";
+		}
+	}
+	
+	require 'includes\part\header.php';
+	
+	if($id === -1)	{
+		require_once('includes/template.php');
 	    $file         = file_get_contents('includes/temp/consoles.json');
 	    $jsonIterator = new RecursiveIteratorIterator(new RecursiveArrayIterator(json_decode($file, TRUE)), RecursiveIteratorIterator::SELF_FIRST);
 	    
@@ -45,29 +56,39 @@
 	    $optionGroupTempalte = '<optgroup label="[companyName]" data-subtext="" data-icon="icon-ok">[items]</optgroup>';
 	    $optionTemplate      = '<option data-toggle="setSearch" data-target="#products" data-value="[name]">[name]</option>';
 	}
+	
+	
 	?>
 <div class="container bg-white main-content">
 	<?php if ($id !== -1): ?>
+	<div class="row button-row">
+		<div class="col-xs-1"></div>
+			<div class="col-xs-4 col-md-3">
+			<a href="/trade.php#<?php echo $Platform;?>|1" class="btn btn-block btn-xs btn-default"><span class="glyphicon glyphicon-arrow-left"></span>Shop in <?php echo $Platform;?></a>
+		</div>
+	</div>
 	<div class="coverArtContainer  col-xs-6 col-sm-5 col-md-4">
-		<img class="nentendo" src="<?php echo $image; ?>"></img>
-		<div class="nentendo" id="title"><?php echo $GameTitle;?></div>
-		<div class="nentendo" id="platform"><?php echo $Platform;?></div>
+		<img class="gameContainer" src="<?php echo $image; ?>"></img>
+		<div class="gameContainer" id="title"><?php echo $GameTitle;?></div>
+		<div class="gameContainer" id="platform"><?php echo $Platform;?></div>
 	</div>
 	<div class="Pricing col-xs-6 col-sm-7 col-md-8">
-	<form id="registerForm" class="omb_loginForm" action="includes/process_register.php" autocomplete="off" method="POST">
+	<form id="addToCart" class="omb_loginForm" action="includes/add_to_cart.php" autocomplete="off" method="GET">
+	<hidden name="game_id" id="game_id" value="<?php echo $id ?>">
 		<div id="errmsg"><br></div>
 			<div class="row">
 				<div class="col-xs-4">
-					<label for="first_name">First Name:</label>
+					<label for="first_name">Quantity:</label>
 				</div>
 				<div class="col-xs-8">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
-						<input type="text" class="form-control float-input" name="first_name" id="first_name" placeholder="First Name">
+						<input type="text" class="form-control float-input" name="quantity" id="quantity" placeholder="Quantity" value="0">
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			
+			<div class="lower row">
 				<?php if($UPC!="none"):?>
 				<div class="col-xs-4">
 					<label>UPC:</label>
@@ -78,7 +99,21 @@
 				</div>
 				<?php endif;?>
 			</div>
-			<div class="row">
+			<div class="lower row">
+				<div class="col-xs-12 col-md-4"><label>Do You Have The Origional:</label></div>
+				<div class="btn-block btn-group" data-toggle="buttons-checkbox">
+					<div class="col-xs-12 col-md-4 ">
+						<button type="button" class="btn btn-block btn-default" name="has_case" id="has_case">Artwork and Case</button>
+					</div>
+					<div class="col-xs-12 col-md-4 ">
+						<button type="button" class="btn btn-block btn-default" name="has_book" id="has_book">Instruction Booklet</button>
+					</div>
+					<div class="col-xs-12 col-md-4 ">
+						<button type="button" class="btn btn-block btn-default" name="has_game" id="has_game">Working Game</button>
+					</div>		
+				</div>
+			</div>
+			<div class="lower row">
 				<div class="col-xs-12">
 					<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Add To Cart</button>	
 				</div>

@@ -37,10 +37,13 @@
 					</div>
 					<div class="col-sm-4 col-md-2">
 						<ul class="footer-links">
-							<li><a href="/scheduled.php">Scheduled</a></li>
-							<li><a href="#">Page Two</a></li>
-							<li><a href="#">Design</a></li>
-							<li><a href="#">Work</a></li>
+							<li><a href="/scheduled.php">Scheduled</a>
+							<ul>
+								<li><a href="/gamenight.php ">Game Night</a></li>
+							</ul></li>
+							
+							<li><a href="#">Shopping Cart</a></li>
+							<li><a href="termsofservice.php">Terms Of Service</a></li>
 							<li><a href="contact.php">Contact Us</a></li>
 						</ul>
 					</div>

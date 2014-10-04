@@ -1,5 +1,6 @@
 <?php
 require 'includes\part\header.php';
+$title="Schedule : Game Night Info";
 ?>
 	<div class="container h2-wrap ">
 		<div class="container">

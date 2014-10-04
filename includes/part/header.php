@@ -2,6 +2,8 @@
 include_once 'includes/db_connect.php';
 include_once 'includes/functions.php';
 sec_session_start();
+$title=isset($title)?$title:"";
+$author = "Andrew Richard Dittmann";
 $phone="314-293-2727";
 $loggedOut = !login_check($mysqli);
 $RequestType="";
@@ -9,13 +11,14 @@ $RequestType="";
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+	<title><?php echo $title ?></title>	
 	<meta name="description" content="Full view calendar component for twitter bootstrap with year, month, week, day views.">
 	<meta name="keywords" content="jQuery,Bootstrap,Calendar,HTML,CSS,JavaScript,responsive,month,week,year,day">
-	<meta name="author" content="Serhioromano">
+	<meta name="author" content="<?php echo $author ?>">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title></title>
-				<!-- Bootstrap -->
+		
+		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/queries.css">
@@ -104,15 +107,16 @@ $RequestType="";
 							<li class="dropdown">
 							  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo htmlentities($_SESSION['username']); ?><span class="glyphicon glyphicon-user pull-right"></span></a>
 							  <ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-cog pull-right"></span>Account Settings </a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-cog pull-right"></span>Account Settings</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-stats pull-right"></span>User stats</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-stats pull-right"></span>Product Status</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="badge pull-right"> 0 </span>Messages</a></li>
+								<?php /*<li><a href="#"><span class="badge pull-right"> 0 </span>Messages</a></li>
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-heart pull-right"></span>Purchase History</a></li>
-								<li class="divider"></li>
+								<li class="divider"></li>*/?>
 								<li><a href="includes/logout.php"><span class="glyphicon glyphicon-log-out pull-right"></span>Sign Out</a></li>
+								<li class="divider"></li>
 							  </ul>
 							</li>
 						  </ul>

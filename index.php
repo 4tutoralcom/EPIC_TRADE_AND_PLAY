@@ -1,6 +1,8 @@
 
 		<?php
+		$title="Epic Game Play Trade";
 		require 'includes\part\header.php';
+		
 		?>
 		<div class="container">
 			<!-- Slider Container and Images -->
@@ -20,15 +22,15 @@
 							<div class="flex-caption-bg"><a>?</a></div>
 						</li>
 						<li data-thumb="images/slide4.jpg">
-							<img src="images/slide4.jpg" alt="img"/>
-							<div class="flex-caption-bg"><a>?</a></div>
+							<a href="repairs.php"><img src="images/slide4.jpg" alt="img"/></a>
+							
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="arrow"></div>
 		</div>
-		<div class="container text-inter">
+		<!--<div class="container text-inter">
 			<div class=" bg-white">
 				<div class="row">
 					<div class="col-md-4 col-xs-12">
@@ -67,21 +69,20 @@
 							<div class="carousel-avatar av3">
 							</div>
 							<div class="carousel-content">
-								<h3>About Us</h3>
-								<p>Here at Epic Trading and Repair we specialize in iPhones and Samsung Galaxy repair. Anything from Screen to charge port on any phone. We also do console repairs on almost all consoles and almost any problem with the consoles. We accept video games and video game consoles from Atari on up for cash or in store credit. 
-								For pricing and any questions give us a call at <a href="tel:<?php print($phone) ?>">#<?php print($phone) ?></a>.</p>
+
 							</div>
 							<div class="overlay"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<div class="container text-inter ">
 			<div class="container bg-white">
 				<div class="row">
 					<div class="col-md-8">
-						
+						<h3>About Us</h3>
+						<p>Here at Epic Trading and Repair we specialize in iPhones and Samsung Galaxy repair. Anything from Screen to charge port on any phone. We also do console repairs on almost all consoles and almost any problem with the consoles. We accept video games and video game consoles from Atari on up for cash or in store credit. For pricing and any questions give us a call at <a href="tel:<?php print($phone) ?>">#<?php print($phone) ?></a>.</p>
 					</div>
 					<div class="col-md-4" style="height:40vh;">
 					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:100%;width:100%;"><div id="gmap_canvas" style="height:100%;width:100%;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">trivoo.net2010</a></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.451547,-90.30710199999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.451547, -90.30710199999999)});infowindow = new google.maps.InfoWindow({content:"<b>Epic Game Play Trade</b><br/>6197 Telegraph Rd<br/>63129 st. Louis" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
