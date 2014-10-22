@@ -57,7 +57,7 @@ function login($email, $password, $mysqli,$ip_address) {
                     // Login successful.
 					// Check if the user has allowed the ip address 
 					// to access there account.
-					$stmt = $mysqli->prepare("SELECT `ip_address`, `allowed` FROM `allowed_ip_adresses` WHERE id=?");
+					$stmt = $mysqli->prepare("SELECT `ip_address`, `allowed` FROM `allowed_ip_adresses` WHERE member_id=?");
 					if($stmt){
 						$stmt->bind_param('i', $user_id);  // Bind "$user_id" to parameter.
 						$stmt->execute();    // Execute the prepared query.
@@ -65,8 +65,10 @@ function login($email, $password, $mysqli,$ip_address) {
 						// get variables from result.
 						$stmt->bind_result($db_ip, $allowed);
 						$Check=true;
+						
 						    while ($stmt->fetch()) {
 								if($allowed==1 &&  $db_ip==$ip_address ){
+								
 									// Password is correct and IP Address is allowed!
 									// Get the user-agent string of the user.
 									$user_browser = $_SERVER['HTTP_USER_AGENT'];
@@ -88,8 +90,68 @@ function login($email, $password, $mysqli,$ip_address) {
 								}
 								
 							}
-							if($Check)
-								include_once '\checkNewComputer.php';
+							if($Check){
+								if(isset($_POST['add'])){
+									$add = filter_input(INPUT_POST, 'add', FILTER_SANITIZE_STRING);
+									if($add=="true") {
+										$uid = substr(md5(uniqid(mt_rand(1, mt_getrandmax()))), 0, 8);
+										$stmt=$mysqli->prepare("SELECT `ip_address`, `uid` FROM `allowed_ip_adresses` WHERE  `uid`=? OR (`member_id`=? AND `ip_address`=?)");
+										if($stmt) {
+											$stmt->bind_param('iss',$uid,$user_id,$ip_address);
+											if($stmt->execute()){
+												$stmt->store_result();
+												$breakLoop=false;
+												$r_uid="";
+												$msg="";
+												while($stmt->num_rows!=0 && $breakLoop==false){
+													$uid = substr(md5(uniqid(mt_rand(1, mt_getrandmax()))), 0, 8);
+													$stmt->bind_param('iss',$uid,$user_id,$ip_address);
+													$stmt->execute();
+													$stmt->store_result();
+													$stmt->bind_result($s_ip,$s_uid);
+													while ($stmt->fetch()) {
+														if($s_ip==$ip_address){
+															$msg="An Email has been set before for this account on this IP Address! Only The most recent Access Code will work.<br>";
+															$breakLoop=true;
+															$r_uid=$s_uid;
+														}
+													}
+												}
+												
+												if($breakLoop){
+													$stmt=$mysqli->prepare("DELETE FROM `allowed_ip_adresses` WHERE `ip_address`=? AND `uid`=? AND `member_id`=?");
+													if($stmt){
+														$stmt->bind_param('ssi',$ip_address,$r_uid,$user_id);
+														if(!$stmt->execute()){
+															$error_msg.="FATAL ERROR 000";	
+														}
+													}else{
+														$error_msg.="FATAL ERROR 000";
+													}
+												}
+												if($error_msg==""){
+													$stmt=$mysqli->prepare("INSERT INTO `allowed_ip_adresses` (`member_id`, `ip_address`, `allowed`, `uid`) VALUES (?,?,0,?)");
+													if($stmt){
+														$stmt->bind_param('iss',$user_id, $ip_address, $uid);
+														if($stmt->execute()){
+															$error_msg=$msg;
+															$content="	Hi ".$username.",\r\n
+																		Yor Access Code is \r\n
+																		<h2>$uid</h2>
+																		".$ShopName." Staff";
+																		
+																				mail($email,'Register '.$ShopName.' Account',$content,'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=iso-8859-1' . "\r\n" .'from: 4tutoralcom@gmail.com');
+														}
+													}
+												}
+											}
+										}
+									}
+								}else{
+									$error_msg="IP Address Error!";	
+								}
+							}
+								
 					}else{
 						//unknown error
 						$error_msg="FATAIL ERROR! #000";
@@ -166,8 +228,8 @@ function register($first_name, $last_name, $username,$email,$password,$mysqli){
 			$stmt->close();
 	}
 	 if (empty($error_msg)) {
+		
         // Create a random salt
-        //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
         $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 		
         $password = hash('sha512', $password . $random_salt);
@@ -177,7 +239,9 @@ function register($first_name, $last_name, $username,$email,$password,$mysqli){
             $insert_stmt->bind_param('ssssss',$first_name, $last_name, $username, $email, $password, $random_salt);
             // Execute the prepared query.
             $insert_stmt->execute(); 
-        }
+        }else{
+			$error_msg+="ERROR 1D01";
+		}
 		
 		$prep_stmt = "SELECT id FROM members WHERE email = ? LIMIT 1";
 		$stmt = $mysqli->prepare($prep_stmt);
@@ -201,7 +265,7 @@ function register($first_name, $last_name, $username,$email,$password,$mysqli){
 			Sincerely,\r\n
 			".$ShopName." Staff";
 			
-			if ($insert_stmt = $mysqli->prepare("INSERT INTO `allowed_ip_adresses` (`id`, `ip_address`, `allowed`, `uid`) VALUES (?,?,?,?)")) {
+			if ($insert_stmt = $mysqli->prepare("INSERT INTO `allowed_ip_adresses` (`member_id`, `ip_address`, `allowed`, `uid`) VALUES (?,?,?,?)")) {
 				$insert_stmt->bind_param('isis',$id, $ip_address, $allowed, $uid);
 				// Execute the prepared query.
 				if ($insert_stmt->execute()) {

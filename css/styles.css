@@ -1131,7 +1131,7 @@ h2.floatup {
     margin: -.75em 1em -0.35em;
 }
 .frame {
-	min-height: 44px;
+	/* min-height: 44px; */
 }
 .frame .group:not(.current) {
 	display: none;
@@ -1321,3 +1321,56 @@ height: 2496px;
 .row.lower{
 	margin-top: 8px;
 }
+#errmsg{
+    margin-bottom: 1.5em;
+	
+}
+
+.PriceContainer {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.main-content {
+    min-height: 515px;
+}
+
+/*f*/
+
+.col-filler-0_5 {
+    width: 4.1666665%;
+    float: left;  
+    padding: 1px;  
+    margin-left: 2px; 
+}
+.col-filler-1 {
+    width: 8.333333%;
+    float: left;  
+    padding: 1px;  
+    margin-left: 2px; 
+}
+.col-filler-1_5{
+    width: 12.4999995%;
+    float: left;  
+    padding: 1px;  
+    margin-left: 2px; 
+}
+
+.col-filler-2{
+    width: 16.66666667%;
+    float: left;  
+    padding: 1px;  
+    margin-left: 2px;  
+}
+.col-filler-2_5{
+    width: 25%;
+    float: left;  
+    padding: 1px;  
+    margin-left: 2px;  
+}
+.pagination>li:nth-child(2):not(.col)>a,
+.pagination>li:nth-child(2):not(.col)>span  {
+margin-left: 0;
+border-top-left-radius: 4px;
+border-bottom-left-radius: 4px;
+}
+/*f*/

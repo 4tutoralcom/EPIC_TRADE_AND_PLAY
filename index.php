@@ -4,7 +4,7 @@
 		require 'includes\part\header.php';
 		
 		?>
-		<div class="container">
+		<div class="container main-content">
 			<!-- Slider Container and Images -->
 			<div>
 				<div class="flexslider">
@@ -87,11 +87,11 @@
 					<div class="col-md-4" style="height:40vh;">
 					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:100%;width:100%;"><div id="gmap_canvas" style="height:100%;width:100%;"></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">trivoo.net2010</a></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.451547,-90.30710199999999),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.451547, -90.30710199999999)});infowindow = new google.maps.InfoWindow({content:"<b>Epic Game Play Trade</b><br/>6197 Telegraph Rd<br/>63129 st. Louis" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 					</div>
-				</div>
 			</div>
 		</div>
 		<!--
 		<div class="container h2-wrap ">
+				</div>
 			<div class="container">
 				<div class="row ">
 					<div class="col-md-12">

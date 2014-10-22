@@ -52,13 +52,14 @@
 		</footer>
 		
 		<script type="text/JavaScript" src="js/sha512.js"></script> 
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
-		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+		<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
+		<script type="text/javascript" src="js/spin.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/bootstrap-select.js"></script>
 		<script type="text/javascript" src="/includes/auctionudge.php"></script>
-		<script src="js/scripts.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script>
 		
 		<script type="text/JavaScript" src="js/labelFloat.js"></script>
 		<script type="text/JavaScript" src="js/userForm.js"></script>

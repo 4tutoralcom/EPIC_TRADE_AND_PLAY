@@ -63,31 +63,37 @@
 	<?php if ($id !== -1): ?>
 	<div class="row button-row">
 		<div class="col-xs-1"></div>
-			<div class="col-xs-4 col-md-3">
+			<div class="col-xs-5 col-sm-4 col-md-3">
 			<a href="/trade.php#<?php echo $Platform;?>|1" class="btn btn-block btn-xs btn-default"><span class="glyphicon glyphicon-arrow-left"></span>Shop in <?php echo $Platform;?></a>
 		</div>
 	</div>
-	<div class="coverArtContainer  col-xs-6 col-sm-5 col-md-4">
-		<img class="gameContainer" src="<?php echo $image; ?>"></img>
-		<div class="gameContainer" id="title"><?php echo $GameTitle;?></div>
-		<div class="gameContainer" id="platform"><?php echo $Platform;?></div>
+	<div class="col-xs-6 col-sm-5 col-md-4">
+		<div class="coverArtContainer ">
+			<img class="gameContainer" src="<?php echo $image; ?>"></img>
+			<div class="gameContainer" id="title"><?php echo $GameTitle;?></div>
+			<div class="gameContainer" id="platform"><?php echo $Platform;?></div>
+		</div>
 	</div>
 	<div class="Pricing col-xs-6 col-sm-7 col-md-8">
 	<form id="addToCart" class="omb_loginForm" action="includes/add_to_cart.php" autocomplete="off" method="GET">
 	<hidden name="game_id" id="game_id" value="<?php echo $id ?>">
 		<div id="errmsg"><br></div>
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-12 col-sm-4">
 					<label for="first_name">Quantity:</label>
 				</div>
-				<div class="col-xs-8">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
-						<input type="text" class="form-control float-input" name="quantity" id="quantity" placeholder="Quantity" value="0">
+				<div class="col-xs-12 col-sm-6">
+					<div class="input-group number-spinner">
+						<span class="input-group-btn">
+							<button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+						</span>
+						<input type="text" class="form-control text-center" value="1">
+						<span class="input-group-btn">
+							<button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+						</span>
 					</div>
 				</div>
 			</div>
-			
 			<div class="lower row">
 				<?php if($UPC!="none"):?>
 				<div class="col-xs-4">
@@ -114,8 +120,11 @@
 				</div>
 			</div>
 			<div class="lower row">
-				<div class="col-xs-12">
-					<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Add To Cart</button>	
+				<div class="col-xs-4 col-md-1"><label>Price:</label></div>
+				<div class="col-xs-8 col-md-2"><label>$Price</label></div>
+				<div class="col-xs-12  col-md-8">
+				
+					<button id="submit" class="btn btn-md btn-primary btn-block" type="submit">Add To Cart</button>	
 				</div>
 			</div>
 		</form>

@@ -28,9 +28,9 @@ function getArt($id, $console, $GameTitle, &$Console_pic, &$curentConsoleName, &
             else
                 echo ($data[0]);
         }
-        fclose($handle);
+        
     }
-    
+    fclose($handle);
     if (isset($Console_pic[$id])) {
         //echo("y");
         $imgUrl = $Console_pic[$id];
@@ -46,9 +46,9 @@ function getArt($id, $console, $GameTitle, &$Console_pic, &$curentConsoleName, &
                     break;
                 }
             }
-            fclose($handle);
             $found = ($imgUrl !== "");
         }
+		fclose($handle);
     }
     if (!$found && $grabFormWeb > 0) {
         $grabFormWeb--;
@@ -177,10 +177,9 @@ if (($handle = fopen("price-guide_$current_date.csv", "r")) !== FALSE) {
 				}
 			}
 		}
-	}
-    
-    fclose($handle);
+	} 
 }
+fclose($handle);
 if($gameID===-1)
 	array_unshift($JSON_Array,["pages"=>(($itemcounter-$itemcounter%24)/24)+(($itemcounter%24==0)?0:1)]);
 

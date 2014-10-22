@@ -13,7 +13,7 @@ if (isset($_POST['userid'], $_POST['p'])) {
         // Login success
         echo "Success";
     }else{
-        // Login failed 
+        // Login failed
         echo $error_msg;
     }
 } else {

@@ -245,6 +245,44 @@ $(window)
 					var file="\\includes\\temp\\consoles.php?console-name=";
 					file+=group;
 					file+="&p="+page;
+					//remove all product images and add a loading page
+					$("#products .column").remove();
+					/*
+					var game='<div class="col-xs-12 column">';
+					game+="<h1 id='updater' style='text-align: center;width: 100%;font-size: 8.2em;'>LOADING</h1>";
+					game+='</div>';
+					$( game).appendTo( "#products" );
+					var c=0;
+					var updater =function(){
+						
+						$("#updater").text("LOADING"+Array(c%6).join("."));
+						c++;
+						setTimeout(updater,900);
+					}
+					setTimeout(updater,100);
+					*/
+					var game='<div id="updater" style="margin-top:8em" class="col-xs-12 column"></div>';
+					$( game).appendTo( "#products" );
+					var opts = {
+					  lines: 13, // The number of lines to draw
+					  length: 0, // The length of each line
+					  width: 30, // The line thickness
+					  radius: 53, // The radius of the inner circle
+					  corners: 0.6, // Corner roundness (0..1)
+					  rotate: 0, // The rotation offset
+					  direction: 1, // 1: clockwise, -1: counterclockwise
+					  color: '#000', // #rgb or #rrggbb or array of colors
+					  speed: 1.1, // Rounds per second
+					  trail: 51, // Afterglow percentage
+					  shadow: false, // Whether to render a shadow
+					  hwaccel: false, // Whether to use hardware acceleration
+					  className: 'spinner', // The CSS class to assign to the spinner
+					  zIndex: 2e9, // The z-index (defaults to 2000000000)
+					  top: '50%', // Top position relative to parent
+					  left: '50%' // Left position relative to parent
+					};
+					var target = document.getElementById('updater');
+					var spinner = new Spinner(opts).spin(target);
 					$.getJSON( file, function( data ) {
 						$("#products .column").remove()
 						$(".pagination").children().remove();
@@ -256,7 +294,7 @@ $(window)
 							});
 							if(items["id"]){
 								var game='<div class="item col-xs-12 col-sm-6 col-md-4 col-lg-3 column">';
-								game+='<a href="/trade.php?id='+items["id"]+'"><img src="'+items["image"]+'" class="img-responsive productpicture"></a>';
+								game+='<a style="width:300px;" href="/trade.php?id='+items["id"]+'"><img src="'+items["image"]+'" onerror="this.src='+"'/images/notfound.jpg';"+'" class="img-responsive productpicture"></a>';
 								game+='<div class="producttitle">'+items["product-name"]+'</div>';
 								game+='<div class="productprice">';
 								game+='<div>';
@@ -291,16 +329,20 @@ $(window)
 									}
 									cpage=(cpage>=pages-5)?cpage-5:cpage;
 								}
-								if(pages<12 && pages>6){
+								
+								if(pages<12){
 									ext=((pages-(pages%12))/12);
 									var space= pages/6;
 									ext=(ext==0)?1:ext;
-									$(".pagination").append("<li class='col-xs-"+(12-pages)/2+"'></li>");
+									if(pages<=6){
+										ext=(ext==1)?((pages<=6)?Math.floor(12/pages):1):ext;
+									}
+									$(".pagination").append("<li class='col-filler-"+((12-pages*ext)/2).toString().replace('.','_')+"'></li>");
+								}else{
+									$(".pagination").append("<li></li>");
 								}
-								if(pages<=6){
-									ext=(ext==1)?((pages<=6)?Math.floor(12/pages):1):ext;
-								}
-								for (i = cpage; i < (cpage+pagesAfter); i++) {
+								firstPageTabNumber=(cpage-1+pagesAfter<=pages)?cpage:pagesAfter+1-pages;
+								for (i = firstPageTabNumber; i < (firstPageTabNumber+pagesAfter); i++) {
 									$(".pagination").append("<li><a class='col-xs-"+ext+"' href='trade.php#"+group+"|"+i+"'>"+i+"</a></li>")
 								}
 								

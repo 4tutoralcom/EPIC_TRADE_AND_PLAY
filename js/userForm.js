@@ -1,28 +1,35 @@
 temppass = "";
 $(document).ready(function() {
-
+	$(document).on('click', '.number-spinner button', function () {    
+		var btn = $(this),
+			oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+			newVal = 0;
+		
+		if (btn.attr('data-dir') == 'up') {
+			newVal = parseInt(oldValue) + 1;
+		} else {
+			if (oldValue > 1) {
+				newVal = parseInt(oldValue) - 1;
+			} else {
+				newVal = 1;
+			}
+		}
+		btn.closest('.number-spinner').find('input').val(newVal);
+	});
 	$('.button-checkbox').each(function() {
 		var $widget = $(this),
-			$button = $widget.find('button'),
-			$checkbox = $widget.find('input:checkbox'),
-			color = $button.data('color'),
-			settings = {
-				on: {
-					icon: 'glyphicon glyphicon-check'
-				},
-				off: {
-					icon: 'glyphicon glyphicon-unchecked'
-				}
-			};
+		$button = $widget.find('button'), 
+		$checkbox = $widget.find('input:checkbox'), 
+		color = $button.data('color'), 
+		settings = { on: { icon: 'glyphicon glyphicon-check' } , off: { icon: 'glyphicon glyphicon-unchecked'} };
+		
 		$button.on('click', function() {
 			$checkbox.prop('checked', !$checkbox.is(':checked'));
 			$checkbox.val(($checkbox.val() === "0") ? 1 : 0)
 			updateDisplay();
 		});
 
-		$checkbox.on('change', function() {
-			updateDisplay();
-		});
+		$checkbox.on('change', function() { updateDisplay(); });
 
 		function updateDisplay() {
 			var isChecked = $checkbox.is(':checked');
@@ -30,19 +37,13 @@ $(document).ready(function() {
 			$button.data('state', (isChecked) ? "on" : "off");
 
 			// Set the button's icon
-			$button.find('.state-icon')
-				.removeClass()
-				.addClass('state-icon ' + settings[$button.data('state')].icon);
+			$button.find('.state-icon').removeClass().addClass('state-icon ' + settings[$button.data('state')].icon);
 
 			// Update the button's color
 			if (isChecked) {
-				$button
-					.removeClass('btn-default')
-					.addClass('btn-' + color + ' active');
+				$button.removeClass('btn-default').addClass('btn-' + color + ' active');
 			} else {
-				$button
-					.removeClass('btn-' + color + ' active')
-					.addClass('btn-default');
+				$button.removeClass('btn-' + color + ' active').addClass('btn-default');
 			}
 		}
 
@@ -61,32 +62,20 @@ $(document).ready(function() {
 	$("#registerForm #submit").click(function() {
 		$("#registerForm #password").prev().css("background-color", "");
 		$("#registerForm #userid").prev().css("background-color", "");
-		regHash = regformhash(registerForm,
-			registerForm.username,
-			registerForm.first_name,
-			registerForm.last_name,
-			registerForm.email,
-			registerForm.password,
-			registerForm.confirmpwd,
-			registerForm.t_and_c
-		);
+		regHash = regformhash(registerForm, registerForm.username, registerForm.first_name, registerForm.last_name, registerForm.email, registerForm.password, registerForm.confirmpwd, registerForm.t_and_c);
 		$("#registerForm #errmsg").html((regHash.error) ? regHash.error : "<br>");
-		$.post($("#registerForm").attr("action"),
-			$("#registerForm :input").serializeArray(),
-			function(info) {
-				if (info == "Success")
-					$("#signinForm #errmsg").html("An Confirmation Email has been sent to " + registerForm.email.value + "Click on the link in the email to confirm your account. it will be invalid in 72 hours.");
-				else
-					$("#signinForm #errmsg").html(info);
-			});
+		$.post($("#registerForm").attr("action") , $("#registerForm :input").serializeArray() , function(info) {
+			if (info == "Success"){
+				$('#Tabs a[href="#signin"]').tab('show')
+				$("#signinForm #errmsg").html("An Confirmation Email has been sent to " + registerForm.email.value + "Click on the link in the email to confirm your account. it will be invalid in 72 hours.");
+			}else
+				$("#registerForm #errmsg").html(info);
+		});
 	});
 
-	$(".item").click(function() {
-		clearContactUsForm();
-	});
+	$(".item").click(function() { clearContactUsForm(); });
 	$("#ContactUs #submit").click(function() {
 		clearContactUsForm();
-		var error = true;
 		if ($("#ContactUs #subject").val() == "na") {
 			icon.addClass("glyphicon-hand-right");
 			messageBox.addClass("alert-danger");
@@ -113,70 +102,44 @@ $(document).ready(function() {
 			paragraph.html("You need to enter in your phone number For us to contact you.");
 			title.html("No Phone!")
 		} else {
-			error = false;
-		}
-		if (!error) {
-			data = $("#ContactUs :input").serializeArray();
-			$.post($("#ContactUs").attr("action"),
-				data,
-				function(info) {
-					if (info == "Success")
-						location.replace("/contact.php");
-				});
+			$.post($("#ContactUs").attr("action"),$("#ContactUs :input").serializeArray(),function(info) {if (info == "Success")location.replace("/contact.php");});
 		}
 	});
 	$("#signinForm #submit").click(function() {
 		temppass = "";
-		$("#signinForm #password").prev().css("background-color", "");
-		$("#signinForm #userid").prev().css("background-color", "");
-		$("#signinForm #errmsg").empty();
-		$("#signinForm #errmsg").html("<br>");
+		$("#signinForm #password, #signinForm #userid").prev().css("background-color", "");
+		$("#signinForm #errmsg").empty().html("<br>");
 		formhash($("#signinForm"), signinForm.password);
-		data = $("#signinForm :input").serializeArray();
-		$.post($("#signinForm").attr("action"),
-			data,
-			function(info) {
-				if (info == "Success")
-					location.reload();
-				else if (info == "IP Address Error!") {
-					data[3] = {
-						name: "add",
-						value: "true"
-					}
-					$.post($("#signinForm").attr("action"), data,
-						function(info) {
-							$("#ModalSignIn .active").removeClass("active");
-							$("#ModalSignIn #myTabContent").append(info);
-							reFloatLabel();
-							$("#addForm").submit(function() {
-								data = $("#addForm").serializeArray();
-								data[data.length] = $("#signinForm :input").serializeArray()[0];
-
-								$.post($("#addForm").attr("action"),
-									data,
-									function(info) {
-
-									});
-
-								return false;
-							});
-						});
-				} else if (userid.value == "")
-					$("#signinForm #userid").prev().css("background-color", "#d9534f");
-				else if (temppass == "")
-					$("#signinForm #password").prev().css("background-color", "#d9534f");
-				else
-					$("#signinForm #errmsg").html(info);
-			});
+		var data=$("#signinForm :input").serializeArray()
+		$.post($("#signinForm").attr("action") , data , function(info) {
+			if (info == "Success"){
+				location.reload();
+			}else if (info == "IP Address Error!") {
+				data[3] = { name: "add" , value: "true" }
+				$.post($("#signinForm").attr("action"), data, function(info) {
+					$("#ModalSignIn .active").removeClass("active");
+					$("#ModalSignIn #add").addClass("active");
+					if (info != "Success") $("#addForm #errmsg").html(info);
+					$("#addForm").append(signinForm.p);
+					$("#addForm").submit(function() {
+						data = $("#addForm").serializeArray();
+						data[data.length] = $("#signinForm :input").serializeArray()[0];
+						$.post($("#addForm").attr("action") , data , function(info) { if( info=="Success" ){ window.location.reload(); }});
+						return false;
+					});
+				});
+			} else if (userid.value == "")
+				$("#signinForm #userid").prev().css("background-color", "#d9534f");
+			else if (temppass == "")
+				$("#signinForm #password").prev().css("background-color", "#d9534f");
+			else
+				$("#signinForm #errmsg").html(info);
+		});
 	});
 
-	$("#signinForm input").on("focus", function() {
-		$("#" + this.id).prev().css("background-color", "");
-	});
-
-	$("form").submit(function() {
-		return false;
-	});
+	$("#signinForm input").on("focus", function() { $("#" + this.id).prev().css("background-color", ""); });
+	
+	$("form").submit(function() { return false; });
 
 	$('#registerForm #username').on('input', function(e) {
 		if (this.value.length > 6) {

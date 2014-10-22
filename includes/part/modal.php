@@ -13,7 +13,37 @@
 							</ul>
 						</div>
 						<div class="modal-body">
-							<div id="myTabContent" class="tab-content">						
+							<div id="myTabContent" class="tab-content">	
+								<div class='tab-pane fade in' id='add'>
+									<fieldset>
+										<form id='addForm' class='omb_loginForm' action='includes/addComputer.php' autocomplete='off' method='POST'>
+											<div class='row'>
+												<div class='col-xs-12' id='info'>
+														You need to allow this IP Address to Continue. <br> 
+														Check your email for a 8 digit 'Access Code. Input that 'Access Code into the box below.
+												</div>
+												<div class='col-xs-12' id='errmsg'><br></div>
+												<div class='col-xs-12'>
+													<div class='form-group bs-float-label'>
+														<label for='access' class='float-label'>Access Code</label>
+														<div class='input-group'>
+															<span class='input-group-addon'><i class='fa fa-user'></i></span>
+															<input type='text' class='form-control float-input' name='access' id='access' placeholder='Access Code' autocomplete='off'>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class='row'>
+												<div class='col-xs-12 col-sm-6'>
+													<div class='padding-15'>
+														<button data-target='#signin' data-toggle='tab' onclick='".'$("#add").remove()'."' type='button' class='btn btn-default' 'tabindex='7'>Back</button>
+														<button  id='submit' class='btn btn-primary' type='submit'>Recover Password</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</fieldset>
+								</div>					
 								<div class="tab-pane fade in" id="forgot">
 									<fieldset>
 										<form id="FormForgot" class="omb_loginForm" action="includes/process_forgotten.php" autocomplete="off" method="POST">

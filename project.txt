@@ -1,5 +1,5 @@
 <NotepadPlus>
-    <Project name="epicTGR">
+    <Project name="EPICTCG">
         <Folder name="css">
             <Folder name="fonts">
                 <File name="css\fonts\flexslider-icon.eot" />
@@ -13,6 +13,7 @@
                 <File name="css\map\bootstrap.css.map" />
             </Folder>
             <File name="css\bootstrap-select.css" />
+            <File name="css\bootstrap-select.css.map" />
             <File name="css\bootstrap-select.min.css" />
             <File name="css\bootstrap-theme.css" />
             <File name="css\bootstrap-theme.min.css" />
@@ -31,6 +32,16 @@
             <File name="css\styles.css" />
             <File name="css\userDropDownMenu.css" />
             <File name="css\userForm.js" />
+        </Folder>
+        <Folder name="fonts">
+            <File name="fonts\FM_Bolyar_Ornate.eot" />
+            <File name="fonts\FM_Bolyar_Ornate.otf" />
+            <File name="fonts\FM_Bolyar_Ornate.svg" />
+            <File name="fonts\FM_Bolyar_Ornate.woff" />
+            <File name="fonts\glyphicons-halflings-regular.eot" />
+            <File name="fonts\glyphicons-halflings-regular.svg" />
+            <File name="fonts\glyphicons-halflings-regular.ttf" />
+            <File name="fonts\glyphicons-halflings-regular.woff" />
         </Folder>
         <Folder name="includes">
             <Folder name="part">
@@ -92,7 +103,7 @@
                 </Folder>
                 <File name="includes\temp\consoles.json" />
                 <File name="includes\temp\consoles.php" />
-                <File name="includes\temp\price-guide_2014_09_25.csv" />
+                <File name="includes\temp\price-guide_2014_10_21.csv" />
                 <File name="includes\temp\SearchItem.tpl" />
                 <File name="includes\temp\ShopItem.json" />
                 <File name="includes\temp\shopItem.tpl" />
@@ -101,14 +112,12 @@
             <File name="includes\addComputer.php" />
             <File name="includes\add_to_cart.php" />
             <File name="includes\auctionudge.php" />
-            <File name="includes\checkNewComputer.php" />
             <File name="includes\confirm.php" />
             <File name="includes\ContactUs.php" />
             <File name="includes\db_connect.php" />
             <File name="includes\findEmail.php" />
             <File name="includes\findUsername.php" />
             <File name="includes\functions.php" />
-            <File name="includes\functions.php.bak" />
             <File name="includes\game.php" />
             <File name="includes\gameart.php" />
             <File name="includes\ip_lookup.php" />
@@ -118,8 +127,8 @@
             <File name="includes\process_register.php" />
             <File name="includes\psl-config.php" />
             <File name="includes\recover.php" />
+            <File name="includes\shopping-cart.php" />
             <File name="includes\template.php" />
-            <File name="includes\Thumbs.db" />
         </Folder>
         <Folder name="js">
             <Folder name="min">
@@ -140,25 +149,28 @@
             <File name="js\responsive-nav.js" />
             <File name="js\scripts.js" />
             <File name="js\sha512.js" />
-            <File name="js\Thumbs.db" />
             <File name="js\unslider.min.js" />
             <File name="js\userForm.js" />
             <File name="js\xDtuvK3GRJGUSUHgj0ew_IMG_3860.jpg" />
         </Folder>
         <File name=".gitignore" />
         <File name="adLog.php" />
+        <File name="cart.php" />
         <File name="contact.php" />
         <File name="error.php" />
         <File name="example.html" />
+        <File name="fullcalendar-2.0.3-license.txt" />
         <File name="gamenight.php" />
         <File name="index.php" />
         <File name="index2.php" />
         <File name="login.php" />
+        <File name="project.txt" />
         <File name="protected_page.php" />
         <File name="README.md" />
         <File name="repairs.php" />
         <File name="scheduled.php" />
         <File name="send.php" />
+        <File name="termsofservice.php" />
         <File name="trade.php" />
     </Project>
 </NotepadPlus>
